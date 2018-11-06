@@ -1,0 +1,789 @@
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.stats{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.full {
+    width: 100%;
+}
+.gap {
+    height: 30px;
+    width: 100%;
+    clear: both;
+    display: block;
+}
+.footer {
+    margin-top: 50px;
+    background: #EDEFF1;
+    height: auto;
+    padding-bottom: 30px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid #DDDDDD;
+}
+.footer p {
+    margin: 0;
+}
+.footer img {
+    max-width: 100%;
+}
+.footer h3 {
+    border-bottom: 1px solid #BAC1C8;
+    color: #54697E;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    padding: 40px 0 10px;
+    text-transform: uppercase;
+}
+.footer ul {
+    font-size: 13px;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 15px;
+    color: #7F8C8D;
+}
+.footer ul li a {
+    padding: 0 0 5px 0;
+    display: block;
+}
+.footer a {
+    color: #78828D
+}
+.supportLi h4 {
+    font-size: 20px;
+    font-weight: lighter;
+    line-height: normal;
+    margin-bottom: 0 !important;
+    padding-bottom: 0;
+}
+.newsletter-box input#appendedInputButton {
+    background: #FFFFFF;
+    display: inline-block;
+    float: left;
+    height: 30px;
+    clear: both;
+    width: 100%;
+}
+.newsletter-box .btn {
+    border: medium none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    display: inline-block;
+    height: 40px;
+    padding: 0;
+    width: 100%;
+    color: #fff;
+}
+.newsletter-box {
+    overflow: hidden;
+}
+.bg-gray {
+    background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
+    box-shadow: 0 1px 0 #B4B3B3;
+}
+.social li {
+    background: none repeat scroll 0 0 #B5B5B5;
+    border: 2px solid #B5B5B5;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    margin: 0 8px 0 0;
+    padding: 0;
+    text-align: center;
+    width: 36px;
+    transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+}
+.social li:hover {
+    transform: scale(1.15) rotate(360deg);
+    -webkit-transform: scale(1.1) rotate(360deg);
+    -moz-transform: scale(1.1) rotate(360deg);
+    -ms-transform: scale(1.1) rotate(360deg);
+    -o-transform: scale(1.1) rotate(360deg);
+}
+.social li a {
+    color: #EDEFF1;
+}
+
+.social li a i {
+    font-size: 16px;
+    margin: 0 0 0 5px;
+    color: #EDEFF1 !important;
+}
+.footer-bottom {
+    background: #E3E3E3;
+    border-top: 1px solid #DDDDDD;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.footer-bottom p.pull-left {
+    padding-top: 6px;
+}
+.payments {
+    font-size: 1.5em;
+}
+
+.icoFacebook:hover {
+    background-color: #3B5998;
+}
+.icoTwitter:hover {
+    background-color: #33ccff;
+}
+.icoGoogle:hover {
+    background-color: #BD3518;
+}
+.icoYoutube:hover {
+    background-color: #e52d27;
+}
+
+@media (min-width: 768px) {
+    .my-custom-container{
+        width:100%;
+    }}
+
+@media (min-width: 992px) {
+    .my-custom-container{
+        width:100%;
+    }}
+
+@media (min-width: 1200px) {
+    .my-custom-container{
+        width:100%;
+    }}
+
+.business-header {
+    height: 400px;
+    background: url('../pictures/test.jpg') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    padding-top: 50px;
+}
+
+.tagline {
+    text-shadow: 2px 2px 2px #000;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+}
+.page-header {
+    font-family: 'Montserrat', sans-serif;
+}
+.img-center {
+    margin: 0 auto;
+}
+
+.nav>li>a {
+
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+.navbar-inverse {
+    background-color: rgba(0, 80, 161, 0.5);
+    border-color: #080808;
+    border: 0;
+}
+
+.navbar-inverse .navbar-nav>li>a
+{
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+.fc-content .fc-time{
+    display : none;
+}
+
+.badge-seniors{
+    background-color: #ff0000;
+}
+
+.badge-U18{
+    background-color: #5472AE;
+}
+
+.badge-U15{
+    background-color: #4CA66B;
+}
+
+.badge-U15{
+    background-color: #4CA66B;
+}
+
+.badge-U13{
+    background-color: #008B8B;
+}
+
+.badge-U11{
+    background-color: #A9A9A9;
+}
+
+.badge-U9{
+    background-color: #EE82EE;
+}
+
+.badge-U7{
+    background-color: #EE82EE;
+}
+
+.slide-image {
+    width: 100%;
+    padding-bottom: 15px;
+}/*
+body {
+    padding-top: 70px; !* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. *!
+}*/
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 300px;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.panel-uscl{
+    border-color: #0050A1;
+}
+
+.panel-uscl>.panel-heading {
+    color: #fff;
+    background-color: #0050A1;
+    border-color: #0050A1;
+}
+
+.tr-date{
+    border: none;
+}
+
+.uscl-ighlighting{
+    background-color: rgba(0,80,161,0.5);
+}
+
+.breadcrumb{
+    padding-top: 50px;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+    color: #fff;
+    background-color: rgb(0,80,161);
+}
+
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+    .navbar-inverse {
+        background-color: rgba(0, 80, 161, 1);
+        border-color: #080808;
+        border: 0;
+    }
+    .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+    header.carousel .carousel {
+        height: 70%;
+    }
+
+    .tagline {
+        text-shadow: 2px 2px 2px #000;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 0;
+        font-size: 25px;
+    }
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: rgba(0, 80, 161, 0.5);
+}
+
+.nom-effectif, .nom-effectif:hover{
+    text-decoration: none;
+    color: #0f0f0f;
+}
+
+#profil{
+    background: rgb(0, 80, 161);;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.zonePlay {
+    background: #0050a1;
+    padding: 2%;
+}
+
+.fc_inf_stats {
+    float: left;
+    margin: 0 2px 10px 2px;
+    margin-right: 15px;
+}
+
+.fc_inf_stats > p, #fichebase_v65 section .fc_inf_stats > p + div {
+    display: inline-block;
+    line-height: 84px;
+    margin: 0;
+    font-size: 80px;
+    letter-spacing: -4px;
+    color: #9ca7ba;
+    text-align: right;
+}
+
+.fc_inf_stats > span {
+    display: inline-block;
+    font-size: 18px;
+    color: #9ca7ba;
+    text-align: left;
+    margin-left: 5px;
+    position: relative;
+    bottom: 19px;
+    text-transform: uppercase;
+}
+
+.fc_inf_stats_cr {
+    float: left;
+    margin-top: 10px;
+}
+
+.fc_inf_stats_cr p {
+    line-height: 28px;
+    font-size: 28px;
+    color: #9ca7ba;
+}
+
+.fc_inf_stats_cr span.carton_rouge {
+    width: 20px;
+    height: 30px;
+    float: left;
+    background: url("https://www.lequipe.fr/v6/img/football/fichebase/cartons.png") no-repeat;
+    background-position: 0 0px;
+    margin-right: 10px;
+}
+
+.fc_inf_stats_cr span.carton_jaune {
+    width: 20px;
+    height: 30px;
+    float: left;
+    background: url("https://www.lequipe.fr/v6/img/football/fichebase/cartons.png") no-repeat;
+    background-position: -20px 0;
+    margin-right: 10px;
+}
+
+.sousTitreProfil{
+    border-left: 5px solid #0050a1;
+    line-height: 1.1em;
+
+    text-transform: uppercase;
+    padding: 10px 0 10px 15px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #181b22;
+    font-weight: 100;
+}
+
+.blanc{
+    color: white;
+}
+
+.text-left{
+    color: black;
+    font-weight: bold;
+}
+
+#croix-rouge{
+    color: red;
+}
+
+#check-vert{
+    color: green;
+}
+
+.saison-actuelle-profil{
+    color: white;
+}
+
+.img-carriere{
+    width: 30px;
+}
+
+.vue-detaillee-equipe-detaillee{
+    text-align: right;
+}
+
+.badge-primary{
+    background-color: #0050a1;
+}
+
+.logo-rencontre-detail{
+    max-height: 85px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.checkbox {
+    padding-left: 20px; }
+.checkbox label {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+.checkbox label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+.checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 0;
+    margin-left: -20px;
+    padding-left: 3px;
+    padding-top: 1px;
+    font-size: 11px;
+    color: #555555; }
+.checkbox input[type="checkbox"] {
+    opacity: 0; }
+.checkbox input[type="checkbox"]:focus + label::before {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+.checkbox input[type="checkbox"]:checked + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; }
+.checkbox input[type="checkbox"]:disabled + label {
+    opacity: 0.65; }
+.checkbox input[type="checkbox"]:disabled + label::before {
+    background-color: #eeeeee;
+    cursor: not-allowed; }
+.checkbox.checkbox-circle label::before {
+    border-radius: 50%; }
+.checkbox.checkbox-inline {
+    margin-top: 0; }
+
+.checkbox-primary input[type="checkbox"]:checked + label::before {
+    background-color: #428bca;
+    border-color: #428bca; }
+.checkbox-primary input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-danger input[type="checkbox"]:checked + label::before {
+    background-color: #d9534f;
+    border-color: #d9534f; }
+.checkbox-danger input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-info input[type="checkbox"]:checked + label::before {
+    background-color: #5bc0de;
+    border-color: #5bc0de; }
+.checkbox-info input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+    background-color: #f0ad4e;
+    border-color: #f0ad4e; }
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.checkbox-success input[type="checkbox"]:checked + label::before {
+    background-color: #5cb85c;
+    border-color: #5cb85c; }
+.checkbox-success input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+
+.radio {
+    padding-left: 20px; }
+.radio label {
+    display: inline-block;
+    position: relative;
+    padding-left: 5px; }
+.radio label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out; }
+.radio label::after {
+    display: inline-block;
+    position: absolute;
+    content: " ";
+    width: 11px;
+    height: 11px;
+    left: 3px;
+    top: 3px;
+    margin-left: -20px;
+    border-radius: 50%;
+    background-color: #555555;
+    -webkit-transform: scale(0, 0);
+    -ms-transform: scale(0, 0);
+    -o-transform: scale(0, 0);
+    transform: scale(0, 0);
+    -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
+.radio input[type="radio"] {
+    opacity: 0; }
+.radio input[type="radio"]:focus + label::before {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+.radio input[type="radio"]:checked + label::after {
+    -webkit-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1); }
+.radio input[type="radio"]:disabled + label {
+    opacity: 0.65; }
+.radio input[type="radio"]:disabled + label::before {
+    cursor: not-allowed; }
+.radio.radio-inline {
+    margin-top: 0; }
+
+.radio-primary input[type="radio"] + label::after {
+    background-color: #428bca; }
+.radio-primary input[type="radio"]:checked + label::before {
+    border-color: #428bca; }
+.radio-primary input[type="radio"]:checked + label::after {
+    background-color: #428bca; }
+
+.radio-danger input[type="radio"] + label::after {
+    background-color: #d9534f; }
+.radio-danger input[type="radio"]:checked + label::before {
+    border-color: #d9534f; }
+.radio-danger input[type="radio"]:checked + label::after {
+    background-color: #d9534f; }
+
+.radio-info input[type="radio"] + label::after {
+    background-color: #5bc0de; }
+.radio-info input[type="radio"]:checked + label::before {
+    border-color: #5bc0de; }
+.radio-info input[type="radio"]:checked + label::after {
+    background-color: #5bc0de; }
+
+.radio-warning input[type="radio"] + label::after {
+    background-color: #f0ad4e; }
+.radio-warning input[type="radio"]:checked + label::before {
+    border-color: #f0ad4e; }
+.radio-warning input[type="radio"]:checked + label::after {
+    background-color: #f0ad4e; }
+
+.radio-success input[type="radio"] + label::after {
+    background-color: #5cb85c; }
+.radio-success input[type="radio"]:checked + label::before {
+    border-color: #5cb85c; }
+.radio-success input[type="radio"]:checked + label::after {
+    background-color: #5cb85c; }
+
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline {
+    margin-top: 0;
+    margin-left: 5px;
+}
+
+.prix{
+    font-size: 20px;
+}
+
+.equipeDroite{
+    text-align: right;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.gros-chiffres{
+    font-size: 80px;
+    color: #9ca7ba;
+}
+
+.grey{
+    color: #9ca7ba;
+}
+
+@media(max-width:767px){
+    .gros-chiffres {font-size:30px;}
+}
+
+
+.vertical-align{
+    vertical-align: middle;
+}
+
+.moyen-chiffres{
+    font-size: 40px;
+    color: #9ca7ba;
+}

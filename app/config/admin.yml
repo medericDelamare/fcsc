@@ -1,0 +1,77 @@
+services:
+    admin.joueur:
+            class: AppBundle\Admin\LicencieAdmin
+            arguments: [~, AppBundle\Entity\Licencie, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Joueurs, group: "joueurs"}
+            calls:
+                - [ setKernel, ["@kernel"]]
+
+    admin.utilisateurs:
+            class: AppBundle\Admin\UserAdmin
+            arguments: [~, AppBundle\Entity\User, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Utilisateurs, group: "utilisateurs"}
+
+    admin.bureau:
+                class: AppBundle\Admin\BureauAdmin
+                arguments: [~, AppBundle\Entity\Bureau, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: Bureau, group: "club"}
+    admin.equipe:
+                class: AppBundle\Admin\EquipeAdmin
+                arguments: [~, AppBundle\Entity\Equipe, ~]
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: equipe.plural, group: "club"}
+    admin.club:
+            class: AppBundle\Admin\ClubAdmin
+            arguments: [~, AppBundle\Entity\Club, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: club.plural, group: "club"}
+            calls:
+                - [ setTemplate, [edit, SonataAdminBundle:Club:customEdit.html.twig]]
+
+    admin.nomParse:
+            class: AppBundle\Admin\NomParseAdmin
+            arguments: [~, AppBundle\Entity\NomParse, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: nomParse.plural, group: "club"}
+
+    admin.statsRencontre:
+        class: AppBundle\Admin\StatsRencontreAdmin
+        arguments: [~, AppBundle\Entity\StatsRencontre, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: statsRencontre.plural, group: "club"}
+
+    admin.rencontre:
+        class: AppBundle\Admin\RencontreAdmin
+        arguments: [~, AppBundle\Entity\Rencontre, ~]
+        tags:
+          - { name: sonata.admin, manager_type: orm, label: Rencontres, group: "club"}
+
+    admin.buteur:
+        class: AppBundle\Admin\ButAdmin
+        arguments: [~, AppBundle\Entity\But, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: buteur.plural, group: "club"}
+
+    admin.historique_stats:
+        class: AppBundle\Admin\HistoriqueStatsAdmin
+        arguments: [~, AppBundle\Entity\HistoriqueStats, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Historique Stats, group: "joueurs"}
+    admin.boutique:
+        class: AppBundle\Admin\ProduitAdmin
+        arguments: [~, AppBundle\Entity\Produit, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Boutique, group: "club"}
+    admin.categorie:
+        class: AppBundle\Admin\CategorieAdmin
+        arguments: [~, AppBundle\Entity\Categorie, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Categorie, group: "club"}
+    admin.sous-categorie:
+        class: AppBundle\Admin\SousCategorieAdmin
+        arguments: [~, AppBundle\Entity\SousCategorie, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Sous-Categorie, group: "club"}

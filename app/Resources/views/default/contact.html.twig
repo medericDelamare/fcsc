@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Accueil</a></li>
+        <li class="active">Contact</li>
+    </ol>
+
+
+    <div class="container ">
+        <h1 class="page-header">Contact</h1>
+        {{ form_start(form) }}
+
+            <div class="messages"></div>
+
+            <div class="controls">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="nom">
+                            <label for="form_name">{{ form_label(form.nom) }} *</label>
+                            {{ form_widget(form.nom) }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="prenom">
+                            <label for="form_lastname">{{ form_label(form.prenom) }} *</label>
+                            {{ form_widget(form.prenom) }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="email">
+                            <label for="form_email">{{ form_label(form.email) }} *</label>
+                            {{ form_widget(form.email) }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="telephone">
+                            <label for="form_phone">{{ form_label(form.telephone) }} </label>
+                            {{ form_widget(form.telephone) }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" id="message">
+                        <div class="form-group">
+                            <label for="form_message">{{ form_label(form.message) }} *</label>
+                            {{ form_widget(form.message) }}
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-success btn-send col-md-offset-5 col-md-2" value="Envoyer">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="text-muted"><strong>*</strong> Champs obligatoires.</p>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $('#nom').focusout(function () {
+                if( $.trim($('#contact_nom').val()) == '') {
+                    if($('#nom').hasClass('has-success')){$('#nom').removeClass('has-success');}
+                    $('#nom').addClass('has-error');
+                }else {
+                    if($('#nom').hasClass('has-error')){$('#nom').removeClass('has-error');}
+                    $('#nom').addClass('has-success');
+                }
+            });
+            $('#prenom').focusout(function () {
+                if( $.trim($('#contact_prenom').val()) == '') {
+                    if($('#prenom').hasClass('has-success')){$('#prenom').removeClass('has-success');}
+                    $('#prenom').addClass('has-error');
+                }else {
+                    if($('#prenom').hasClass('has-error')){$('#prenom').removeClass('has-error');}
+                    $('#prenom').addClass('has-success');
+                }
+            });
+            $('#email').focusout(function () {
+                if( $.trim($('#contact_email').val()) == '') {
+                    if($('#email').hasClass('has-success')){$('#email').removeClass('has-success');}
+                    $('#email').addClass('has-error');
+                }else {
+                    if($('#email').hasClass('has-error')){$('#email').removeClass('has-error');}
+                    $('#email').addClass('has-success');
+                }
+            });
+            $('#message').focusout(function () {
+                if( $.trim($('#contact_message').val()) == '') {
+                    if($('#message').hasClass('has-success')){$('#message').removeClass('has-success');}
+                    $('#message').addClass('has-error');
+                }else {
+                    if($('#message').hasClass('has-error')){$('#message').removeClass('has-error');}
+                    $('#message').addClass('has-success');
+                }
+            });
+        });
+    </script>
+{% endblock %}

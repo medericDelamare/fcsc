@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="index.php">Accueil</a></li>
+        <li class="active">{{ rencontre }}</li>
+    </ol>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" id="equipeDomicile">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        {% if  rencontre.equipeDomicile.club %}
+                            <img class="media-object logo-rencontre-detail" src="{{ asset('pictures/Logos/' ~ rencontre.equipeDomicile.club.logo) }}">
+                        {% endif %}
+                    </div>
+                    <div class="media-body">
+                        <h2 class="text-center">{{ rencontre.equipeDomicile.nomParse }}</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" id="equipeExterieure">
+                    <div class="media-body">
+                        <h2 class="text-center">{{ rencontre.equipeExterieure.nomParse }}</h2>
+                    </div>
+                    <div class="media-right">
+                        {% if  rencontre.equipeExterieure.club %}
+                            <img class="media-object logo-rencontre-detail" src="{{ asset('pictures/Logos/' ~ rencontre.equipeExterieure.club.logo) }}">
+                        {% endif %}
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <h1 class="">{{ rencontre.score }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="sousTitreProfil">Joueurs de l'USCL</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        {% for joueur in rencontre.stats.joueurs %}
+                            <tr>
+                                <td class=""><span class="badge badge-primary">{{ loop.index }}</span> <a href="{{ path('profile', {'id': joueur.id}) }}">{{ joueur.nomComplet }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="sousTitreProfil">Faits de matchs</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        {% for but in rencontre.stats.buts %}
+                            <tr>
+                                {% if but.passeur %}
+                                    <td class=" "><img src="{{ asset('pictures/icons/soccer-ball.png') }}"><a href="{{ path('profile', {'id': but.buteur.id}) }}">{{ but.buteur }}</a> ( <a href="{{ path('profile', {'id': but.passeur.id}) }}">{{ but.passeur }}</a> )</td>
+                                {% elseif but.penalty %}
+                                    <td class=" "><img src="{{ asset('pictures/icons/soccer-ball.png') }}"><a href="{{ path('profile', {'id': but.buteur.id}) }}">{{ but.buteur }}</a> (SP)</td>
+                                {% else %}
+                                    <td class=" "><img src="{{ asset('pictures/icons/soccer-ball.png') }}"><a href="{{ path('profile', {'id': but.buteur.id}) }}">{{ but.buteur }}</a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        {% for joueur in rencontre.stats.cartonsJaunes%}
+                            <tr>
+                                <td class=""><img src="{{ asset('pictures/icons/yellow-card.png') }}"><a href="{{ path('profile', {'id': joueur.id}) }}">{{ joueur.nomComplet }}</a></td>
+                            </tr>
+                        {% endfor %}
+                        {% for joueur in rencontre.stats.cartonsRouges%}
+                            <tr>
+                                <td class=""><img src="{{ asset('pictures/icons/red-card.png') }}"><a href="{{ path('profile', {'id': joueur.id}) }}">{{ joueur.nomComplet }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $( document ).ready(function() {
+
+        });
+    </script>
+
+{% endblock %}

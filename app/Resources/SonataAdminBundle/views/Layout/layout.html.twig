@@ -1,0 +1,13 @@
+{% extends "SonataAdminBundle::standard_layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/sonata-override.css') }}"/>
+{% endblock %}
+{% block sonata_sidebar_search %}{% endblock %}
+{% block side_bar_after_nav %}
+    <p class="text-center" style="border-top: 1px solid #444444; padding-top: 10px">
+        {% block side_bar_after_nav_content %}
+             <a href="{{ path('homepage') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Retour au site</a>
+        {% endblock %}
+    </p>
+{% endblock %}

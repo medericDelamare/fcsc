@@ -1,0 +1,24 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: app_user_registration }
+    import.csvtoarray:
+            class: AppBundle\Service\Import\ConvertCsvToArray
+
+    parse.parse_scores:
+            class: AppBundle\Service\Parse\ParseService
+            arguments:
+                    entityManager: "@doctrine.orm.entity_manager"
+
+    app_core.facebook:
+       # notre classe
+       class: AppBundle\Service\ReseauxSociaux\FacebookService
+       #  on ajoute nos identifiants en paramètre
+       arguments: ["%app_id%","%app_secret%","%page_id%","%token%"]

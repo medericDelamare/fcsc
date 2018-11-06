@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<ol class="breadcrumb">
+    <li><a href="index.php">Accueil</a></li>
+    <li>Statistiques</li>
+    <li class="active">{{ categorie }}</li>
+</ol>
+
+<div class="container my-custom-container">
+    <h1 class="page-header">Statistiques {{ division }}<small> Groupe {{ groupe }}</small></h1>
+    <div class="row">
+        <div class="col-sm-12 col-lg-5 col-lg-offset-1">
+            <h2 class="page-header">Classement</h2>
+            <table class="resultats table table-condensed classement">
+                <thead>
+                <tr>
+                    <td>Pl</td>
+                    <td>Equipe</td>
+                    <td>J</td>
+                    <td>Pts</td>
+                    <td>G</td>
+                    <td>N</td>
+                    <td>D</td>
+                    <td>F</td>
+                    <td>BP</td>
+                    <td>BC</td>
+                    <td>P</td>
+                    <td>Diff</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for equipe in equipes %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        {% if equipe.club %}
+                            <td><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ equipe.club.logo) }}"><span class="hidden-xs"> - {{ equipe.club.nom }}</span></td>
+                        {% else %}
+                            <td>{{ equipe.nomParse }}</td>
+                        {% endif %}
+                        <td>{{ equipe.stats.journees }}</td>
+                        <td>{{ equipe.stats.points }}</td>
+                        <td>{{ equipe.stats.victoires }}</td>
+                        <td>{{ equipe.stats.nuls }}</td>
+                        <td>{{ equipe.stats.defaites }}</td>
+                        <td>{{ equipe.stats.forfaits }}</td>
+                        <td>{{ equipe.stats.butsPour }}</td>
+                        <td>{{ equipe.stats.butsContre }}</td>
+                        <td>{{ equipe.stats.penalites }}</td>
+                        <td>{{ equipe.stats.difference }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-12 col-lg-5" >
+            <h2 class="page-header">Résultats de la dernière journée</h2>
+            <table class="resultats table table-condensed classement">
+                {% for rencontre in rencontres %}
+                    <tr>
+                        <td>{{ rencontre.date|date("d/m/Y") }}</td>
+                        {% if rencontre.equipeDomicile.club %}
+                            <td class="col-xs-3  col-lg-5"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ rencontre.equipeDomicile.club.logo) }}"><span class="hidden-xs"> - {{ rencontre.equipeDomicile.club.nom }}</span></td>
+                        {% else %}
+                            <td>{{ rencontre.equipeDomicile.nomParse }}</td>
+                        {% endif %}
+                        <td>{{ rencontre.score }}</td>
+                        {% if rencontre.equipeExterieure.club %}
+                            <td class="col-xs-3  col-lg-5 text-right"><span class="hidden-xs">{{ rencontre.equipeExterieure.club.nom }} - </span><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ rencontre.equipeExterieure.club.logo) }}"></td>
+                        {% else %}
+                            <td>{{ rencontre.equipeExterieure.nomParse }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-5 col-lg-offset-1">
+            <h2 class="page-header">Prochaine Journée</h2>
+            <table class="resultats table table-condensed classement">
+                {% for agenda in agendas %}
+                    <tr>
+                        <td class="col-xs-3 col-lg-1">{{ agenda.date|date("d/m/Y") }}</td>
+                        {% if agenda.equipeDomicile.club %}
+                            <td class="col-xs-3  col-lg-5"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ agenda.equipeDomicile.club.logo) }}"><span class="hidden-xs"> - {{ agenda.equipeDomicile.club.nom }}</span></td>
+                        {% else %}
+                            <td>{{ agenda.equipeDomicile.nomParse }}</td>
+                        {% endif %}
+                        <td class="col-xs-3  col-lg-1 text-center score">VS</td>
+                        {% if agenda.equipeExterieure.club %}
+                            <td class="col-xs-3  col-lg-5 text-right"><span class="hidden-xs">{{ agenda.equipeExterieure.club.nom }} - </span><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ agenda.equipeExterieure.club.logo) }}"></td>
+                        {% else %}
+                            <td>{{ agenda.equipeExterieure.nomParse }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-sm-12 col-lg-5">
+            <h2 class="page-header">Calendrier</h2>
+            <select class="form-control"  id="selectEquipe">
+                {% for equipe in equipeListe %}
+                    <option value={{ equipe.id }} data-href="{{ path('calendrier-par-equipe', {'equipe': equipe.id}) }}">{{ equipe.nomParse }}</option>
+                {% endfor %}
+            </select>
+            <table id="calendrier" class="resultats table table-condensed classement calendrier">
+                <tbody id="resultAjaxCalendrier">
+                </tbody>
+            </table>
+    </div>
+</div>
+<div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <h2 class="page-header">Classement par journée</h2>
+            <canvas id="classementParJournee"></canvas>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script >
+        $(document).ready( function () {
+            var cormeillesRoute = "{{ path('calendrier-par-equipe', {'equipe': cormeilles.id}) }}";
+            var nomParse = '{{ cormeilles.nomParse|raw }}';
+            $("#selectEquipe option").each(function(){
+                if ($(this).text() == nomParse)
+                    $(this).attr("selected","selected");
+            });
+            refreshClassement(cormeillesRoute, nomParse);
+
+
+            $('#selectEquipe').change(function () {
+                var route = $('#selectEquipe').find(":selected").attr('data-href');
+                var equipeCourante = ($('#selectEquipe').find(":selected").html());
+                refreshClassement(route, equipeCourante);
+            })
+        } );
+
+
+
+        function refreshClassement(route, equipeCourante){
+            $.ajax({
+                url: route,
+                type: "GET",
+                success: function(data){
+                    $("#resultAjaxCalendrier").html(data);
+                    addColor(equipeCourante);
+                }
+            });
+        }
+
+        function addColor(equipeCourante){
+            $("#calendrier > tbody > tr").each(function(){
+                var score = $('.score', this).html();
+                var res = score.split("-");
+                if(res[0]){
+                    if (parseInt(res[0]) == parseInt(res[1])){$(this).addClass('warning');}
+
+                    if ($('.equipeGauche',this).html() === equipeCourante){
+                        $('.equipeGauche',this).css("font-weight","bold");
+                        if (parseInt(res[0]) > parseInt(res[1])){$(this).addClass('success');}
+                        if (parseInt(res[0]) < parseInt(res[1])){$(this).addClass('danger');}
+                    } else if ($('.equipeDroite',this).html() === equipeCourante){
+                        $('.equipeDroite',this).css("font-weight","bold");
+                        if (parseInt(res[0]) > parseInt(res[1])){$(this).addClass('danger');}
+                        if (parseInt(res[0]) < parseInt(res[1])){$(this).addClass('success');}
+                    }
+                }
+
+            });
+
+        }
+    </script>
+    <script>
+
+        var ctx = document.getElementById("classementParJournee").getContext('2d');
+        var array = {{ classement_par_journee|json_encode|raw }};
+        var datasetValue = [];
+        var j = 0;
+        var borderColor;
+        $.each(array, function (index, value) {
+            datasetValue[j] = {
+                spanGaps: true,
+                label: index,
+                data: value,
+                borderWidth: 2,
+                backgroundColor: [],
+                lineTension: 0.1,
+                fill: false,
+                borderColor: colorByTeam(index)
+            }
+            j++;
+        });
+        function colorByTeam(team) {
+            if (team.indexOf('CORM') != -1){
+                console.log(team);
+                return "rgb(58, 83, 155)";
+            }
+            else return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6);
+        }
+        var myChart = new Chart(ctx, {
+            responsive: true,
+            type: 'line',
+            data: {
+                labels: {{ nb_journees|json_encode|raw }},
+                datasets: datasetValue
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Classement',
+                        },
+                        ticks: {
+                            beginAtZero:true,
+                            min: 1,
+                            reverse: true,
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Journée'
+                        }
+                    }]
+                }
+            }
+        });
+
+</script>
+{% endblock %}

@@ -1,0 +1,234 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="index.php">Accueil</a></li>
+        <li class="active">Club</li>
+    </ol>
+
+    <div class="container">
+        <h1 class="page-header">Buteurs</h1>
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
+            <div class="panel panel-uscl">
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Buteurs Seniors
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="panel-body">
+                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <div class = "row">
+                            <table id="buteurs-seniors" class = "text-center tableauButeur table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class = "text-center">Nom</th>
+                                        <th class = "text-center">Buts en A</th>
+                                        <th class = "text-center">Buts en B</th>
+                                        <th class = "text-center">Buts en Coupe</th>
+                                        <th class = "text-center">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for senior in seniors %}
+                                    <tr>
+                                        <td><a href="{{ path('profile', {'id': senior.id}) }}">{{ senior.nom }} {{ senior.prenom }}</td>
+                                        <td>{{ senior.stats.butsA }}</td>
+                                        <td>{{ senior.stats.butsB }}</td>
+                                        <td>{{ senior.stats.butsCoupe }}</td>
+                                        <td>{{ senior.stats.butsA + senior.stats.butsB + senior.stats.butsCoupe }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-uscl">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Buteurs Veterans
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <div class = "row">
+                            <table id="buteurs-veterans" class = "text-center tableauButeur table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class = "text-center">Nom</th>
+                                        <th class = "text-center">Buts en A</th>
+                                        <th class = "text-center">Buts en B</th>
+                                        <th class = "text-center">Buts en Coupe</th>
+                                        <th class = "text-center">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for veteran in veterans %}
+                                    <tr>
+                                        <td><a href="{{ path('profile', {'id': veteran.id}) }}">{{ veteran.nom }} {{ veteran.prenom }}</td>
+                                        <td>{{ veteran.stats.butsA }}</td>
+                                        <td>{{ veteran.stats.butsB }}</td>
+                                        <td>{{ veteran.stats.butsCoupe }}</td>
+                                        <td>{{ veteran.stats.butsA + veteran.stats.butsB + veteran.stats.butsCoupe }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-uscl">
+                <div class="panel-heading" role="tab" id="headingThree">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                            Buteurs U18
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="panel-body">
+                        <h1>Classements des buteurs<small> 	U18</small></h1>
+                        <div class = "row">
+                            <table class = "text-center tableauButeur3Colonnes table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class = "text-center">Nom</th>
+                                        <th class = "text-center">Buts en championnat</th>
+                                        <th class = "text-center">Buts en coupe</th>
+                                        <th class = "text-center">Nombre de buts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for U18Infos in U18 %}
+                                    <tr>
+                                        <td><a href="{{ path('profile', {'id': U18Infos.id}) }}">{{ U18Infos.nom }} {{ U18Infos.prenom }}</td>
+                                        <td>{{ U18Infos.stats.butsA }}</td>
+                                        <td>{{ U18Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U18Infos.stats.butsCoupe + U18Infos.stats.butsA  }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-uscl">
+                <div class="panel-heading" role="tab" id="headingFour">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                            Buteurs U15
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                    <div class="panel-body">
+                        <h1>Classements des buteurs<small> 	U15</small></h1>
+                        <div class = "row">
+                            <table class = "text-center tableauButeur3Colonnes table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th class = "text-center">Nom</th>
+                                        <th class = "text-center">Buts en championnat</th>
+                                        <th class = "text-center">Buts en coupe</th>
+                                        <th class = "text-center">Nombre de buts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for U15Infos in U15 %}
+                                    <tr>
+                                        <td><a href="{{ path('profile', {'id': U15Infos.id}) }}">{{ U15Infos.nom }} {{ U15Infos.prenom }}</td>
+                                        <td>{{ U15Infos.stats.butsA }}</td>
+                                        <td>{{ U15Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U15Infos.stats.butsCoupe + U15Infos.stats.butsA  }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-uscl">
+                <div class="panel-heading" role="tab" id="headingFive">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Buteurs U13
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                    <div class="panel-body">
+                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <div class = "row">
+                            <table id="buteurs-veterans" class = "text-center tableauButeur table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th class = "text-center">Nom</th>
+                                    <th class = "text-center">Buts en A</th>
+                                    <th class = "text-center">Buts en B</th>
+                                    <th class = "text-center">Buts en Coupe</th>
+                                    <th class = "text-center">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for U13Infos in U13 %}
+                                    <tr>
+                                        <td><a href="{{ path('profile', {'id': U13Infos.id}) }}">{{ U13Infos.nom }} {{ U13Infos.prenom }}</td>
+                                        <td>{{ U13Infos.stats.butsA }}</td>
+                                        <td>{{ U13Infos.stats.butsB }}</td>
+                                        <td>{{ U13Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U13Infos.stats.butsA + U13Infos.stats.butsB + U13Infos.stats.butsCoupe }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/date-eu.js"></script>
+
+    <script >
+        $('.tableauButeur').DataTable( {
+            "order": [[ 4, "desc" ]],
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+            },
+            "autoWidth": false,
+            "paging": false,
+            "bInfo" : false,
+            "searching" : false
+        } );
+    </script>
+
+    <script >
+        $('.tableauButeur3Colonnes').DataTable( {
+            "order": [[ 3, "desc" ]],
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+            },
+            "autoWidth": false,
+            "paging": false,
+            "bInfo" : false,
+            "searching" : false
+        } );
+    </script>
+{% endblock %}

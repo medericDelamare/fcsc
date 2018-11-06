@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="index.php">Accueil</a></li>
+        <li class="active">Club</li>
+    </ol>
+
+    <div class="container">
+        <h1 class = "page-header">{{ category }} -<small> {{ nb_joueurs }} Joueurs</small></h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Poste</th>
+                    <th>Buts</th>
+                    <th>Passes</th>
+                    <th>Cartons Jaunes</th>
+                    <th>Cartons Rouges</th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th>Numéro de téléphone</th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for joueur in joueurs%}
+                    <tr>
+                        <td><strong><a class="nom-effectif" href="{{ path('profile', {'id': joueur.id}) }}">{{ joueur.nom }}</a></strong></td>
+                        <td>{{ joueur.prenom }}</td>
+                        <td data-order={{ joueur.stats.poste.position }}>{{ joueur.stats.poste.nom }}</td>
+                        <td>{{ joueur.buts|length }}</td>
+                        <td>{{ joueur.passes|length }}</td>
+                        <td>{{ joueur.statsRencontresCartonsJaunes|length }}</td>
+                        <td>{{ joueur.statsRencontresCartonsRouges|length }}</td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>{{ joueur.telephonePortable }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script >
+        $(document).ready( function () {
+            $('.table').DataTable({
+                "paging": false,
+                "bInfo" : false,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+                },
+                "order": [[ 2, "asc" ]],
+            });
+        } );
+    </script>
+{% endblock %}

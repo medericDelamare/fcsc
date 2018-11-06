@@ -1,0 +1,362 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {{ include(':default:head.html.twig') }}
+    <ol class="breadcrumb">
+        <li>Accueil</li>
+        <li>Profil</li>
+        <li class="active">{{ joueur.prenom }} {{ joueur.nom }}</li>
+    </ol>
+
+
+
+    <h1 class="text-center">{{ joueur.prenom }} {{ joueur.nom }}</h1>
+    <div class="container zonePlay">
+        <div class="media">
+            <div class="media-left">
+                <img src="{{ joueur.photo }}" alt="{{ joueur.photo }}">
+            </div>
+            <div class="media-body">
+                <div class="row">
+                    <div class="col-md-5 col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="visible-xs text-right blanc"><i class="fa fa-flag" aria-hidden="true"></i> : </div>
+                                <div class="hidden-xs text-right blanc">Pays : </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="text-left">France</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="visible-xs text-right blanc"><i class="fa fa-birthday-cake" aria-hidden="true"></i> : </div>
+                                <div class="hidden-xs text-right blanc">Age : </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="text-left blanc">{{ age }} ans</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="visible-xs text-right blanc"><i class="fa fa-calendar" aria-hidden="true"></i> : </div>
+                                <div class="hidden-xs text-right blanc">Date de naissance :</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="text-left">{{ joueur.dateDeNaissance|date("d/m/Y") }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="visible-xs text-right blanc"><i class="fa fa-globe" aria-hidden="true"></i> : </div>
+                                <div class="hidden-xs text-right blanc">Lieu de naissance :</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="text-left">{{ joueur.lieuDeNaissance }}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="visible-xs text-right blanc"><i class="fa fa-users" aria-hidden="true"></i> : </div>
+                                <div class="hidden-xs text-right blanc">Poste :</div>
+                            </div>
+                            <div class="col-xs-6">
+                                {% if joueur.stats.poste %}
+                                    <div class="text-left">{{joueur.stats.poste.nom }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="text-right blanc">Educateur :</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="text-left">
+                                    {% if joueur.educateur %}
+                                        <i id="check-vert" class="fa fa-check fa-lg"></i>
+                                    {% else %}
+                                        <i id="croix-rouge" class="fa fa-times fa-lg" aria-hidden="true"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="text-right blanc">Dirigeant :</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="text-left">
+                                    {% if joueur.dirigeant %}
+                                        <i id="check-vert" class="fa fa-check fa-lg"></i>
+                                    {% else %}
+                                        <i id="croix-rouge" class="fa fa-times fa-lg" aria-hidden="true"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-xs-12">
+                        <div class="hidden-xs row saison-actuelle-profil"><h4>Saison 2018-2019 avec l'USCL :</h4></div>
+                        <div class="visible-xs row saison-actuelle-profil text-center"><h4>2018/2019 :</h4></div>
+                        <div class="row row-eq-height">
+                            <div class="col-lg-3 col-xs-4">
+                                <div class="media">
+                                    <div class="media-left media-top">
+                                        <div class="media-object gros-chiffres">{{ joueur.statsRencontresJoueurs|length}}</div>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <div class="visible-xs"><img src="{{ asset('pictures/icons/strategy.png') }}"></div>
+                                        <h4 class="hidden-xs media-heading grey">Matchs joués</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-xs-4">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="media-object gros-chiffres">{{ joueur.buts|length}}</div>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <div class="visible-xs"><img class="visiible xs" src="{{ asset('pictures/icons/soccer-ball.png') }}"></div>
+                                        <h4 class="hidden-xs media-heading grey">Buts marqués</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-xs-4">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="media-object gros-chiffres">{{ joueur.passes|length}}</div>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <div class="visible-xs"><img class="visiible xs" src="{{ asset('pictures/icons/soccer.png') }}"></div>
+                                        <h4 class=" hidden-xs media-heading grey">Passes décisives</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="visible-xs col-xs-4">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="media-object carton_jaune gros-chiffres">{{ joueur.statsRencontresCartonsJaunes|length}}</div>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img class="visiible xs" src="{{ asset('pictures/icons/yellow-card.png') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="visible-xs col-xs-4">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <div class="media-object carton_jaune gros-chiffres">{{ joueur.statsRencontresCartonsRouges|length}}</div>
+                                    </div>
+                                    <div class="media-body media-middle">
+                                        <img class="visiible xs" src="{{ asset('pictures/icons/red-card.png') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden-xs col-lg-3 col-xs-4">
+                                <row>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="media-object carton_jaune moyen-chiffres">{{ joueur.statsRencontresCartonsJaunes|length}}</div>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <img class="visiible xs" src="{{ asset('pictures/icons/yellow-card.png') }}">
+                                        </div>
+                                    </div>
+                                </row>
+                                <row>
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="media-object carton_jaune moyen-chiffres">{{ joueur.statsRencontresCartonsRouges|length}}</div>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <img class="visiible xs" src="{{ asset('pictures/icons/red-card.png') }}">
+                                        </div>
+                                    </div>
+                                </row>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <h2 class="sousTitreProfil">Carrière</h2>
+                <div class="table-responsive">
+                    <div class="pre-scrollable">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <td class="col-xs-4">Saison</td>
+                                <td class="col-xs-4">Club</td>
+                                <td class="col-xs-4">Catégorie</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for carriere in joueur.carriere %}
+                                <tr>
+                                    <td class="col-xs-4">{{ carriere.saison }}</td>
+                                    <td class="col-xs-4">
+                                        {% if carriere.club %}
+                                            <img class = 'img-carriere' src="{{ asset('pictures/Logos/' ~ carriere.club.logo) }}"> - {{ carriere.club.nom }}
+                                        {% else %}
+                                            {{ carriere.clubParse }}
+                                        {% endif %}
+                                    </td>
+                                    <td class="col-xs-4">{{ carriere.SousCategorie }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <h2 class="sousTitreProfil">Faits de matchs cette saison</h2>
+                <div class="table-responsive">
+                    <div class="pre-scrollable">
+                        <table class="table" id="faits-match">
+                            <thead>
+                            <td>Date</td>
+                            <td>Fait de match</td>
+                            </thead>
+                            <tbody>
+                            {% for cartonsJaunes in joueur.statsRencontresCartonsJaunes%}
+                                <tr>
+                                    <td>{{ cartonsJaunes.rencontre.date|date("d/m/Y")  }}</td>
+                                    <td><img src="{{ asset('pictures/icons/yellow-card.png') }}"> A pris un carton jaune lors de <a href="{{ path('rencontre', {'id': cartonsJaunes.rencontre.id}) }}">{{ cartonsJaunes.rencontre  }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            {% for cartonsRouges in joueur.statsRencontresCartonsRouges%}
+                                <tr>
+                                    <td>{{ cartonsRouges.rencontre.date|date("d/m/Y")  }}</td>
+                                    <td><img src="{{ asset('pictures/icons/red-card.png') }}"> A pris un carton rouge lors de <a href="{{ path('rencontre', {'id': cartonsRouges.rencontre.id}) }}">{{ cartonsRouges.rencontre  }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            {% for rencontre in joueur.statsRencontresJoueurs %}
+                                <tr>
+                                    <td>{{ rencontre.rencontre.date|date("d/m/Y")  }}</td>
+                                    <td><img src="{{ asset('pictures/icons/strategy.png') }}"> A joué lors de <a href="{{ path('rencontre', {'id': rencontre.rencontre.id}) }}">{{ rencontre.rencontre  }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            {% for but in joueur.buts%}
+                                <tr>
+                                    <td>{{ but.statsRencontres.rencontre.date|date("d/m/Y")  }}</td>
+                                    <td><img src="{{ asset('pictures/icons/soccer-ball.png') }}"> A marqué lors de <a href="{{ path('rencontre', {'id': but.statsRencontres.rencontre.id}) }}">{{ but.statsRencontres.rencontre  }}</a>{% if but.penalty %} sur penalty {% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                            {% for passe in joueur.passes%}
+                                <tr>
+                                    <td>{{ passe.statsRencontres.rencontre.date|date("d/m/Y")  }}</td>
+                                    <td><img src="{{ asset('pictures/icons/soccer.png') }}"> A délivré une passe décisive lors de <a href="{{ path('rencontre', {'id': passe.statsRencontres.rencontre.id}) }}">{{ passe.statsRencontres.rencontre  }}</a></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <h2 class="sousTitreProfil">Statistiques personnelles</h2>
+        <canvas id="myChart"></canvas>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/date-eu.js"></script>
+
+    <script >
+        $('#faits-match').DataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+            },
+            "autoWidth": false,
+            "paging": false,
+            "bInfo" : false,
+            "searching" : false,
+            columnDefs: [
+                {type: 'date-eu-desc', targets: 0 }
+            ]
+        } );
+    </script>
+
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var saisons = {{ saisons|json_encode|raw }}
+        var buts = {{ buts|json_encode }}
+        var passes = {{ passes|json_encode }}
+        var cartonsJ = {{ cartonsJ|json_encode }}
+        var cartonsR = {{ cartonsR|json_encode }}
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: saisons,
+                datasets: [{
+                    spanGaps: true,
+                    label: 'Buts',
+                    data: buts,
+                    borderWidth: 2,
+                    backgroundColor: [],
+                    lineTension: 0.1,
+                    fill: false,
+                    borderColor: "rgb(58, 83, 155)"
+                },{
+                    label: 'Passes Décisisves',
+                    data: passes,
+                    borderWidth: 2,
+                    backgroundColor: [],
+                    lineTension: 0.1,
+                    fill: false,
+                    borderColor: "rgb(38, 196, 236)"
+                },{
+                    label: 'Cartons Jaunes',
+                    data: cartonsJ,
+                    borderWidth: 2,
+                    backgroundColor: [],
+                    lineTension: 0.1,
+                    fill: false,
+                    borderColor: "rgb(255,255,0)"
+                },{
+                    label: 'Cartons Rouges',
+                    data: cartonsR,
+                    borderWidth: 2,
+                    backgroundColor: [],
+                    lineTension: 0.1,
+                    fill: false,
+                    borderColor: "	rgb(240,128,128)"
+                }]
+            },
+            options: {
+                legend: {
+                    display: true
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Quantité'
+                        },
+                        ticks: {
+                            beginAtZero:true,
+                            min: 0,
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Année'
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+{% endblock %}

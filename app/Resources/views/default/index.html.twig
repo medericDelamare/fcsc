@@ -1,0 +1,237 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <header class="business-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="tagline">Union Sportive Cormeilles Lieurey</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <h1 class="page-header">Bienvenue sur le site de l'USCL</h1>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Les mots du président</h2>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ asset('pictures/default.png') }}" class="img-circle col-md-12" alt="Responsive image">
+            </div>
+            <div class="col-md-8">
+                <p class="text-justify">« L'année passée a été l'occasion une nouvelle fois pour nos jeunes de briller dans leur championnats respectifs et de présenter une image positive de notre club. Fort de ces résultats nous allons continuer à développer notre école de football, passage obligé pour envisager l'avenir avec sérénité. Encore merci et félicitation à tous ceux qui oeuvrent de près ou de loin au bon fonctionnement de ces catégories. </br></br>
+                    Pour les seniors, la saison passée a été particulièrement compliquée notamment pour l'équipe B. Renforcée par une une quinzaine de nouveaux joueurs, Benoît Jeanne et Maurizio Alpini auront l'ambition de jouer les premiers rôles et d'aller chercher une montée.<br><br>
+                    Je remercie sincèrement tous les bénévoles qui par leur dévouement contribuent au bon fonctionnement de notre association. Ils en font un lieu convivial où il fait bon se retrouver.<br><br>
+                    Bonne saison 18/19 à tous.
+                    »</p>
+                <p class="text-right">Médéric Delamare</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Quelques chiffres</h2>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-line-chart" aria-hidden="true"></i> Evolution du nombre de licenciés</h4>
+                    </div>
+                    <div class="panel-body">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-users" aria-hidden="true"></i> Nombre d'équipes</h4>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item justify-content-between">
+                                Vétérans
+                                <span class="badge badge-primary badge-pill">2</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                Seniors
+                                <span class="badge badge-seniors badge-pill">2</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U18
+                                <span class="badge badge-U18 badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U15
+                                <span class="badge badge-U15 badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U13
+                                <span class="badge badge-U13 badge-pill">2</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U11
+                                <span class="badge badge-U11 badge-pill">3</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U9
+                                <span class="badge badge-U9 badge-pill">4</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U7
+                                <span class="badge badge-U7 badge-pill">2</span>
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-calendar" aria-hidden="true"></i> Calendrier des entraînements </h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id='calendar'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Dernières photos</h2>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/1.jpg') }}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/2.jpg') }}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/3.jpg') }}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/4.jpg') }}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/5.jpg') }}" alt="">
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/6.jpg') }}" alt="">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('vendor/jquery/src/fotorama.js') }}"></script>
+    <script src='{{ asset('vendor/moment/min/moment.min.js') }}'></script>
+    <script src='{{ asset('vendor/fullcalendar/dist/fullcalendar.js') }}'></script>
+    <script src='{{ asset('vendor/fullcalendar/dist/locale/fr.js') }}'></script>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['10/11','11/12','12/13','13/14','14/15','15/16','16/17', '17/18'],
+                datasets: [{
+                    data: [143,131,149,157,191,208,231,225],
+                    borderWidth: 2,
+                    backgroundColor: [],
+                    lineTension: 0.1,
+                    fill: false,
+                    borderColor: "rgb(58, 83, 155)"
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Quantité'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Années'
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                /*eventClick: function(calEvent, jsEvent, view) {
+                    $(".modal-title").text('test');
+                    $("#myModal").modal()
+                },*/
+                header: false,
+                columnFormat: 'dd',
+                allDaySlot: false,
+                defaultView: 'agendaWeek',
+                minTime: '14:00:00',
+                maxTime: '21:00:00',
+                weekends:false,
+                height: 'auto',
+                events: [
+                    {
+                        start: '19:00',
+                        end: '21:00',
+                        dow: [ 3,5 ],
+                        backgroundColor: '#ff0000'
+                    },
+                    {
+                        start: '19:00',
+                        end: '21:00',
+                        dow: [ 3,5 ],
+                        backgroundColor: '#5472AE'
+                    },
+                    {
+                        start: '17:00',
+                        end: '19:00',
+                        dow: [ 4 ],
+                        backgroundColor: '#4CA66B'
+                    },
+                    {
+                        start: '17:00',
+                        end: '19:00',
+                        dow: [ 3 ],
+                        backgroundColor: '#008B8B'
+                    },
+                    {
+                        start: '17:30',
+                        end: '19:00',
+                        dow: [ 2 ],
+                        backgroundColor: '#008B8B'
+                    },
+                    {
+                        start: '17:30',
+                        end: '19:00',
+                        dow: [ 1 ],
+                        backgroundColor: '#A9A9A9'
+                    },
+                    {
+                        start: '15:30',
+                        end: '17:00',
+                        dow: [ 3 ],
+                        backgroundColor: '#A9A9A9'
+                    },
+                    {
+                        start: '14:00',
+                        end: '15:30',
+                        dow: [ 3 ],
+                        backgroundColor: '#EE82EE'
+                    }
+                ]
+            });
+
+        });
+    </script>
+{% endblock %}

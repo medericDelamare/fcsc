@@ -1,0 +1,39 @@
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/DoctrineMigrations"
+    namespace: Application\Migrations
+    table_name: 'symfony'
+    name: Application Migrations
+
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+sonata_admin:
+    persist_filters: true
+    title:      USCL Admin
+    title_logo: /pictures/Logo.png
+    templates:
+            layout : SonataAdminBundle:Layout:layout.html.twig
+    dashboard:
+            groups:
+                joueurs:
+                    label:           Joueurs
+                    label_catalogue: messages
+                    icon:            '<i class="fa fa-users" aria-hidden="true"></i>'
+                club:
+                    label:           Club
+                    label_catalogue: messages
+                    icon:            '<i class="fa fa-briefcase" aria-hidden="true"></i>'
+                utilisateurs:
+                    label:           Utilisateurs
+                    label_catalogue: messages
+                    icon:            '<i class="fa fa-lock" aria-hidden="true"></i>'
+                imports:
+                    label:           Imports
+                    label_catalogue: messages
+                    icon:            '<i class="fa fa-upload"></i>'
