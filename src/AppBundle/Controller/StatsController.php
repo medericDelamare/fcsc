@@ -41,12 +41,12 @@ class StatsController extends Controller
         }
 
 
-        $cormeilles = null;
+        $fcsc = null;
 
         /** @var Equipe $equipe */
         foreach ($distinctEquipes as $equipe){
-            if (strstr($equipe->getNomParse(),'CORM')){
-                $cormeilles = $equipe;
+            if ($equipe->getClub() && $equipe->getClub()->getId() == 1){
+                $fcsc = $equipe;
             }
         }
 
@@ -95,7 +95,7 @@ class StatsController extends Controller
             'agendas' => $agendas,
             'calendrier' => $calendrier,
             'equipeListe' => $distinctEquipes,
-            'cormeilles' => $cormeilles,
+            'fcsc' => $fcsc,
             'classement_par_journee' => $classementTriParEquipe,
             'nb_journees' => $nbJournees,
             'division' => $division,

@@ -126,8 +126,8 @@
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script >
         $(document).ready( function () {
-            var cormeillesRoute = "{{ path('calendrier-par-equipe', {'equipe': cormeilles.id}) }}";
-            var nomParse = '{{ cormeilles.nomParse|raw }}';
+            var cormeillesRoute = "{{ path('calendrier-par-equipe', {'equipe': fcsc.id}) }}";
+            var nomParse = '{{ fcsc.nomParse|raw }}';
             $("#selectEquipe option").each(function(){
                 if ($(this).text() == nomParse)
                     $(this).attr("selected","selected");
@@ -162,11 +162,17 @@
                 if(res[0]){
                     if (parseInt(res[0]) == parseInt(res[1])){$(this).addClass('warning');}
 
-                    if ($('.equipeGauche',this).html() === equipeCourante){
+                    var equipeDomicile = $('.equipeGauche',this).text();
+                    equipeDomicile = equipeDomicile.replace('-','');
+
+                    var equipeExterieure = $('.equipeDroite',this).text();
+                    equipeExterieure = equipeExterieure.replace('-','');
+
+                    if (equipeDomicile.trim() === equipeCourante){
                         $('.equipeGauche',this).css("font-weight","bold");
                         if (parseInt(res[0]) > parseInt(res[1])){$(this).addClass('success');}
                         if (parseInt(res[0]) < parseInt(res[1])){$(this).addClass('danger');}
-                    } else if ($('.equipeDroite',this).html() === equipeCourante){
+                    } else if (equipeExterieure.trim() === equipeCourante){
                         $('.equipeDroite',this).css("font-weight","bold");
                         if (parseInt(res[0]) > parseInt(res[1])){$(this).addClass('danger');}
                         if (parseInt(res[0]) < parseInt(res[1])){$(this).addClass('success');}
