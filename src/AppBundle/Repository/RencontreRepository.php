@@ -59,27 +59,16 @@ class RencontreRepository extends EntityRepository
     }
 
     public function getAgenda($categorie){
-        $prochaineJournee = $this->createQueryBuilder('r')
-            ->select('r.journee')
-            ->join('r.equipeDomicile', 'd', 'WITH', 'd.id = r.equipeDomicile')
-            ->leftJoin('r.equipeExterieure', 'e', 'WITH', 'e.id = r.equipeExterieure')
-            ->where('d.categorie = :categorie')
-            ->andWhere('r.score IS NULL')
-            ->orderBy('r.date', 'ASC')
-            ->setParameter('categorie', $categorie)
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getSingleScalarResult();
-
         $agendas = $rencontres = $this->createQueryBuilder('r')
             ->join('r.equipeDomicile', 'd', 'WITH', 'd.id = r.equipeDomicile')
-            ->where('r.journee = :derniereJournee')
-            ->andWhere('d.categorie = :categorie')
-            ->setParameter('derniereJournee', $prochaineJournee)
+            ->where('r.date < :semaine')
+            ->andWhere('r.date > :dateCourante')
+            ->andWhere('d.categorie LIKE :categorie')
             ->setParameter('categorie', $categorie)
+            ->setParameter('dateCourante', new \DateTime())
+            ->setParameter('semaine', new \DateTime('+1 week'))
             ->getQuery()
             ->getResult();
-
         return $agendas;
     }
 
