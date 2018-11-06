@@ -25,20 +25,13 @@ class Equipe
      * @var string
      * @ORM\Column(type="string", nullable=true)
      */
-    private $logo;
+    private $groupe;
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $nomParse;
-
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", nullable=true)
-     */
-    private $nom;
 
     /**
      * @var string
@@ -80,18 +73,18 @@ class Equipe
     /**
      * @return string
      */
-    public function getLogo()
+    public function getGroupe()
     {
-        return $this->logo;
+        return $this->groupe;
     }
 
     /**
-     * @param string $logo
+     * @param string $groupe
      * @return Equipe
      */
-    public function setLogo($logo)
+    public function setGroupe($groupe)
     {
-        $this->logo = $logo;
+        $this->groupe = $groupe;
         return $this;
     }
 
@@ -110,24 +103,6 @@ class Equipe
     public function setNomParse($nomParse)
     {
         $this->nomParse = $nomParse;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @param string $nom
-     * @return Equipe
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
         return $this;
     }
 
