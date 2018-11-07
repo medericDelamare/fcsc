@@ -25,7 +25,13 @@ class EquipeAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-
+        $datagridMapper
+            ->add('nomParse')
+            ->add('groupe')
+            ->add('division')
+            ->add('club')
+            ->add('categorie')
+            ;
     }
 
     protected function configureListFields(ListMapper $listMapper)

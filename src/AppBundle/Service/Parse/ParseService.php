@@ -236,7 +236,7 @@ class ParseService
 
     private function convertDate($date)
     {
-        $dateRegex = preg_replace('(\s+)', ' ', $date);
+        $dateRegex = preg_replace('(\s+)', ' ', trim($date));
         $dateSplit = explode(' ', $dateRegex);
         switch ($dateSplit[6]) {
             case 'janvier':

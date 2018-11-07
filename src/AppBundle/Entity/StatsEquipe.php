@@ -327,9 +327,9 @@ class StatsEquipe
             ->addVictoire()
             ->addPoints(3)
             ->addJournee()
-            ->addButsPour(3)
+            ->addButsPour(5)
             ->addButsContre(0)
-            ->addDifference(3);
+            ->addDifference(5);
 
         return $this;
     }
@@ -337,12 +337,12 @@ class StatsEquipe
     public function computeForfaitContre(){
         $this
             ->addDefaite()
-            ->addPoints(0)
+            ->addPoints(-1)
             ->addJournee()
             ->addForfait()
             ->addButsPour(0)
-            ->addButsContre(3)
-            ->addDifference(-3);
+            ->addButsContre(5)
+            ->addDifference(-5);
 
         return $this;
     }
