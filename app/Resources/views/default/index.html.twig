@@ -103,22 +103,34 @@
                 <h2 class="page-header">Dernières photos</h2>
             </div>
             <div class="col-md-4 col-sm-6">
+                <a href="{{ asset('pictures/index/1.jpg') }}" data-toggle="lightbox">
                     <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/1.jpg') }}" alt="">
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
+                <a href="{{ asset('pictures/index/2.jpg') }}" data-toggle="lightbox">
                     <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/2.jpg') }}" alt="">
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
+                <a href="{{ asset('pictures/index/3.jpg') }}" data-toggle="lightbox">
                     <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/3.jpg') }}" alt="">
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
+                <a href="{{ asset('pictures/index/4.jpg') }}" data-toggle="lightbox">
                     <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/4.jpg') }}" alt="">
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
+                <a href="{{ asset('pictures/index/5.jpg') }}" data-toggle="lightbox">
                     <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/5.jpg') }}" alt="">
+                </a>
             </div>
             <div class="col-md-4 col-sm-6">
+                <a href="{{ asset('pictures/index/6.jpg') }}" data-toggle="lightbox">
                     <img class="img-responsive img-portfolio img-hover" src="{{ asset('pictures/index/6.jpg') }}" alt="">
+                </a>
             </div>
         </div>
     </div>
@@ -129,6 +141,8 @@
     <script src='{{ asset('vendor/moment/min/moment.min.js') }}'></script>
     <script src='{{ asset('vendor/fullcalendar/dist/fullcalendar.js') }}'></script>
     <script src='{{ asset('vendor/fullcalendar/dist/locale/fr.js') }}'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map'></script>
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
 
@@ -137,7 +151,7 @@
             data: {
                 labels: ['10/11','11/12','12/13','13/14','14/15','15/16','16/17', '17/18'],
                 datasets: [{
-                    data: [143,131,149,157,191,208,231,225],
+                    data: [501,517,556,594,703,657,655,634,],
                     borderWidth: 2,
                     backgroundColor: [],
                     lineTension: 0.1,
@@ -233,6 +247,12 @@
                 ]
             });
 
+        });
+    </script>
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
         });
     </script>
 {% endblock %}
