@@ -13,13 +13,36 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 class UserAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $formMapper->add('roles', 'choice', [
+        $formMapper
+            ->add('username', null, [
+                'label' => 'Nom d\'utilisateur'
+            ])
+            ->add('lastName', null, [
+                'label' => 'Nom',
+                'required' => true
+            ])
+            ->add('firstName', null, [
+                'label' => 'Prénom',
+                'required' => true
+            ])
+            ->add('plainPassword', TextType::class, [
+                'label' => 'Mot de passe initial'
+            ])
+            ->add('plainPassword', TextType::class, [
+                'label' => 'Mot de passe initial'
+            ])
+            ->add('email')
+            ->add('enabled', null, [
+                'label' => 'Activé'
+            ])
+            ->add('roles', 'choice', [
             'expanded' => true,
             'multiple' => true,
             'choices' => [
