@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 
 
 use AppBundle\Entity\Poste;
+use AppBundle\Entity\SousCategorie;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -123,11 +124,27 @@ class LicencieAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $em = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager();
+        $sousCategories = $em->getRepository(SousCategorie::class)->findAll();
+
+        $categories = [];
+        /** @var SousCategorie $sousCategory */
+        foreach ($sousCategories as $sousCategory) {
+            $categories[$sousCategory->getNom()] = $sousCategory->getNom();
+        }
+
         $datagridMapper
             ->add('nom')
             ->add('prenom')
             ->add('stats.poste')
-            ->add('categorie');
+            ->add('categorie', 'doctrine_orm_choice', array('label' => 'Categorie',
+                'field_options' => array(
+                    'required' => false,
+                    'choices' => $categories,
+                    'multiple' => true,
+                ),
+                'field_type' => 'choice'
+            ));;
     }
 
     protected function configureListFields(ListMapper $listMapper)
