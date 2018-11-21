@@ -14,6 +14,7 @@ class CategorieAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nom')
+            ->add('role')
         ;
     }
     protected function configureListFields(ListMapper $listMapper)
@@ -21,6 +22,7 @@ class CategorieAdmin extends AbstractAdmin
 
         $listMapper
             ->addIdentifier('nom')
+            ->addIdentifier('role')
         ;
     }
 }

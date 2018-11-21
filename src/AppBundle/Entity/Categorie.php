@@ -3,6 +3,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Categorie
@@ -25,6 +26,23 @@ class Categorie
      * @ORM\Column(type="string", nullable=false, unique=true, )
      */
     private $nom;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $role;
+
+    /**
+     * @var SousCategorie[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\SousCategorie", mappedBy="categorie")
+     */
+    private $sousCategories;
+
+    public function __construct()
+    {
+        $this->sousCategories = new ArrayCollection();
+    }
 
     /**
      * @return int
@@ -51,6 +69,44 @@ class Categorie
         $this->nom = $nom;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     * @return Categorie
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+        return $this;
+    }
+
+    /**
+     * @return SousCategorie[]
+     */
+    public function getSousCategories()
+    {
+        return $this->sousCategories;
+    }
+
+    /**
+     * @param SousCategorie[] $sousCategories
+     * @return Categorie
+     */
+    public function setSousCategories($sousCategories)
+    {
+        $this->sousCategories = $sousCategories;
+        return $this;
+    }
+
+
 
     public function __toString()
     {

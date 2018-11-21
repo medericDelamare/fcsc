@@ -4,8 +4,10 @@
 namespace AppBundle\Admin;
 
 
+use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Poste;
 use AppBundle\Entity\SousCategorie;
+use Doctrine\ORM\Query;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -14,6 +16,12 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class LicencieAdmin extends AbstractAdmin
 {
+    private $cat;
+
+    public function setCategorie($cat){
+        $this->cat = $cat;
+    }
+
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'ASC',
@@ -155,5 +163,33 @@ class LicencieAdmin extends AbstractAdmin
             ->add('categorie')
             ->add('stats.poste')
             ->add('numeroLicence');
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+        $currentUser = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+
+
+        $categories = $em->getRepository(Categorie::class)->findAll();
+        $sousCategories = [];
+        foreach ($currentUser->getRoles() as $role){
+            /** @var Categorie $categorie */
+            foreach ($categories as $categorie){
+                if ($role == $categorie->getRole()){
+                    foreach ($categorie->getSousCategories() as $sousCategorie){
+                        $sousCategories[] = $sousCategorie->getNom();
+                    }
+                }
+            }
+        }
+
+        dump($currentUser);
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->in($query->getRootAliases()[0] . '.categorie', ':my_param')
+        );
+        $query->setParameter('my_param', $sousCategories);
+        return $query;
     }
 }

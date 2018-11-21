@@ -18,6 +18,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UserAdmin extends AbstractAdmin
 {
+
+    private $cat;
+
+    public function setCategorie($cat){
+        $this->cat = $cat;
+    }
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -41,21 +47,25 @@ class UserAdmin extends AbstractAdmin
             ->add('email')
             ->add('enabled', null, [
                 'label' => 'Activé'
-            ])
-            ->add('roles', 'choice', [
-            'expanded' => true,
-            'multiple' => true,
-            'choices' => [
-                "Utilisateur" => "ROLE_USER",
-                "Administrateur" => "ROLE_ADMIN",
-                "Super Administrateur" => "ROLE_SUPER_ADMIN",
-            ],
-            'label' => 'Roles'
-        ]);
+            ])->add('roles', 'choice', array(
+                    'choices'  => [
+                        "Utilisateur" => "ROLE_USER",
+                        "Administrateur" => "ROLE_ADMIN",
+                        "Super Administrateur" => "ROLE_SUPER_ADMIN",
+                        "Senior" => "ROLE_SENIOR",
+                        "U19" => "ROLE_U19",
+                        "U17" => "ROLE_U17",
+                        "U15" => "ROLE_U15",
+                        "U13" => "ROLE_U13",
+                    ],
+                    'multiple' => true
+                )
+            );
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        dump($this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser());
         $listMapper
             ->addIdentifier('email')
             ->add('roles')
