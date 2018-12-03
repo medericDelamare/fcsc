@@ -260,16 +260,32 @@ body {
     background-color: #008B8B;
 }
 
+.badge-U12{
+    background-color: #008B8B;
+}
+
 .badge-U11{
     background-color: #A9A9A9;
 }
 
+.badge-U10{
+    background-color: #91F313;
+}
+
 .badge-U9{
-    background-color: #EE82EE;
+    background-color: #F3C313;
+}
+
+.badge-U8{
+    background-color: #BC290A;
 }
 
 .badge-U7{
-    background-color: #EE82EE;
+    background-color: #BC290A;
+}
+
+.badge-U6{
+    background-color: #BC290A;
 }
 
 .slide-image {
