@@ -6,7 +6,7 @@
     </ol>
 
     <div class="container">
-        <h1 class = "page-header">Composition du bureau 2017/2018</h1>
+        <h1 class = "page-header">Composition du bureau 2018/2019</h1>
         <div class="row margin-bottom">
             <div class="col-sm-4 col-sm-offset-4">
                 <div class="panel panel-uscl">
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="row margin-bottom">
-            <div class="col-sm-4 margin-bottom">
+            <div class="col-sm-4 col-sm-offset-4">
                 <div class="panel panel-uscl">
                     <div class="panel-heading">
                         <h3 class="panel-title">Vice-président</h3>
@@ -43,12 +43,12 @@
                     <div class="panel-body row">
                         <div class="row">
                             <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                                <img src="{{ bureau.vicePresident.photo }}" class="img-rounded" alt="{{ bureau.vicePresident.nomComplet }}">
+                                <img src="{{ bureau.vicePresident.photo}}" class="img-rounded" alt="{{ bureau.vicePresident.nomComplet }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="text-center">
-                                <h4>{{ bureau.vicePresident.nomComplet }}</h4>
+                                <h4>{{ bureau.president.nomComplet }}</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -60,61 +60,9 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-4 margin-bottom">
-                <div class="panel panel-uscl">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Vice-président</h3>
-                    </div>
-                    <div class="panel-body row">
-                        <div class="row">
-                            <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                                <img src="{{ bureau.vicePresident2.photo }}" class="img-rounded" alt="{{ bureau.vicePresident2.nomComplet }}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4>{{ bureau.vicePresident2.nomComplet }}</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.vicePresident2.email }}</h4>
-                                <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.vicePresident2.telephonePortable }}</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 margin-bottom">
-                <div class="panel panel-uscl">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Vice-président</h3>
-                    </div>
-                    <div class="panel-body row">
-                        <div class="row">
-                            <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                                <img src="{{ bureau.vicePresident3.photo  }}" class="img-rounded" alt="{{ bureau.vicePresident3.nomComplet }}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4>{{ bureau.vicePresident3.nomComplet }}</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.vicePresident3.email }}</h4>
-                                <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.vicePresident3.telephonePortable }}</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row margin-bottom ">
-            <div class="col-sm-6 margin-bottom">
+            <div class="col-sm-4 margin-bottom">
                 <div class="panel panel-uscl">
                     <div class="panel-heading">
                         <h3 class="panel-title">Secrétaire</h3>
@@ -140,7 +88,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 margin-bottom">
+            <div class="col-sm-4 margin-bottom">
                 <div class="panel panel-uscl">
                     <div class="panel-heading">
                         <h3 class="panel-title">Trésorière</h3>
@@ -165,53 +113,26 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row margin-bottom">
-            <div class="col-sm-6 margin-bottom">
+            <div class="col-sm-4 margin-bottom">
                 <div class="panel panel-uscl">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Pole sportif jeunes</h3>
+                        <h3 class="panel-title">Responsable équipement</h3>
                     </div>
                     <div class="panel-body row">
                         <div class="row">
                             <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                                <img src="{{ bureau.responsablePoleJeunes.photo }}" class="img-rounded" alt="{{ bureau.responsablePoleJeunes.nomComplet}}">
+                                <img src="{{ bureau.responsableEquipement.photo }}" class="img-rounded" alt="{{ bureau.responsableEquipement.nomComplet }}">
                             </div>
                         </div>
                         <div class="row">
                             <div class="text-center">
-                                <h4>{{ bureau.responsablePoleJeunes.nomComplet}}</h4>
+                                <h4>{{ bureau.responsableEquipement.nomComplet }}</h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="text-center">
-                                <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsablePoleJeunes.email }}</h4>
-                                <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsablePoleJeunes.telephonePortable }}</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 margin-bottom">
-                <div class="panel panel-uscl">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Pole sportif seniors</h3>
-                    </div>
-                    <div class="panel-body row">
-                        <div class="row">
-                            <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                                <img src="{{ bureau.responsablePoleSeniors.photo }}" class="img-rounded" alt="{{ bureau.responsablePoleSeniors.nomComplet }}">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4>{{ bureau.responsablePoleSeniors.nomComplet }}</h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsablePoleSeniors.email }}</h4>
-                                <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsablePoleSeniors.telephonePortable }}</h4>
+                                <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableEquipement.email }}</h4>
+                                <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableEquipement.telephonePortable }}</h4>
                             </div>
                         </div>
                     </div>

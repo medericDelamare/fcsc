@@ -17,115 +17,57 @@ class BureauAdmin extends AbstractAdmin
         $formMapper
             ->add('president', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
             ->add('vicePresident', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
-            ])
-            ->add('vicePresident2', EntityType::class,[
-                'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
-            ])
-            ->add('vicePresident3', EntityType::class,[
-                'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
             ->add('secretaire', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
             ->add('tresorier', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsablePoleJeunes', EntityType::class,[
+            ->add('responsableEquipement', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsablePoleSeniors', EntityType::class,[
+            ->add('responsableVeterans', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
+            ])
+            ->add('responsableCdm', EntityType::class,[
+                'class' => Licencie::class,
             ])
             ->add('responsableSeniorA', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
             ->add('responsableSeniorB', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsableU18', EntityType::class,[
+            ->add('responsableU19', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsabeU15', EntityType::class,[
+            ->add('responsableU17', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsableU13', EntityType::class,[
+            ->add('responsableU15', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
+            ])
+            ->add('responsableU12U13', EntityType::class,[
+                'class' => Licencie::class,
             ])
             ->add('responsableU11', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsableU9', EntityType::class,[
+            ->add('responsableU10', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
             ])
-            ->add('responsableU7', EntityType::class,[
+            ->add('responsableU6U9', EntityType::class,[
                 'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.dirigeant = true');
-                }
+            ])
+            ->add('responsablePoleFeminin', EntityType::class,[
+                'class' => Licencie::class,
+            ])
+            ->add('responsableGardiens', EntityType::class,[
+                'class' => Licencie::class,
             ])
         ;
     }
@@ -133,22 +75,7 @@ class BureauAdmin extends AbstractAdmin
     {
 
         $listMapper
-            ->add('president')
-            ->add('vicePresident')
-            ->add('vicePresident2')
-            ->add('vicePresident3')
-            ->add('secretaire')
-            ->add('tresorier')
-            ->add('responsablePoleJeunes')
-            ->add('responsablePoleSeniors')
-            ->add('responsableSeniorA')
-            ->add('responsableSeniorB')
-            ->add('responsableU18')
-            ->add('responsableU15')
-            ->add('responsableU13')
-            ->add('responsableU11')
-            ->add('responsableU9')
-            ->add('responsableU7')
+            ->addIdentifier('president')
         ;
     }
 }
