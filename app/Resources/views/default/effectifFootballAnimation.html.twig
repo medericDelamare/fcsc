@@ -9,8 +9,8 @@
     </ol>
 
     <div class="container">
-        <h1 class = "page-header">{{ category }} -<small> {{ nb_u7 + nb_u9 + nb_u11 }} Joueurs ({{ nb_u7 }} U7/{{ nb_u9 }} U9/{{ nb_u11 }} U11)</small></h1>
-        <table class="table">
+        <h1 class = "page-header">{{ category }} -<small> {{ joueurs|length }} Joueurs</small></h1>
+        <table class="table" id="table-animation">
             <thead>
             <tr>
                 <th>Nom</th>
@@ -22,7 +22,6 @@
             </tr>
             </thead>
             <tbody>
-            {% for joueurs in joueursParCategorie %}
                 {% for joueur in joueurs %}
                 <tr>
                     <td><strong><a class="nom-effectif" href="{{ path('profile', {'id': joueur.id}) }}">{{ joueur.nom }}</a></strong></td>
@@ -33,7 +32,6 @@
                     {% endif %}
                 </tr>
                 {% endfor %}
-            {% endfor %}
             </tbody>
         </table>
     </div>
@@ -44,13 +42,14 @@
 
     <script >
         $(document).ready( function () {
-            $('.table').DataTable({
-                "paging": false,
+            $('#table-animation').DataTable({
+                "pageLength": 50,
+                "paging": true,
                 "bInfo" : false,
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
                 },
-                "order": false
+                "ordering": false
             });
         } );
     </script>
