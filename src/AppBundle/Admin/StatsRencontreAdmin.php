@@ -5,8 +5,10 @@ namespace AppBundle\Admin;
 
 use AppBundle\Entity\Club;
 use AppBundle\Entity\Equipe;
+use AppBundle\Entity\Licencie;
 use AppBundle\Entity\Rencontre;
 use AppBundle\Entity\StatsRencontre;
+use AppBundle\Repository\LicencieRepository;
 use AppBundle\Repository\RencontreRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -28,9 +30,27 @@ class StatsRencontreAdmin extends AbstractAdmin
                         ->orWhere('ee.club = 1');
                 }
             ])
-            ->add('joueurs')
-            ->add('cartonsJaunes')
-            ->add('cartonsRouges')
+            ->add('joueurs', EntityType::class, [
+                'class' => Licencie::class,
+                'query_builder' => function(LicencieRepository $er) {
+                    return $er->createQueryBuilder('l')
+                        ->where('l.stats IS NOT NULL');
+                }
+            ])
+            ->add('cartonsJaunes', EntityType::class, [
+                'class' => Licencie::class,
+                'query_builder' => function(LicencieRepository $er) {
+                    return $er->createQueryBuilder('l')
+                        ->where('l.stats IS NOT NULL');
+                }
+            ])
+            ->add('cartonsRouges', EntityType::class, [
+                'class' => Licencie::class,
+                'query_builder' => function(LicencieRepository $er) {
+                    return $er->createQueryBuilder('l')
+                        ->where('l.stats IS NOT NULL');
+                }
+            ])
             ->add('buts', 'sonata_type_collection', [
                 'by_reference' => false,
                 'label' => false,
