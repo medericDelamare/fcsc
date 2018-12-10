@@ -69,6 +69,15 @@ class BureauAdmin extends AbstractAdmin
             ->add('responsableGardiens', EntityType::class,[
                 'class' => Licencie::class,
             ])
+            ->add('membre1', EntityType::class,[
+                'class' => Licencie::class,
+            ])
+            ->add('membre2', EntityType::class,[
+                'class' => Licencie::class,
+            ])
+            ->add('membre3', EntityType::class,[
+                'class' => Licencie::class,
+            ])
         ;
     }
     protected function configureListFields(ListMapper $listMapper)

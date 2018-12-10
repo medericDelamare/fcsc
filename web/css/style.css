@@ -803,3 +803,8 @@ input:checked + .slider:before {
     font-size: 40px;
     color: #9ca7ba;
 }
+
+.photo-bureau{
+    width: 68px;
+    height: 100px;
+}
