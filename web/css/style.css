@@ -808,3 +808,11 @@ input:checked + .slider:before {
     width: 68px;
     height: 100px;
 }
+
+.slick-list{
+    width: 100%;
+}
+
+.slick-prev:before, .slick-next:before {
+    color: black !important;
+}

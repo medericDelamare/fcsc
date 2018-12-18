@@ -1,4 +1,8 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/slick-1.8.1/slick/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('js/slick-1.8.1/slick/slick-theme.css') }}"/>
+{% endblock %}
 {% block body %}
     <header class="business-header">
         <div class="container">
@@ -14,7 +18,7 @@
                 <h2 class="page-header">Les mots du président : Bernard Delaume</h2>
             </div>
             <div class="col-md-4 text-center">
-                <img src="{{ asset('pictures/president.jpg') }}" class="img-circle col-md-12" alt="Responsive image">
+                <img src="{{ asset('pictures/president.jpg') }}" class="img-responsive img-circle col-md-12" alt="Responsive image">
             </div>
             <div class="col-md-8">
                 <p class="text-justify">« Le Football Club de Saint-Cloud a pour objectifs l’initiation pour les enfants à partir de 6 ans, la pratique en compétition pour les adolescents et adultes, avec une mission éducative et sportive, dans une ambiance de plaisir, de convivialité et d’amitié. <br>
@@ -23,6 +27,25 @@
                     Qu’ils en soient remerciés ainsi que tous ceux qui participent à la vie du club : les joueurs, les dirigeants, les bénévoles, les partenaires, sans oublier le secretariat et la Mairie de Saint-Cloud ainsi que ses adjoints.<br>
                     C’est dans cet esprit que ce sera toujours un plaisir de pratiquer le football à Saint-Cloud.
                     »</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Dernières actualités</h2>
+            </div>
+            <div class="your-class col-lg-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-portfolio img-hover center-block" src="https://via.placeholder.com/900x300" alt="">
+                    <h2>Title 1</h2>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-portfolio img-hover center-block" src="https://siuslawbroadband.com/wp-content/uploads/2011/01/sweet-creek-2001-900x300.jpg" alt="">
+                    <h2>Title 2</h2>
+                </div>
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-portfolio img-hover center-block" src="http://infotronics-inc.com/images/Edison900x300.jpg" alt="">
+                    <h2>Title 3</h2>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -251,6 +274,15 @@
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox();
+        });
+    </script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/slick-1.8.1/slick/slick.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.your-class').slick({
+                adaptiveHeight: true
+            });
         });
     </script>
 {% endblock %}
