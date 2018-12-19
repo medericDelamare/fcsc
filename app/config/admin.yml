@@ -75,3 +75,8 @@ services:
         arguments: [~, AppBundle\Entity\SousCategorie, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Sous-Categorie, group: "club"}
+    admin.actualite:
+        class: AppBundle\Admin\ActualiteAdmin
+        arguments: [~, AppBundle\Entity\Actualite, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Actualites, group: "actus"}

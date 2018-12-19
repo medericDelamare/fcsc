@@ -33,7 +33,7 @@ sonata_admin:
                     label:           Utilisateurs
                     label_catalogue: messages
                     icon:            '<i class="fa fa-lock" aria-hidden="true"></i>'
-                imports:
-                    label:           Imports
+                actus:
+                    label:           Actualites
                     label_catalogue: messages
-                    icon:            '<i class="fa fa-upload"></i>'
+                    icon:            '<i class="fa fa-newspaper-o" aria-hidden="true"></i> '

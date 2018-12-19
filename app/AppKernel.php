@@ -38,6 +38,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Yectep\PhpSpreadsheetBundle\PhpSpreadsheetBundle(),
 
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
+
 
         ];
 
