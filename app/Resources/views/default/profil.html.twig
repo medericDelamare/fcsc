@@ -98,36 +98,61 @@
                         <div class="hidden-xs row saison-actuelle-profil"><h4>Saison 2018-2019 avec l'USCL :</h4></div>
                         <div class="visible-xs row saison-actuelle-profil text-center"><h4>2018/2019 :</h4></div>
                         <div class="row row-eq-height">
-                            <div class="col-lg-3 col-xs-4">
-                                <div class="media">
-                                    <div class="media-left media-top">
-                                        <div class="media-object gros-chiffres">{{ joueur.statsRencontresJoueurs|length}}</div>
+                            <div class="visible-xs">
+                                <div class="col-lg-3 col-xs-4">
+                                    <div class="media">
+                                        <div class="media-left media-top">
+                                            <div class="media-object gros-chiffres">{{ joueur.statsRencontresJoueurs|length}}</div>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <div class="visible-xs"><img src="{{ asset('pictures/icons/strategy.png') }}"></div>
+                                        </div>
                                     </div>
-                                    <div class="media-body media-middle">
-                                        <div class="visible-xs"><img src="{{ asset('pictures/icons/strategy.png') }}"></div>
-                                        <h4 class="hidden-xs media-heading grey">Matchs joués</h4>
+                                </div>
+                                <div class="col-lg-3 col-xs-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="media-object gros-chiffres">{{ joueur.buts|length}}</div>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <div class="visible-xs"><img class="visiible xs" src="{{ asset('pictures/icons/soccer-ball.png') }}"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-4">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="media-object gros-chiffres">{{ joueur.passes|length}}</div>
+                                        </div>
+                                        <div class="media-body media-middle">
+                                            <div class="visible-xs"><img class="visiible xs" src="{{ asset('pictures/icons/soccer.png') }}"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-xs-4">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <div class="media-object gros-chiffres">{{ joueur.buts|length}}</div>
+                            <div class="hidden-xs">
+                                <div class="col-lg-3 col-xs-4 text-center">
+                                    <div class="row">
+                                        <div class="gros-chiffres">{{ joueur.statsRencontresJoueurs|length}}</div>
                                     </div>
-                                    <div class="media-body media-middle">
-                                        <div class="visible-xs"><img class="visiible xs" src="{{ asset('pictures/icons/soccer-ball.png') }}"></div>
-                                        <h4 class="hidden-xs media-heading grey">Buts marqués</h4>
+                                    <div class="row">
+                                        <h4 class="grey">Matchs joués</h4>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-xs-4">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <div class="media-object gros-chiffres">{{ joueur.passes|length}}</div>
+                                <div class="col-lg-3 col-xs-4 text-center">
+                                    <div class="row">
+                                        <div class="gros-chiffres">{{ joueur.buts|length}}</div>
                                     </div>
-                                    <div class="media-body media-middle">
-                                        <div class="visible-xs"><img class="visiible xs" src="{{ asset('pictures/icons/soccer.png') }}"></div>
-                                        <h4 class=" hidden-xs media-heading grey">Passes décisives</h4>
+                                    <div class="row">
+                                        <h4 class="grey">Buts</h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-xs-4 text-center">
+                                    <div class="row">
+                                        <div class="gros-chiffres">{{ joueur.passes|length}}</div>
+                                    </div>
+                                    <div class="row">
+                                        <h4 class="grey">Passes décisives</h4>
                                     </div>
                                 </div>
                             </div>
