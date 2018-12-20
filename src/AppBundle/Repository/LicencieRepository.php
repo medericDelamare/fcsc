@@ -24,6 +24,11 @@ class LicencieRepository extends EntityRepository
             ->getResult();
     }
 
+    /*public function countWhereNoPoste(){
+        return $this->createQueryBuilder('j')
+            ->
+    }*/
+
 
     public function findBirthday(){
         $now = new \DateTime();

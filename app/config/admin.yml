@@ -6,6 +6,7 @@ services:
                 - { name: sonata.admin, manager_type: orm, label: Joueurs, group: "joueurs"}
             calls:
                 - [ setKernel, ["@kernel"]]
+                - [ setTemplate, [list, SonataAdminBundle:Joueurs:customEdit.html.twig]]
 
     admin.utilisateurs:
             class: AppBundle\Admin\UserAdmin

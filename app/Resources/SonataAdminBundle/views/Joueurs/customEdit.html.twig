@@ -1,0 +1,8 @@
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% block nb_licencies %}
+    {% if admin.nbLicencieSansPoste > 0 %}
+        <br>
+        <div class="alert alert-warning" role="alert"> <h4><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Vous avez {{ admin.nbLicencieSansPoste }} joueurs qui n'ont pas de poste. Ils n'apparaîteront pas dans la liste des effectifs si ce ne sont pas des joueurs du football d'animation.</h4></div>
+    {% endif %}
+{% endblock %}
