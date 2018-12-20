@@ -15,7 +15,7 @@ sonata_block:
 
 sonata_admin:
     persist_filters: true
-    title:      USCL Admin
+    title:      FCSC Admin
     title_logo: /pictures/Logo.png
     templates:
             layout : SonataAdminBundle:Layout:layout.html.twig
