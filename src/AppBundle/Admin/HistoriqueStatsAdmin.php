@@ -16,7 +16,9 @@ class HistoriqueStatsAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('licencie')
-            ->add('saison')
+            ->add('saison', null , [
+                'label' => 'Saison au format AA/AA (Ex: 16/17)'
+            ])
             ->add('nbButs')
             ->add('nbPasses')
             ->add('nbCartonsJaunes')
