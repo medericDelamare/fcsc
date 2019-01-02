@@ -37,7 +37,6 @@ class AppKernel extends Kernel
             new Xmon\ColorPickerTypeBundle\XmonColorPickerTypeBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Yectep\PhpSpreadsheetBundle\PhpSpreadsheetBundle(),
-
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
 
 

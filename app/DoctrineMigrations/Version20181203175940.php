@@ -18,7 +18,6 @@ class Version20181203175940 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE club_fifa (id INT AUTO_INCREMENT NOT NULL, championnat VARCHAR(255) NOT NULL, nom VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE bureau DROP FOREIGN KEY FK_166FDEC45D580FEB');
         $this->addSql('ALTER TABLE bureau DROP FOREIGN KEY FK_166FDEC4627D61FA');
         $this->addSql('ALTER TABLE bureau DROP FOREIGN KEY FK_166FDEC47337B896');
