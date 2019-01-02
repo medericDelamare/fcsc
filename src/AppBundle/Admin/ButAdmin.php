@@ -25,6 +25,7 @@ class ButAdmin extends AbstractAdmin
             ])
             ->add('passeur', EntityType::class, [
                 'class' => Licencie::class,
+                'required' => false,
                 'query_builder' => function(LicencieRepository $er) {
                     return $er->createQueryBuilder('l')
                         ->where('l.stats IS NOT NULL');

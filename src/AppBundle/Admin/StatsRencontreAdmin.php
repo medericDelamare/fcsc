@@ -13,6 +13,7 @@ use AppBundle\Repository\RencontreRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class StatsRencontreAdmin extends AbstractAdmin
@@ -30,26 +31,14 @@ class StatsRencontreAdmin extends AbstractAdmin
                         ->orWhere('ee.club = 1');
                 }
             ])
-            ->add('joueurs', EntityType::class, [
-                'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.stats IS NOT NULL');
-                }
+            ->add('joueurs', null, [
+                'label' => 'Joueurs ayant participés à la rencontre'
             ])
-            ->add('cartonsJaunes', EntityType::class, [
-                'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.stats IS NOT NULL');
-                }
+            ->add('cartonsJaunes', null, [
+                'label' => 'Joueurs ayant reçu un carton jaune'
             ])
-            ->add('cartonsRouges', EntityType::class, [
-                'class' => Licencie::class,
-                'query_builder' => function(LicencieRepository $er) {
-                    return $er->createQueryBuilder('l')
-                        ->where('l.stats IS NOT NULL');
-                }
+            ->add('cartonsRouges', null, [
+                'label' => 'Joueurs ayant reçu un carton rouge'
             ])
             ->add('buts', 'sonata_type_collection', [
                 'by_reference' => false,
