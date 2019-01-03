@@ -52,6 +52,7 @@ class UserAdmin extends AbstractAdmin
                         "Utilisateur" => "ROLE_USER",
                         "Administrateur" => "ROLE_ADMIN",
                         "Super Administrateur" => "ROLE_SUPER_ADMIN",
+                        "Veteran" => "ROLE_VETERAN",
                         "Senior" => "ROLE_SENIOR",
                         "U19" => "ROLE_U19",
                         "U17" => "ROLE_U17",
@@ -65,7 +66,6 @@ class UserAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        dump($this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser());
         $listMapper
             ->addIdentifier('email')
             ->add('roles')
