@@ -2,13 +2,31 @@
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('js/slick-1.8.1/slick/slick.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('js/slick-1.8.1/slick/slick-theme.css') }}"/>
+    <link href="{{ asset('css/half-slider.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    <header class="business-header">
-        <div class="container">
-            <div class="row">
-            </div>
+    <header id="myCarousel" class="carousel slide">
+
+
+        <div class="carousel-inner">
+            {% for actu in actus %}
+                <div class="item {% if loop.first %}active{% endif %}"  >
+                    <div class="fill" style="background-image:url('{{ asset('pictures/Actualites/') ~ actu.photo }}');"></div>
+                    <div class="carousel-caption">
+                        <a href="{{ path('actualite', {'id': actu.id}) }}"><h2>{{ actu.titre }}</h2></a>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
     </header>
     <div class="container">
         <h1 class="page-header">Bienvenue sur le site officiel du FC Saint-Cloud</h1>
@@ -21,25 +39,10 @@
                 <img src="{{ asset('pictures/president.jpg') }}" class="img-responsive img-circle col-md-12" alt="Responsive image">
             </div>
             <div class="col-md-8">
-                <p class="text-justify lead">« Le Football Club de Saint-Cloud a pour objectifs l’initiation pour les enfants à partir de 6 ans, la pratique en compétition pour les adolescents et adultes, avec une mission éducative et sportive, dans une ambiance de plaisir, de convivialité et d’amitié. <br>
-                    L’association compte actuellement 650 licenciés avec plus de 20 équipes évoluant chaque week-end en championnat départemental et  régional.<br>
-                    La montée en division supérieure est un objectif pour chaque équipe engagée en compétition. Le club s’appuie pour cela sur la qualité, l’engagement et la solidarité de tous les éducateurs.<br>
-                    Qu’ils en soient remerciés ainsi que tous ceux qui participent à la vie du club : les joueurs, les dirigeants, les bénévoles, les partenaires, sans oublier le secretariat et la Mairie de Saint-Cloud ainsi que ses adjoints.<br>
-                    C’est dans cet esprit que ce sera toujours un plaisir de pratiquer le football à Saint-Cloud.
-                    »</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Dernières actualités</h2>
-            </div>
-            <div class="your-class col-lg-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
-                {% for actu in actus %}
-                    <div class="col-lg-12 text-center">
-                        <img class="img-responsive img-portfolio img-hover center-block" src="{{ asset('pictures/Actualites/') }}{{ actu.photo }}" alt="">
-                        <a href="{{ path('actualite', {'id': actu.id}) }}"><h2>{{ actu.titre }}</h2></a>
-                    </div>
-                {% endfor %}
+                <p class="text-justify lead">
+                    {% autoescape 'html' %}
+                        {{ option.motDuPresident|raw }}
+                    {% endautoescape %}</p>
             </div>
         </div>
         <div class="row">
@@ -280,5 +283,11 @@
                 autoplaySpeed: 2000,
             });
         });
+    </script>
+
+    <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
     </script>
 {% endblock %}

@@ -24,6 +24,10 @@ body {
     clear: both;
     display: block;
 }
+footer{
+    margin: 0px !important;
+}
+
 .footer {
     margin-top: 50px;
     background: #EDEFF1;
@@ -815,4 +819,8 @@ input:checked + .slider:before {
 
 .slick-prev:before, .slick-next:before {
     color: black !important;
+}
+
+.carousel-caption a {
+    text-decoration: none;
 }

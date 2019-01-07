@@ -81,3 +81,9 @@ services:
         arguments: [~, AppBundle\Entity\Actualite, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Actualites, group: "actus"}
+
+    admin.option:
+            class: AppBundle\Admin\CustomFieldsAdmin
+            arguments: [~, AppBundle\Entity\CustomFields, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Options, group: "actus"}
