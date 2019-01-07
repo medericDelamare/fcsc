@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ButAdmin extends AbstractAdmin
 {
@@ -33,6 +34,18 @@ class ButAdmin extends AbstractAdmin
             ])
             ->add('penalty', null, [
                 'label' => 'Sur penalty'
+            ])
+            ->add('coupe', ChoiceType::class, [
+                'label' => 'But en coupe',
+                'choices' => [
+                    null => null,
+                    'U15' => 'U15',
+                    'U17' => 'U17',
+                    'U19' => 'U19',
+                    'Senior' => 'Senior',
+                    'cdm' => 'CDM',
+                    'Veteran' => 'Veteran'
+                ]
             ])
         ;
     }

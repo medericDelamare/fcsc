@@ -24,7 +24,7 @@ class But
     /**
      * @var StatsRencontre
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\StatsRencontre", inversedBy="buts")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $statsRencontres;
 
@@ -47,6 +47,12 @@ class But
      * @ORM\Column(type="boolean", nullable=false)
      */
     private $penalty;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $coupe;
 
     /**
      * @return int
@@ -125,6 +131,24 @@ class But
     public function setPenalty($penalty)
     {
         $this->penalty = $penalty;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoupe()
+    {
+        return $this->coupe;
+    }
+
+    /**
+     * @param string $coupe
+     * @return But
+     */
+    public function setCoupe($coupe)
+    {
+        $this->coupe = $coupe;
         return $this;
     }
 }

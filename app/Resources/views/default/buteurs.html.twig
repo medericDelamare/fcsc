@@ -21,7 +21,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <h1>Classements des buteurs<small> Seniors</small></h1>
                         <div class = "row">
                             <table id="buteurs-seniors" class = "text-center tableauButeur table table-responsive">
                                 <thead>
@@ -29,6 +29,7 @@
                                         <th class = "text-center">Nom</th>
                                         <th class = "text-center">Buts en A</th>
                                         <th class = "text-center">Buts en B</th>
+                                        <th class = "text-center">Buts en Coupe</th>
                                         <th class = "text-center">Total</th>
                                     </tr>
                                 </thead>
@@ -38,6 +39,7 @@
                                         <td><a href="{{ path('profile', {'id': senior.id}) }}">{{ senior.nom }} {{ senior.prenom }}</td>
                                         <td>{{ senior.stats.butsA }}</td>
                                         <td>{{ senior.stats.butsB }}</td>
+                                        <td>{{ senior.stats.butsCoupe }}</td>
                                         <td>{{ senior.stats.butsA + senior.stats.butsB + senior.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
@@ -64,6 +66,8 @@
                                     <tr>
                                         <th class = "text-center">Nom</th>
                                         <th class = "text-center">Buts en Championnat</th>
+                                        <th class = "text-center">Buts en Coupe</th>
+                                        <th class = "text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,6 +75,8 @@
                                     <tr>
                                         <td><a href="{{ path('profile', {'id': veteran.id}) }}">{{ veteran.nom }} {{ veteran.prenom }}</td>
                                         <td>{{ veteran.stats.butsA }}</td>
+                                        <td>{{ veteran.stats.butsCoupe }}</td>
+                                        <td>{{ veteran.stats.butsA + veteran.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -96,6 +102,8 @@
                                     <tr>
                                         <th class = "text-center">Nom</th>
                                         <th class = "text-center">Buts en championnat</th>
+                                        <th class = "text-center">Buts en Coupe</th>
+                                        <th class = "text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,6 +111,8 @@
                                     <tr>
                                         <td><a href="{{ path('profile', {'id': cdmInfos.id}) }}">{{ cdmInfos.nom }} {{ cdmInfos.prenom }}</td>
                                         <td>{{ cdmInfos.stats.butsA }}</td>
+                                        <td>{{ cdmInfos.stats.butsCoupe }}</td>
+                                        <td>{{ cdmInfos.stats.butsA + cdmInfos.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -128,6 +138,8 @@
                                     <tr>
                                         <th class = "text-center">Nom</th>
                                         <th class = "text-center">Buts en championnat</th>
+                                        <th class = "text-center">Buts en coupe</th>
+                                        <th class = "text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -135,6 +147,8 @@
                                     <tr>
                                         <td><a href="{{ path('profile', {'id': U19Infos.id}) }}">{{ U19Infos.nom }} {{ U19Infos.prenom }}</td>
                                         <td>{{ U19Infos.stats.butsA }}</td>
+                                        <td>{{ U19Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U19Infos.stats.butsCoupe + U19Infos.stats.butsA }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -161,6 +175,7 @@
                                     <th class = "text-center">Nom</th>
                                     <th class = "text-center">Buts en A</th>
                                     <th class = "text-center">Buts en B</th>
+                                    <th class = "text-center">Buts en Coupe</th>
                                     <th class = "text-center">Total</th>
                                 </tr>
                                 </thead>
@@ -170,6 +185,7 @@
                                         <td><a href="{{ path('profile', {'id': U17Infos.id}) }}">{{ U17Infos.nom }} {{ U17Infos.prenom }}</td>
                                         <td>{{ U17Infos.stats.butsA }}</td>
                                         <td>{{ U17Infos.stats.butsB }}</td>
+                                        <td>{{ U17Infos.stats.butsCoupe }}</td>
                                         <td>{{ U17Infos.stats.butsA + U17Infos.stats.butsB + U17Infos.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
@@ -197,6 +213,7 @@
                                     <th class = "text-center">Nom</th>
                                     <th class = "text-center">Buts en A</th>
                                     <th class = "text-center">Buts en B</th>
+                                    <th class = "text-center">Buts en Coupe</th>
                                     <th class = "text-center">Total</th>
                                 </tr>
                                 </thead>
@@ -206,6 +223,7 @@
                                         <td><a href="{{ path('profile', {'id': U15Infos.id}) }}">{{ U15Infos.nom }} {{ U15Infos.prenom }}</td>
                                         <td>{{ U15Infos.stats.butsA }}</td>
                                         <td>{{ U15Infos.stats.butsB }}</td>
+                                        <td>{{ U15Infos.stats.butsCoupe }}</td>
                                         <td>{{ U15Infos.stats.butsA + U15Infos.stats.butsB + U15Infos.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
