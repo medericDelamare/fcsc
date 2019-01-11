@@ -118,36 +118,13 @@
             <div class="col-lg-12">
                 <h2 class="page-header">Dernières photos</h2>
             </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="https://via.placeholder.com/700x450" data-toggle="lightbox">
-                    <img class="img-responsive img-portfolio img-hover" src="https://via.placeholder.com/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="https://via.placeholder.com/700x450" data-toggle="lightbox">
-                    <img class="img-responsive img-portfolio img-hover" src="https://via.placeholder.com/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="https://via.placeholder.com/700x450" data-toggle="lightbox">
-                    <img class="img-responsive img-portfolio img-hover" src="https://via.placeholder.com/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="https://via.placeholder.com/700x450" data-toggle="lightbox">
-                    <img class="img-responsive img-portfolio img-hover" src="https://via.placeholder.com/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="https://via.placeholder.com/700x450" data-toggle="lightbox">
-                    <img class="img-responsive img-portfolio img-hover" src="https://via.placeholder.com/700x450" alt="">
-                </a>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <a href="https://via.placeholder.com/700x450" data-toggle="lightbox">
-                    <img class="img-responsive img-portfolio img-hover" src="https://via.placeholder.com/700x450" alt="">
-                </a>
-            </div>
+            {% for photo in photos %}
+                <div class="col-md-4 col-sm-6">
+                    <a href="{{ asset('pictures/Accueil/') ~ photo.nom }}" data-toggle="lightbox">
+                        <img class="img-responsive img-portfolio img-hover img-accueil" src="{{ asset('pictures/Accueil/') ~ photo.nom }}" alt="">
+                    </a>
+                </div>
+            {% endfor %}
         </div>
     </div>
 
