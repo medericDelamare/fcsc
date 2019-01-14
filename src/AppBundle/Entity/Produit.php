@@ -51,13 +51,6 @@ class Produit
     private $photo;
 
     /**
-     * @var CategorieProduit
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CategorieProduit")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $categorie;
-
-    /**
      * @var boolean
      * @ORM\Column(type="boolean", nullable=false)
      */
@@ -134,24 +127,6 @@ class Produit
     public function setPhoto($photo)
     {
         $this->photo = $photo;
-        return $this;
-    }
-
-    /**
-     * @return CategorieProduit
-     */
-    public function getCategorie()
-    {
-        return $this->categorie;
-    }
-
-    /**
-     * @param CategorieProduit $categorie
-     * @return Produit
-     */
-    public function setCategorie($categorie)
-    {
-        $this->categorie = $categorie;
         return $this;
     }
 
