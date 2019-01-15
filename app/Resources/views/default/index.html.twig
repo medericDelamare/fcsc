@@ -56,10 +56,34 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-users" aria-hidden="true"></i> Nombre d'équipes E.D.F</h4>
+                        <h4><i class="fa fa-users" aria-hidden="true"></i> Nombre d'équipes</h4>
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
+                            <li class="list-group-item justify-content-between">
+                                Veterans
+                                <span class="badge badge-veterans badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                Matinaux
+                                <span class="badge badge-cdm badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                Seniors
+                                <span class="badge badge-senior badge-pill">2</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U19
+                                <span class="badge badge-U19 badge-pill">1</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U17
+                                <span class="badge badge-U17 badge-pill">2</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                U15
+                                <span class="badge badge-U15 badge-pill">2</span>
+                            </li>
                             <li class="list-group-item justify-content-between">
                                 U13
                                 <span class="badge badge-U13 badge-pill">3</span>
@@ -100,7 +124,7 @@
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><i class="fa fa-calendar" aria-hidden="true"></i> Calendrier des entraînements E.D.F </h4>
+                        <h4><i class="fa fa-calendar" aria-hidden="true"></i> Calendrier des entraînements</h4>
                     </div>
                     <div class="panel-body">
                         <div id='calendar'></div>
@@ -187,7 +211,7 @@
                 allDaySlot: false,
                 defaultView: 'agendaWeek',
                 minTime: '9:00:00',
-                maxTime: '19:00:00',
+                maxTime: '22:00:00',
                 weekends:false,
                 height: 'auto',
                 events: [
@@ -244,6 +268,82 @@
                         end: '18:15',
                         dow: [ 5 ],
                         backgroundColor: '#008B8B'
+                    },
+                    {
+                        start: '18:00',
+                        end: '20:00',
+                        dow: [ 1 ],
+                        backgroundColor: '#4286f4'
+                    },
+                    {
+                        start: '18:00',
+                        end: '20:00',
+                        dow: [ 4 ],
+                        backgroundColor: '#4286f4'
+                    },
+                    {
+                        start: '18:00',
+                        end: '20:00',
+                        dow: [ 2 ],
+                        backgroundColor: '#9d41f4'
+                    },
+                    {
+                        start: '18:00',
+                        end: '20:00',
+                        dow: [ 5 ],
+                        backgroundColor: '#9d41f4'
+                    },
+                    {
+                        start: '18:45',
+                        end: '20:15',
+                        dow: [ 3 ],
+                        backgroundColor: '#1c6323'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 4 ],
+                        backgroundColor: '#1c6323'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 2 ],
+                        backgroundColor: '#ff006a',
+                        title: 'A'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 4 ],
+                        backgroundColor: '#ff006a',
+                        title: 'A'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 3 ],
+                        backgroundColor: '#ff006a',
+                        title: 'B'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 5 ],
+                        backgroundColor: '#ff006a',
+                        title: 'B'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 5 ],
+                        backgroundColor: '#000000'
+                    },
+                    {
+                        start: '20:00',
+                        end: '22:00',
+                        dow: [ 3 ],
+                        backgroundColor: '#7E5835'
                     }
                 ]
             });

@@ -238,20 +238,28 @@ footer{
     display : none;
 }
 
-.badge-seniors{
-    background-color: #ff0000;
+.badge-veterans{
+    background-color: #7E5835;
 }
 
-.badge-U18{
-    background-color: #5472AE;
+.badge-cdm{
+    background-color: #000000;
+}
+
+.badge-senior{
+    background-color: #ff006a;
+}
+
+.badge-U19{
+    background-color: #1c6323;
+}
+
+.badge-U17{
+    background-color: #9d41f4;
 }
 
 .badge-U15{
-    background-color: #4CA66B;
-}
-
-.badge-U15{
-    background-color: #4CA66B;
+    background-color: #4286f4;
 }
 
 .badge-U13{
