@@ -2,7 +2,6 @@
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('js/slick-1.8.1/slick/slick.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('js/slick-1.8.1/slick/slick-theme.css') }}"/>
-    <link href="{{ asset('css/half-slider.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
     <div class="container-fluid img-header">
@@ -13,6 +12,19 @@
     <div class="container">
         <h1 class="page-header">Bienvenue sur le site officiel du FC Saint-Cloud</h1>
 
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Dernières actualités</h2>
+            </div>
+            <div class="your-class col-lg-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
+                {% for actu in actus %}
+                    <div class="col-lg-12 text-center">
+                        <img class="img-responsive img-portfolio img-hover center-block" src="{{ asset('pictures/Actualites/') }}{{ actu.photo }}" alt="">
+                        <a href="{{ path('actualite', {'id': actu.id}) }}"><h2>{{ actu.titre }}</h2></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Les mots du président : Bernard Delaume</h2>
@@ -254,11 +266,5 @@
                 autoplaySpeed: 2000,
             });
         });
-    </script>
-
-    <script>
-        $('.carousel').carousel({
-            interval: 5000 //changes the speed
-        })
     </script>
 {% endblock %}
