@@ -182,14 +182,8 @@ footer{
         width:100%;
     }}
 
-.business-header {
-    height: 400px;
-    background: url('../pictures/test.jpg') center center no-repeat scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    padding-top: 50px;
+.img-header{
+    margin-top: 50px;
 }
 
 .tagline {

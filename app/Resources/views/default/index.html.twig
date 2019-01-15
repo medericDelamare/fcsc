@@ -5,29 +5,11 @@
     <link href="{{ asset('css/half-slider.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    <header id="myCarousel" class="carousel slide">
-
-
-        <div class="carousel-inner">
-            {% for actu in actus %}
-                <div class="item {% if loop.first %}active{% endif %}"  >
-                    <div class="fill" style="background-image:url('{{ asset('pictures/Actualites/') ~ actu.photo }}');"></div>
-                    <div class="carousel-caption">
-                        <a href="{{ path('actualite', {'id': actu.id}) }}"><h2>{{ actu.titre }}</h2></a>
-                    </div>
-                </div>
-            {% endfor %}
+    <div class="container-fluid img-header">
+        <div class="row">
+            <img src="{{ asset('pictures/home-bandeau.png') }}" class="img-responsive">
         </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-
-    </header>
+    </div>
     <div class="container">
         <h1 class="page-header">Bienvenue sur le site officiel du FC Saint-Cloud</h1>
 
