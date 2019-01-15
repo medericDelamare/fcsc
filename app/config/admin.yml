@@ -92,3 +92,8 @@ services:
             arguments: [~, AppBundle\Entity\PhotoAccueil, ~]
             tags:
                 - { name: sonata.admin, manager_type: orm, label: Photos Home, group: "actus"}
+    admin.stage:
+      class: AppBundle\Admin\StagePdfAdmin
+      arguments: [~, AppBundle\Entity\StagePdf, ~]
+      tags:
+      - { name: sonata.admin, manager_type: orm, label: Stages, group: "actus"}

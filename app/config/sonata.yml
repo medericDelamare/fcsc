@@ -34,6 +34,6 @@ sonata_admin:
                     label_catalogue: messages
                     icon:            '<i class="fa fa-lock" aria-hidden="true"></i>'
                 actus:
-                    label:           Actualites & Home
+                    label:           Contribution
                     label_catalogue: messages
                     icon:            '<i class="fa fa-newspaper-o" aria-hidden="true"></i> '
