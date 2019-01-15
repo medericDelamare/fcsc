@@ -20,6 +20,9 @@
             <div class="col-md-12" id="jdm">
                 <div class="row" >
                     {% for produit in produits %}
+                        {% if loop.index is divisible by(3) %}
+                            <div class="row">
+                        {% endif %}
                         <div class="col-sm-4 col-lg-4 col-md-4">
                             <div class="thumbnail">
                                 <img src="{{ asset("pictures/boutique/") ~ produit.photo }}" alt="">
@@ -91,6 +94,9 @@
                                 </div>
                             </div>
                         </div>
+                        {% if loop.index is divisible by(3) %}
+                            </div>>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
