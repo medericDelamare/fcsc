@@ -269,16 +269,30 @@
                                 </tr>
                             {% endfor %}
                             {% for but in joueur.buts%}
-                                <tr>
-                                    <td>{{ but.statsRencontres.rencontre.date|date("d/m/Y")  }}</td>
-                                    <td><img src="{{ asset('pictures/icons/soccer-ball.png') }}"> A marqué lors de <a href="{{ path('rencontre', {'id': but.statsRencontres.rencontre.id}) }}">{{ but.statsRencontres.rencontre  }}</a>{% if but.penalty %} sur penalty {% endif %}</td>
-                                </tr>
+                                {% if but.statsRencontres == null %}
+                                    <tr>
+                                        <td>-</td>
+                                        <td><img src="{{ asset('pictures/icons/soccer.png') }}"> A marqué lors d'un match de coupe</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td>{{ but.statsRencontres.rencontre.date|date("d/m/Y")  }}</td>
+                                        <td><img src="{{ asset('pictures/icons/soccer-ball.png') }}"> A marqué lors de <a href="{{ path('rencontre', {'id': but.statsRencontres.rencontre.id}) }}">{{ but.statsRencontres.rencontre  }}</a>{% if but.penalty %} sur penalty {% endif %}</td>
+                                    </tr>
+                                {% endif  %}
                             {% endfor %}
                             {% for passe in joueur.passes%}
-                                <tr>
-                                    <td>{{ passe.statsRencontres.rencontre.date|date("d/m/Y")  }}</td>
-                                    <td><img src="{{ asset('pictures/icons/soccer.png') }}"> A délivré une passe décisive lors de <a href="{{ path('rencontre', {'id': passe.statsRencontres.rencontre.id}) }}">{{ passe.statsRencontres.rencontre  }}</a></td>
-                                </tr>
+                                {% if passe.statsRencontres == null %}
+                                    <tr>
+                                        <td>-</td>
+                                        <td><img src="{{ asset('pictures/icons/soccer.png') }}"> A délivré une passe décisive lors d'un match de coupe</td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td>{{ passe.statsRencontres.rencontre.date|date("d/m/Y")  }}</td>
+                                        <td><img src="{{ asset('pictures/icons/soccer.png') }}"> A délivré une passe décisive lors de <a href="{{ path('rencontre', {'id': passe.statsRencontres.rencontre.id}) }}">{{ passe.statsRencontres.rencontre  }}</a></td>
+                                    </tr>
+                                {% endif  %}
                             {% endfor %}
                             </tbody>
 
