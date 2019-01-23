@@ -73,7 +73,7 @@ class BoutiqueController extends  Controller
         $message
             ->setSubject('Boutique USCL')
             ->setFrom('contact@uscl-foot.fr')
-            ->setTo([$request->request->get('mail'),'delamare.mederic@gmail.com'])
+            ->setTo([$request->request->get('mail'),'maxime.eyrignoux@north-134.fr'])
             ->setBody($this->render(':default:mail_boutique.html.twig'),'text/html')
         ;
 
