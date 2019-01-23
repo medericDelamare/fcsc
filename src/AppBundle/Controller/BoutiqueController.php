@@ -32,7 +32,7 @@ class BoutiqueController extends  Controller
      * @Template()
      */
     public function sendAction(Request $request){
-        $existingXlsx   = $this->get('phpoffice.spreadsheet')->createSpreadsheet($this->get('kernel')->getRootDir() . '/Resources/documents/BonDeCommande.xlsx');
+        $existingXlsx   = $this->get('phpoffice.spreadsheet')->createSpreadsheet($this->get('kernel')->getRootDir() . '/Resources/Documents/BonDeCommande.xlsx');
 
         $now = new \DateTime();
         $nomFichier = $request->request->get('licencie') . $now->format('d-m-Y') .'.xlsx';
@@ -63,13 +63,13 @@ class BoutiqueController extends  Controller
         }
         $writerXlsx = $this->get('phpoffice.spreadsheet')->createWriter($existingXlsx, 'Xlsx');
 
-        $writerXlsx->save($this->get('kernel')->getRootDir() . '/Resources/documents/commande-'.$nomFichier);
+        $writerXlsx->save($this->get('kernel')->getRootDir() . '/Resources/Documents/commande-'.$nomFichier);
         $produits = $this->getDoctrine()->getRepository(Produit::class)->findAll();
         $licencies = $this->getDoctrine()->getRepository(Licencie::class)->findAll();
 
 
         $message = new \Swift_Message();
-        $message->attach(\Swift_Attachment::fromPath($this->get('kernel')->getRootDir() . '/Resources/documents/commande-'.$nomFichier));
+        $message->attach(\Swift_Attachment::fromPath($this->get('kernel')->getRootDir() . '/Resources/Documents/commande-'.$nomFichier));
         $message
             ->setSubject('Boutique USCL')
             ->setFrom('contact@uscl-foot.fr')
