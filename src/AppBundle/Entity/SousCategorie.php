@@ -29,7 +29,7 @@ class SousCategorie
 
     /**
      * @var Categorie
-     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="sousCategories")
      * @ORM\JoinColumn(nullable=true)
      */
     private $categorie;

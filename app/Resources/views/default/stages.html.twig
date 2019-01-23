@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="index.php">Accueil</a></li>
+        <li class="active">Stages</li>
+    </ol>
+    <div class="container">
+        <h1 class = "page-header">Inscriptions aux stages</h1>
+
+        <h3 class="text-center">Voici les formulaires d’inscriptions aux différents stages.</h3><br><br>
+
+        <div class="list-group">
+            {% for stage in stages %}
+                <a href="{{ asset('documents/Stages/') ~ stage.nom }}" class="list-group-item" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                     {{ stage.nom }}</a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

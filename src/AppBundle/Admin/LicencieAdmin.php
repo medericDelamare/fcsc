@@ -4,7 +4,11 @@
 namespace AppBundle\Admin;
 
 
+use AppBundle\Entity\Categorie;
+use AppBundle\Entity\Licencie;
 use AppBundle\Entity\Poste;
+use AppBundle\Entity\SousCategorie;
+use Doctrine\ORM\Query;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -13,6 +17,14 @@ use Symfony\Component\HttpKernel\Kernel;
 
 class LicencieAdmin extends AbstractAdmin
 {
+    private $cat;
+
+    public $nbLicencieSansPoste = 0;
+
+    public function setCategorie($cat){
+        $this->cat = $cat;
+    }
+
     protected $datagridValues = array(
         '_page' => 1,
         '_sort_order' => 'ASC',
@@ -123,11 +135,27 @@ class LicencieAdmin extends AbstractAdmin
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
+        $em = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager();
+        $sousCategories = $em->getRepository(SousCategorie::class)->findAll();
+
+        $categories = [];
+        /** @var SousCategorie $sousCategory */
+        foreach ($sousCategories as $sousCategory) {
+            $categories[$sousCategory->getNom()] = $sousCategory->getNom();
+        }
+
         $datagridMapper
             ->add('nom')
             ->add('prenom')
             ->add('stats.poste')
-            ->add('categorie');
+            ->add('categorie', 'doctrine_orm_choice', array('label' => 'Categorie',
+                'field_options' => array(
+                    'required' => false,
+                    'choices' => $categories,
+                    'multiple' => true,
+                ),
+                'field_type' => 'choice'
+            ));;
     }
 
     protected function configureListFields(ListMapper $listMapper)
@@ -136,7 +164,46 @@ class LicencieAdmin extends AbstractAdmin
             ->addIdentifier('nom')
             ->add('prenom')
             ->add('categorie')
-            ->add('stats.poste')
+            ->add('stats.poste', null, [
+                'label' => 'Poste'
+            ])
             ->add('numeroLicence');
+    }
+
+    public function createQuery($context = 'list')
+    {
+        $nbLicencieSansPoste = 0;
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
+        $currentUser = $this->getConfigurationPool()->getContainer()->get('security.token_storage')->getToken()->getUser();
+
+
+        $categories = $em->getRepository(Categorie::class)->findAll();
+        $sousCategories = [];
+        foreach ($currentUser->getRoles() as $role){
+            /** @var Categorie $categorie */
+            foreach ($categories as $categorie){
+                if ($role == $categorie->getRole()){
+                    foreach ($categorie->getSousCategories() as $sousCategorie){
+                        $sousCategories[] = $sousCategorie->getNom();
+                    }
+                }
+            }
+        }
+        $query = parent::createQuery($context);
+        $query->andWhere(
+            $query->expr()->in($query->getRootAliases()[0] . '.categorie', ':my_param')
+        );
+        $query->setParameter('my_param', $sousCategories);
+
+        /** @var Licencie $licencie */
+        foreach ($query->execute() as $licencie){
+            if (is_null($licencie->getStats()) || ($licencie->getStats() && is_null($licencie->getStats()->getPoste()))){
+                $nbLicencieSansPoste ++;
+            }
+        }
+
+        $this->nbLicencieSansPoste = $nbLicencieSansPoste;
+
+        return $query;
     }
 }

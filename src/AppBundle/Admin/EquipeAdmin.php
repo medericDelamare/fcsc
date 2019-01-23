@@ -17,33 +17,21 @@ class EquipeAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nomParse')
-            ->add('nom',null,[])
-            ->add('categorie', ChoiceType::class, [
-                'choices' => [
-                    'Equipe A' => 'seniorA',
-                    'Equipe B' => 'seniorB',
-                    'U18' => 'U18',
-                    'U15' => 'U15',
-                    'U13 A' => 'U13A',
-                    'U13 B' => 'U13B',
-                    'Veterans A' => 'veteranA',
-                    'Veterans B' => 'veteranB',
-                    'Coupe de France' => 'coupeDeFrance',
-                    'Coupe de Normandie' => 'coupeDeNormandie',
-                    'Coupe de l\'Eure' => 'coupeEure',
-                    'Coupe U18' => 'coupeU18',
-                    'Coupe U15' => 'coupeU15',
-                    'Coupe Veterans' => 'coupeVeterans',
-                    'Coupe Des Reserves' => 'coupeReserves',
-                ]
-            ])
+            ->add('groupe')
+            ->add('division')
             ->add('club')
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-
+        $datagridMapper
+            ->add('nomParse')
+            ->add('groupe')
+            ->add('division')
+            ->add('club')
+            ->add('categorie')
+            ;
     }
 
     protected function configureListFields(ListMapper $listMapper)

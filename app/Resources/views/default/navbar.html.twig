@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('homepage') }}">USCL</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}">FCSC</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -25,7 +25,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('effectif', {'category': 'Veteran'} ) }}">Vétérans</a></li>
                         <li><a href="{{ path('effectif', {'category': 'Senior'} ) }}">Seniors</a></li>
-                        <li><a href="{{ path('effectif', {'category': 'U18'} ) }}">U18</a></li>
+                        <li><a href="{{ path('effectif', {'category': 'U19'} ) }}">U19</a></li>
+                        <li><a href="{{ path('effectif', {'category': 'U17'} ) }}">U17</a></li>
                         <li><a href="{{ path('effectif', {'category': 'U15'} ) }}">U15</a></li>
                         <li><a href="{{ path('effectif', {'category': 'U13'} ) }}">U13</a></li>
                         <li><a href="{{ path('effectif', {'category': 'Football-animation'} ) }}">Football d'animation</a></li>
@@ -36,16 +37,24 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('statistiques', {'category': 'seniorA'} ) }}">Seniors A</a></li>
                         <li><a href="{{ path('statistiques', {'category': 'seniorB'} ) }}">Seniors B</a></li>
-                        <li><a href="{{ path('statistiques', {'category': 'veteranA'} ) }}">Veterans A</a></li>
-                        <li><a href="{{ path('statistiques', {'category': 'veteranB'} ) }}">Veterans B</a></li>
-                        <li><a href="{{ path('statistiques', {'category': 'U18'} ) }}">U18</a></li>
-                        <li><a href="{{ path('statistiques', {'category': 'U15'} ) }}">U15</a></li>
-                        <li><a href="{{ path('statistiques', {'category': 'U13A'} ) }}">U13 A</a></li>
-                        <li><a href="{{ path('statistiques', {'category': 'U13B'} ) }}">U13 B</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'veteran'} ) }}">Veterans</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'cdm'} ) }}">Matinaux</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'U19'} ) }}">U19</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'U17A'} ) }}">U17 A</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'U17B'} ) }}">U17 B</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'U15A'} ) }}">U15 A</a></li>
+                        <li><a href="{{ path('statistiques', {'category': 'U15B'} ) }}">U15 B</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ path('buteurs') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Buteurs</a></li>
                 <li><a href="{{ path('boutique-liste') }}"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Boutique</a></li>
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscriptions <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ path('stages') }}">Inscriptions aux stages</a></li>
+                        <li><a href="https://inscriptions.clicktoclub.com/?id=ylmttkuWMg5a0es5n3rO">Inscriptions en ligne</a></li>
+                    </ul>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}

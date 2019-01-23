@@ -32,16 +32,9 @@ class User extends BaseUser
      */
     private $lastName;
 
-    /**
-     * @var ArrayCollection
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\ClubFifa")
-     */
-    private $clubFifa;
-
     public function __construct()
     {
         parent::__construct();
-        $this->clubFifa = new ArrayCollection();
     }
 
     /**
@@ -50,24 +43,6 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getClubFifa()
-    {
-        return $this->clubFifa;
-    }
-
-    /**
-     * @param ArrayCollection $clubFifa
-     * @return User
-     */
-    public function setClubFifa($clubFifa)
-    {
-        $this->clubFifa = $clubFifa;
-        return $this;
     }
 
     /**

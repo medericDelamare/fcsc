@@ -2,7 +2,7 @@
     <tr class="align-middle">
         <td class="col-xs-3 col-lg-1">{{ calendrierDetail.date|date("d/m/Y") }}</td>
         {% if calendrierDetail.equipeDomicile.club %}
-            <td class="col-xs-3 col-lg-5 equipeGauche"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ calendrierDetail.equipeDomicile.club.logo) }}"><span class="hidden-xs"> -{{ calendrierDetail.equipeDomicile.club.nom }}</span></td>
+            <td class="col-xs-3 col-lg-5 equipeGauche"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ calendrierDetail.equipeDomicile.club.logo) }}"><span class="hidden-xs"> -{{ calendrierDetail.equipeDomicile.nomParse }}</span></td>
         {% else %}
             <td class="equipeGauche">{{ calendrierDetail.equipeDomicile.nomParse }}</td>
         {% endif %}
@@ -18,7 +18,7 @@
         {% endif %}
 
         {% if calendrierDetail.equipeExterieure.club %}
-            <td class="col-xs-3 col-lg-5 equipeDroite"><span class="hidden-xs">{{ calendrierDetail.equipeExterieure.club.nom }} - </span><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ calendrierDetail.equipeExterieure.club.logo) }}"></td>
+            <td class="col-xs-3 col-lg-5 equipeDroite"><span class="hidden-xs">{{ calendrierDetail.equipeExterieure.nomParse }} - </span><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ calendrierDetail.equipeExterieure.club.logo) }}"></td>
         {% else %}
             <td class="equipeDroite">{{ calendrierDetail.equipeExterieure.nomParse }}</td>
         {% endif %}

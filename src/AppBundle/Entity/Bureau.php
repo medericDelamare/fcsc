@@ -36,18 +36,6 @@ class Bureau
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $vicePresident2;
-
-    /**
-     * @var Licencie
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
-     */
-    private $vicePresident3;
-
-    /**
-     * @var Licencie
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
-     */
     private $secretaire;
 
     /**
@@ -60,13 +48,7 @@ class Bureau
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $responsablePoleJeunes;
-
-    /**
-     * @var Licencie
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
-     */
-    private $responsablePoleSeniors;
+    private $responsableEquipement;
 
     /**
      * @var Licencie
@@ -84,19 +66,37 @@ class Bureau
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $responsableU18;
+    private $responsableVeterans;
 
     /**
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $responsabeU15;
+    private $responsableCdm;
 
     /**
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $responsableU13;
+    private $responsableU19;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $responsableU17;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $responsableU15;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $responsableU12U13;
 
     /**
      * @var Licencie
@@ -108,13 +108,48 @@ class Bureau
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $responsableU9;
+    private $responsableU10;
 
     /**
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
-    private $responsableU7;
+    private $responsableU6U9;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $responsablePoleFeminin;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $responsableGardiens;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $membre1;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $membre2;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $membre3;
+
+
+
+
+
 
     /**
      * @return int
@@ -163,42 +198,6 @@ class Bureau
     /**
      * @return Licencie
      */
-    public function getVicePresident2()
-    {
-        return $this->vicePresident2;
-    }
-
-    /**
-     * @param Licencie $vicePresident2
-     * @return Bureau
-     */
-    public function setVicePresident2($vicePresident2)
-    {
-        $this->vicePresident2 = $vicePresident2;
-        return $this;
-    }
-
-    /**
-     * @return Licencie
-     */
-    public function getVicePresident3()
-    {
-        return $this->vicePresident3;
-    }
-
-    /**
-     * @param Licencie $vicePresident3
-     * @return Bureau
-     */
-    public function setVicePresident3($vicePresident3)
-    {
-        $this->vicePresident3 = $vicePresident3;
-        return $this;
-    }
-
-    /**
-     * @return Licencie
-     */
     public function getSecretaire()
     {
         return $this->secretaire;
@@ -229,42 +228,6 @@ class Bureau
     public function setTresorier($tresorier)
     {
         $this->tresorier = $tresorier;
-        return $this;
-    }
-
-    /**
-     * @return Licencie
-     */
-    public function getResponsablePoleJeunes()
-    {
-        return $this->responsablePoleJeunes;
-    }
-
-    /**
-     * @param Licencie $responsablePoleJeunes
-     * @return Bureau
-     */
-    public function setResponsablePoleJeunes($responsablePoleJeunes)
-    {
-        $this->responsablePoleJeunes = $responsablePoleJeunes;
-        return $this;
-    }
-
-    /**
-     * @return Licencie
-     */
-    public function getResponsablePoleSeniors()
-    {
-        return $this->responsablePoleSeniors;
-    }
-
-    /**
-     * @param Licencie $responsablePoleSeniors
-     * @return Bureau
-     */
-    public function setResponsablePoleSeniors($responsablePoleSeniors)
-    {
-        $this->responsablePoleSeniors = $responsablePoleSeniors;
         return $this;
     }
 
@@ -307,54 +270,108 @@ class Bureau
     /**
      * @return Licencie
      */
-    public function getResponsableU18()
+    public function getResponsableVeterans()
     {
-        return $this->responsableU18;
+        return $this->responsableVeterans;
     }
 
     /**
-     * @param Licencie $responsableU18
+     * @param Licencie $responsableVeterans
      * @return Bureau
      */
-    public function setResponsableU18($responsableU18)
+    public function setResponsableVeterans($responsableVeterans)
     {
-        $this->responsableU18 = $responsableU18;
+        $this->responsableVeterans = $responsableVeterans;
         return $this;
     }
 
     /**
      * @return Licencie
      */
-    public function getResponsabeU15()
+    public function getResponsableCdm()
     {
-        return $this->responsabeU15;
+        return $this->responsableCdm;
     }
 
     /**
-     * @param Licencie $responsabeU15
+     * @param Licencie $responsableCdm
      * @return Bureau
      */
-    public function setResponsabeU15($responsabeU15)
+    public function setResponsableCdm($responsableCdm)
     {
-        $this->responsabeU15 = $responsabeU15;
+        $this->responsableCdm = $responsableCdm;
         return $this;
     }
 
     /**
      * @return Licencie
      */
-    public function getResponsableU13()
+    public function getResponsableU19()
     {
-        return $this->responsableU13;
+        return $this->responsableU19;
     }
 
     /**
-     * @param Licencie $responsableU13
+     * @param Licencie $responsableU19
      * @return Bureau
      */
-    public function setResponsableU13($responsableU13)
+    public function setResponsableU19($responsableU19)
     {
-        $this->responsableU13 = $responsableU13;
+        $this->responsableU19 = $responsableU19;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getResponsableU17()
+    {
+        return $this->responsableU17;
+    }
+
+    /**
+     * @param Licencie $responsableU17
+     * @return Bureau
+     */
+    public function setResponsableU17($responsableU17)
+    {
+        $this->responsableU17 = $responsableU17;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getResponsableU15()
+    {
+        return $this->responsableU15;
+    }
+
+    /**
+     * @param Licencie $responsableU15
+     * @return Bureau
+     */
+    public function setResponsableU15($responsableU15)
+    {
+        $this->responsableU15 = $responsableU15;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getResponsableU12U13()
+    {
+        return $this->responsableU12U13;
+    }
+
+    /**
+     * @param Licencie $responsableU12U13
+     * @return Bureau
+     */
+    public function setResponsableU12U13($responsableU12U13)
+    {
+        $this->responsableU12U13 = $responsableU12U13;
         return $this;
     }
 
@@ -379,37 +396,144 @@ class Bureau
     /**
      * @return Licencie
      */
-    public function getResponsableU9()
+    public function getResponsableU10()
     {
-        return $this->responsableU9;
+        return $this->responsableU10;
     }
 
     /**
-     * @param Licencie $responsableU9
+     * @param Licencie $responsableU10
      * @return Bureau
      */
-    public function setResponsableU9($responsableU9)
+    public function setResponsableU10($responsableU10)
     {
-        $this->responsableU9 = $responsableU9;
+        $this->responsableU10 = $responsableU10;
         return $this;
     }
 
     /**
      * @return Licencie
      */
-    public function getResponsableU7()
+    public function getResponsableU6U9()
     {
-        return $this->responsableU7;
+        return $this->responsableU6U9;
     }
 
     /**
-     * @param Licencie $responsableU7
+     * @param Licencie $responsableU6U9
      * @return Bureau
      */
-    public function setResponsableU7($responsableU7)
+    public function setResponsableU6U9($responsableU6U9)
     {
-        $this->responsableU7 = $responsableU7;
+        $this->responsableU6U9 = $responsableU6U9;
         return $this;
     }
 
+    /**
+     * @return Licencie
+     */
+    public function getResponsablePoleFeminin()
+    {
+        return $this->responsablePoleFeminin;
+    }
+
+    /**
+     * @param Licencie $responsablePoleFeminin
+     * @return Bureau
+     */
+    public function setResponsablePoleFeminin($responsablePoleFeminin)
+    {
+        $this->responsablePoleFeminin = $responsablePoleFeminin;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getResponsableGardiens()
+    {
+        return $this->responsableGardiens;
+    }
+
+    /**
+     * @param Licencie $responsableGardiens
+     * @return Bureau
+     */
+    public function setResponsableGardiens($responsableGardiens)
+    {
+        $this->responsableGardiens = $responsableGardiens;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getResponsableEquipement()
+    {
+        return $this->responsableEquipement;
+    }
+
+    /**
+     * @param Licencie $responsableEquipement
+     * @return Bureau
+     */
+    public function setResponsableEquipement($responsableEquipement)
+    {
+        $this->responsableEquipement = $responsableEquipement;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getMembre1()
+    {
+        return $this->membre1;
+    }
+
+    /**
+     * @param Licencie $membre1
+     * @return Bureau
+     */
+    public function setMembre1($membre1)
+    {
+        $this->membre1 = $membre1;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getMembre2()
+    {
+        return $this->membre2;
+    }
+
+    /**
+     * @param Licencie $membre2
+     * @return Bureau
+     */
+    public function setMembre2($membre2)
+    {
+        $this->membre2 = $membre2;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getMembre3()
+    {
+        return $this->membre3;
+    }
+
+    /**
+     * @param Licencie $membre3
+     * @return Bureau
+     */
+    public function setMembre3($membre3)
+    {
+        $this->membre3 = $membre3;
+        return $this;
+    }
 }

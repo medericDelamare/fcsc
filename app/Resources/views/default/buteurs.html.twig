@@ -21,7 +21,7 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <h1>Classements des buteurs<small> Seniors</small></h1>
                         <div class = "row">
                             <table id="buteurs-seniors" class = "text-center tableauButeur table table-responsive">
                                 <thead>
@@ -59,14 +59,13 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
-                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <h1>Classements des buteurs<small> 	Veterans</small></h1>
                         <div class = "row">
                             <table id="buteurs-veterans" class = "text-center tableauButeur table table-responsive">
                                 <thead>
                                     <tr>
                                         <th class = "text-center">Nom</th>
-                                        <th class = "text-center">Buts en A</th>
-                                        <th class = "text-center">Buts en B</th>
+                                        <th class = "text-center">Buts en Championnat</th>
                                         <th class = "text-center">Buts en Coupe</th>
                                         <th class = "text-center">Total</th>
                                     </tr>
@@ -76,9 +75,8 @@
                                     <tr>
                                         <td><a href="{{ path('profile', {'id': veteran.id}) }}">{{ veteran.nom }} {{ veteran.prenom }}</td>
                                         <td>{{ veteran.stats.butsA }}</td>
-                                        <td>{{ veteran.stats.butsB }}</td>
                                         <td>{{ veteran.stats.butsCoupe }}</td>
-                                        <td>{{ veteran.stats.butsA + veteran.stats.butsB + veteran.stats.butsCoupe }}</td>
+                                        <td>{{ veteran.stats.butsA + veteran.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -91,30 +89,30 @@
                 <div class="panel-heading" role="tab" id="headingThree">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                            Buteurs U18
+                            Buteurs Champ. Dimanche Matin
                         </a>
                     </h4>
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-                        <h1>Classements des buteurs<small> 	U18</small></h1>
+                        <h1>Classements des buteurs<small> 	Champ. Dimanche Matin</small></h1>
                         <div class = "row">
                             <table class = "text-center tableauButeur3Colonnes table table-responsive">
                                 <thead>
                                     <tr>
                                         <th class = "text-center">Nom</th>
                                         <th class = "text-center">Buts en championnat</th>
-                                        <th class = "text-center">Buts en coupe</th>
-                                        <th class = "text-center">Nombre de buts</th>
+                                        <th class = "text-center">Buts en Coupe</th>
+                                        <th class = "text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {% for U18Infos in U18 %}
+                                {% for cdmInfos in cdm %}
                                     <tr>
-                                        <td><a href="{{ path('profile', {'id': U18Infos.id}) }}">{{ U18Infos.nom }} {{ U18Infos.prenom }}</td>
-                                        <td>{{ U18Infos.stats.butsA }}</td>
-                                        <td>{{ U18Infos.stats.butsCoupe }}</td>
-                                        <td>{{ U18Infos.stats.butsCoupe + U18Infos.stats.butsA  }}</td>
+                                        <td><a href="{{ path('profile', {'id': cdmInfos.id}) }}">{{ cdmInfos.nom }} {{ cdmInfos.prenom }}</td>
+                                        <td>{{ cdmInfos.stats.butsA }}</td>
+                                        <td>{{ cdmInfos.stats.butsCoupe }}</td>
+                                        <td>{{ cdmInfos.stats.butsA + cdmInfos.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -127,13 +125,13 @@
                 <div class="panel-heading" role="tab" id="headingFour">
                     <h4 class="panel-title">
                         <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                            Buteurs U15
+                            Buteurs U19
                         </a>
                     </h4>
                 </div>
                 <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                     <div class="panel-body">
-                        <h1>Classements des buteurs<small> 	U15</small></h1>
+                        <h1>Classements des buteurs<small> 	U19</small></h1>
                         <div class = "row">
                             <table class = "text-center tableauButeur3Colonnes table table-responsive">
                                 <thead>
@@ -141,16 +139,16 @@
                                         <th class = "text-center">Nom</th>
                                         <th class = "text-center">Buts en championnat</th>
                                         <th class = "text-center">Buts en coupe</th>
-                                        <th class = "text-center">Nombre de buts</th>
+                                        <th class = "text-center">Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {% for U15Infos in U15 %}
+                                {% for U19Infos in U19 %}
                                     <tr>
-                                        <td><a href="{{ path('profile', {'id': U15Infos.id}) }}">{{ U15Infos.nom }} {{ U15Infos.prenom }}</td>
-                                        <td>{{ U15Infos.stats.butsA }}</td>
-                                        <td>{{ U15Infos.stats.butsCoupe }}</td>
-                                        <td>{{ U15Infos.stats.butsCoupe + U15Infos.stats.butsA  }}</td>
+                                        <td><a href="{{ path('profile', {'id': U19Infos.id}) }}">{{ U19Infos.nom }} {{ U19Infos.prenom }}</td>
+                                        <td>{{ U19Infos.stats.butsA }}</td>
+                                        <td>{{ U19Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U19Infos.stats.butsCoupe + U19Infos.stats.butsA }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
@@ -163,13 +161,13 @@
                 <div class="panel-heading" role="tab" id="headingFive">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            Buteurs U13
+                            Buteurs U17
                         </a>
                     </h4>
                 </div>
                 <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                     <div class="panel-body">
-                        <h1>Classements des buteurs<small> 	Seniors</small></h1>
+                        <h1>Classements des buteurs<small> 	U17</small></h1>
                         <div class = "row">
                             <table id="buteurs-veterans" class = "text-center tableauButeur table table-responsive">
                                 <thead>
@@ -182,13 +180,51 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for U13Infos in U13 %}
+                                {% for U17Infos in U17 %}
                                     <tr>
-                                        <td><a href="{{ path('profile', {'id': U13Infos.id}) }}">{{ U13Infos.nom }} {{ U13Infos.prenom }}</td>
-                                        <td>{{ U13Infos.stats.butsA }}</td>
-                                        <td>{{ U13Infos.stats.butsB }}</td>
-                                        <td>{{ U13Infos.stats.butsCoupe }}</td>
-                                        <td>{{ U13Infos.stats.butsA + U13Infos.stats.butsB + U13Infos.stats.butsCoupe }}</td>
+                                        <td><a href="{{ path('profile', {'id': U17Infos.id}) }}">{{ U17Infos.nom }} {{ U17Infos.prenom }}</td>
+                                        <td>{{ U17Infos.stats.butsA }}</td>
+                                        <td>{{ U17Infos.stats.butsB }}</td>
+                                        <td>{{ U17Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U17Infos.stats.butsA + U17Infos.stats.butsB + U17Infos.stats.butsCoupe }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-uscl">
+                <div class="panel-heading" role="tab" id="headingSix">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            Buteurs U15
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                    <div class="panel-body">
+                        <h1>Classements des buteurs<small> 	U15</small></h1>
+                        <div class = "row">
+                            <table id="buteurs-veterans" class = "text-center tableauButeur table table-responsive">
+                                <thead>
+                                <tr>
+                                    <th class = "text-center">Nom</th>
+                                    <th class = "text-center">Buts en A</th>
+                                    <th class = "text-center">Buts en B</th>
+                                    <th class = "text-center">Buts en Coupe</th>
+                                    <th class = "text-center">Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for U15Infos in U15 %}
+                                    <tr>
+                                        <td><a href="{{ path('profile', {'id': U15Infos.id}) }}">{{ U15Infos.nom }} {{ U15Infos.prenom }}</td>
+                                        <td>{{ U15Infos.stats.butsA }}</td>
+                                        <td>{{ U15Infos.stats.butsB }}</td>
+                                        <td>{{ U15Infos.stats.butsCoupe }}</td>
+                                        <td>{{ U15Infos.stats.butsA + U15Infos.stats.butsB + U15Infos.stats.butsCoupe }}</td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

@@ -12,61 +12,61 @@ class StatsEquipe
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $points;
+    private $points = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $journees;
+    private $journees = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $victoires;
+    private $victoires = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $nuls;
+    private $nuls = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $defaites;
+    private $defaites = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $forfaits;
+    private $forfaits = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $butsPour;
+    private $butsPour = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $butsContre;
+    private $butsContre = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $penalites;
+    private $penalites = 0;
 
     /**
      * @var int
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $difference;
+    private $difference = 0;
 
     /**
      * @return int
@@ -301,7 +301,7 @@ class StatsEquipe
     public function computeVictoire($butsPour, $butsContre){
         $this
             ->addVictoire()
-            ->addPoints(4)
+            ->addPoints(3)
             ->addJournee()
             ->addButsPour($butsPour)
             ->addButsContre($butsContre)
@@ -313,7 +313,7 @@ class StatsEquipe
     public function computeDefaite($butsPour, $butsContre){
         $this
             ->addDefaite()
-            ->addPoints(1)
+            ->addPoints(0)
             ->addJournee()
             ->addButsPour($butsPour)
             ->addButsContre($butsContre)
@@ -325,11 +325,11 @@ class StatsEquipe
     public function computeForfaitPour(){
         $this
             ->addVictoire()
-            ->addPoints(4)
+            ->addPoints(3)
             ->addJournee()
-            ->addButsPour(3)
+            ->addButsPour(5)
             ->addButsContre(0)
-            ->addDifference(3);
+            ->addDifference(5);
 
         return $this;
     }
@@ -337,12 +337,12 @@ class StatsEquipe
     public function computeForfaitContre(){
         $this
             ->addDefaite()
-            ->addPoints(0)
+            ->addPoints(-1)
             ->addJournee()
             ->addForfait()
             ->addButsPour(0)
-            ->addButsContre(3)
-            ->addDifference(-3);
+            ->addButsContre(5)
+            ->addDifference(-5);
 
         return $this;
     }
@@ -350,7 +350,7 @@ class StatsEquipe
     public function computeNul($butsPour, $butsContre){
         $this
             ->addNul()
-            ->addPoints(2)
+            ->addPoints(1)
             ->addJournee()
             ->addButsPour($butsPour)
             ->addButsContre($butsContre);

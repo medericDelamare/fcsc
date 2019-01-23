@@ -18,17 +18,11 @@ class BoutiqueController extends  Controller
      */
     public function showAction()
     {
-        $produitsJDM = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(1);
-        $produitsEntrainement = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(2);
-        $produitsAccessoires = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(3);
-        $produitsDirigeant = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(4);
+        $produits = $this->getDoctrine()->getRepository(Produit::class)->findAll();
         $licencies = $this->getDoctrine()->getRepository(Licencie::class)->findAll();
 
         return $this->render(':default:boutique.html.twig', [
-            'jourDeMatch'=> $produitsJDM,
-            'entrainement'=> $produitsEntrainement,
-            'accessoires'=> $produitsAccessoires,
-            'dirigeant'=> $produitsDirigeant,
+            'produits' => $produits,
             'licencies' =>$licencies
         ]);
     }
@@ -81,10 +75,7 @@ class BoutiqueController extends  Controller
 
         $writerXlsx = $this->get('phpoffice.spreadsheet')->createWriter($existingXlsx, 'Xlsx');
         $writerXlsx->save($this->get('kernel')->getRootDir() . '/Resources/documents/commande-'.$nomFichier);
-        $produitsJDM = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(1);
-        $produitsEntrainement = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(2);
-        $produitsAccessoires = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(3);
-        $produitsDirigeant = $this->getDoctrine()->getRepository(Produit::class)->findByCategorie(4);
+        $produits = $this->getDoctrine()->getRepository(Produit::class)->findAll();
         $licencies = $this->getDoctrine()->getRepository(Licencie::class)->findAll();
 
 
@@ -100,10 +91,7 @@ class BoutiqueController extends  Controller
         $this->get('mailer')->send($message);
 
         return $this->render(':default:boutique.html.twig', [
-            'jourDeMatch'=> $produitsJDM,
-            'entrainement'=> $produitsEntrainement,
-            'accessoires'=> $produitsAccessoires,
-            'dirigeant'=> $produitsDirigeant,
+            'produits'=> $produits,
             'licencies' =>$licencies
         ]);
     }

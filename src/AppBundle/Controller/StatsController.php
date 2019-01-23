@@ -41,48 +41,24 @@ class StatsController extends Controller
         }
 
 
-        $cormeilles = null;
+        $fcsc = null;
+        $groupe = null;
+        $division = null;
 
         /** @var Equipe $equipe */
         foreach ($distinctEquipes as $equipe){
-            if (strstr($equipe->getNomParse(),'CORM')){
-                $cormeilles = $equipe;
+            if ($equipe->getClub() && $equipe->getClub()->getId() == 1){
+                $fcsc = $equipe;
             }
-        }
 
-        switch ($category){
-            case 'seniorA':
-                $division = 'Departemental 3';
-                $groupe = 'A';
-                break;
-            case 'seniorB':
-                $division = 'Departemental 4';
-                $groupe = 'A';
-                break;
-            case 'veteranA':
-                $division = 'CRITERIUM DU MATIN';
-                $groupe = 'H';
-                break;
-            case 'veteranB':
-                $division = 'CRITERIUM DU MATIN';
-                $groupe = 'G';
-                break;
-            case 'U18':
-                $division = 'Departemental 3';
-                $groupe = 'A';
-                break;
-            case 'U15':
-                $division = 'Departemental 3';
-                $groupe = 'A';
-                break;
-            case 'U13A':
-                $division = 'Departemental 4';
-                $groupe = 'A';
-                break;
-            case 'U13B':
-                $division = 'Departemental 4';
-                $groupe = 'B';
-                break;
+            if ($equipe->getGroupe()){
+                $groupe = $equipe->getGroupe();
+            }
+
+            if ($equipe->getDivision()){
+                $division = $equipe->getDivision();
+            }
+
         }
 
         $categoryFormat = ucfirst($category);
@@ -95,7 +71,7 @@ class StatsController extends Controller
             'agendas' => $agendas,
             'calendrier' => $calendrier,
             'equipeListe' => $distinctEquipes,
-            'cormeilles' => $cormeilles,
+            'fcsc' => $fcsc,
             'classement_par_journee' => $classementTriParEquipe,
             'nb_journees' => $nbJournees,
             'division' => $division,

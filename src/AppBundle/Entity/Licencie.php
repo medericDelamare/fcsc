@@ -157,6 +157,7 @@ class Licencie
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\HistoriqueStats", mappedBy="licencie", cascade={"persist"})
+     * @ORM\OrderBy({"saison" = "ASC"})
      *
      */
     private $historiqueStats;

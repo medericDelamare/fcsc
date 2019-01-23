@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="index.php">Accueil</a></li>
+        <li class="active">Actualités</li>
+        <li class="active">{{ actu.titre }}</li>
+    </ol>
+
+    <div class="container">
+        <div class="row">
+            <h1 class="page-header">{{ actu.titre }}</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive center-block" src="{{ asset('pictures/Actualites/') }}{{ actu.photo }}">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12">
+                {% autoescape 'html' %}
+                    {{ actu.contenu|raw }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

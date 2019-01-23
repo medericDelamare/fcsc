@@ -8,215 +8,33 @@
 
 <div class="container">
     <h1 class = "page-header">Résponsables par catégories</h1>
-    <div class="row margin-bottom">
-        <div class="col-sm-6">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Séniors A</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableSeniorA.photo }}" class="img-rounded" alt="Responsive image">
-                        </div>
+        <div class="row margin-bottom">
+            {% for responsable in responsables %}
+            <div class="col-sm-6 col-md-6">
+                <div class="panel panel-uscl">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ responsable.titre }}</h3>
                     </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableSeniorA.nomComplet }}</h4>
+                    <div class="panel-body row">
+                        <div class="row">
+                            <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
+                                <img src="{{ responsable.licencie.photo }}" class="img-rounded" alt="Responsive image">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableSeniorA.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableSeniorA.telephonePortable}}</h4>
+                        <div class="row">
+                            <div class="text-center">
+                                <h4>{{ responsable.licencie.nomComplet }}</h4>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Séniors B</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableSeniorB.photo }}" class="img-rounded" alt="{{ bureau.responsableSeniorB.nomComplet }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableSeniorB.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableSeniorB.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableSeniorB.telephonePortable}}</h4>
-                        </div>
+                            <div class="row">
+                                <div class="text-center">
+                                     <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <a href="tel:{{ responsable.licencie.telephonePortable}}">{{ responsable.licencie.telephonePortable}}</a></h4>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-    </div>
-    <div class="row margin-bottom">
-        <div class="col-sm-4 margin-bottom">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">U18</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableU18.photo }}" class="img-rounded" alt="{{ bureau.responsableU18.nom }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableU18.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableU18.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableU18.telephonePortable }}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 margin-bottom">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">U15</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsabeU15.photo }}" class="img-rounded" alt="{{ bureau.responsabeU15.nomComplet}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsabeU15.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsabeU15.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsabeU15.telephonePortable }}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 margin-bottom">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">U13</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableU13.photo }}" class="img-rounded" alt="{{ bureau.responsableU13.nomComplet }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableU13.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableU13.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableU13.nomComplet }}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row margin-bottom">
-        <div class="col-sm-4 margin-bottom">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">U11</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableU11.photo }}" class="img-rounded" alt="{{ bureau.responsableU11.nomComplet }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableU11.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableU11.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableU11.telephonePortable}}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 margin-bottom">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">U9</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableU9.photo }}" class="img-rounded" alt="{{ bureau.responsableU9.nomComplet }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableU9.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableU9.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableU9.telephonePortable }}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 margin-bottom">
-            <div class="panel panel-uscl">
-                <div class="panel-heading">
-                    <h3 class="panel-title">U7</h3>
-                </div>
-                <div class="panel-body row">
-                    <div class="row">
-                        <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                            <img src="{{ bureau.responsableU7.photo }}" class="img-rounded" alt="{{ bureau.responsableU7.nomComplet }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4>{{ bureau.responsableU7.nomComplet }}</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="text-center">
-                            <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> {{ bureau.responsableU7.email }}</h4>
-                            <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> {{ bureau.responsableU7.telephonePortable }}</h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 {% endblock %}

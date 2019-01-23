@@ -13,7 +13,6 @@ class ProduitAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('categorie')
             ->add('nom')
             ->add('prix')
             ->add('photo')
@@ -27,7 +26,6 @@ class ProduitAdmin extends AbstractAdmin
     {
         $listMapper
             ->addIdentifier('nom')
-            ->add('categorie')
             ->add('prix')
             ->add('photo')
             ->add('logo_obligatoire')

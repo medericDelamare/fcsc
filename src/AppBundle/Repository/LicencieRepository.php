@@ -12,16 +12,6 @@ use Doctrine\ORM\EntityRepository;
 
 class LicencieRepository extends EntityRepository
 {
-    public function findByCategory($category){
-        return $this->createQueryBuilder('j')
-            ->leftjoin(SousCategorie::class, 'sc', 'WITH', 'sc.nom = j.categorie')
-            ->leftjoin(Categorie::class, 'c', 'WITH', 'sc.categorie = c.id')
-            ->where('c.nom LIKE :category')
-            ->setParameter('category', $category)
-            ->getQuery()
-            ->getResult();
-    }
-
     public function findByCategoryOrderByPoste($category){
         return $this->createQueryBuilder('j')
             ->leftjoin(StatsJoueur::class, 's', 'WITH', 's.id = j.stats')
@@ -33,6 +23,11 @@ class LicencieRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /*public function countWhereNoPoste(){
+        return $this->createQueryBuilder('j')
+            ->
+    }*/
 
 
     public function findBirthday(){

@@ -51,6 +51,12 @@ class ParseService
             $this->em->remove($stat);
         }
 
+        $crawler->filter('html .date span')->each(function (Crawler $crawler) {
+            foreach ($crawler as $node) {
+                $node->parentNode->removeChild($node);
+            }
+        });
+
         $this->em->flush();
         for ($i = 0; $i < $crawler->filter('.results-content')->count(); $i++) {
             $craw = $crawler->filter('.results-content')->eq($i);
@@ -62,6 +68,7 @@ class ParseService
                     $crawRencontre = $craw->filter('.result-display')->eq($j);
                     $equipe1 = trim($crawRencontre->filter('.equipe1 > .name')->text());
                     $equipe2 = trim($crawRencontre->filter('.equipe2 > .name')->text());
+
                     $date = $this->convertDate($crawRencontre->filter('.date')->first()->text());
                     $date = \DateTime::createFromFormat('d/m/Y H:i', $date);
 
@@ -236,56 +243,56 @@ class ParseService
 
     private function convertDate($date)
     {
-        $dateRegex = preg_replace('(\s+)', ' ', $date);
+        $dateRegex = preg_replace('(\s+)', ' ', trim($date));
         $dateSplit = explode(' ', $dateRegex);
-        switch ($dateSplit[6]) {
+        switch ($dateSplit[2]) {
             case 'janvier':
-                $dateSplit[6] = "01";
+                $dateSplit[2] = "01";
                 break;
             case 'février':
             case 'fevrier':
-                $dateSplit[6] = "02";
+                $dateSplit[2] = "02";
                 break;
             case 'mars':
-                $dateSplit[6] = "03";
+                $dateSplit[2] = "03";
                 break;
             case 'avril':
-                $dateSplit[6] = "04";
+                $dateSplit[2] = "04";
                 break;
             case 'mai':
-                $dateSplit[6] = "05";
+                $dateSplit[2] = "05";
                 break;
             case 'juin':
-                $dateSplit[6] = "06";
+                $dateSplit[2] = "06";
                 break;
             case 'jullet':
-                $dateSplit[6] = "07";
+                $dateSplit[2] = "07";
                 break;
             case 'aout':
             case 'août':
-                $dateSplit[6] = "08";
+                $dateSplit[2] = "08";
                 break;
             case 'septembre':
-                $dateSplit[6] = "09";
+                $dateSplit[2] = "09";
                 break;
             case 'octobre':
-                $dateSplit[6] = "10";
+                $dateSplit[2] = "10";
                 break;
             case 'novembre':
-                $dateSplit[6] = "11";
+                $dateSplit[2] = "11";
                 break;
             case 'décembre':
             case 'decembre':
-                $dateSplit[6] = "12";
+                $dateSplit[2] = "12";
                 break;
         }
 
-        if (count($dateSplit) < 10) {
+        if (count($dateSplit) < 5) {
             return '03/11/1992 06:00';
         }
 
-        $heure = explode('H',$dateSplit[9]);
-        return $dateSplit[5] . "/" . $dateSplit[6] . "/" . $dateSplit[7] . ' ' . $heure[0] . ':' . $heure[1];
+        $heure = explode('H',$dateSplit[5]);
+        return $dateSplit[1] . "/" . $dateSplit[2] . "/" . $dateSplit[3] . ' ' . $heure[0] . ':' . $heure[1];
     }
 
     private function computeClassement($isForfaitDom, $isForfaitExt, $equipeDom, $equipeExt, $score){

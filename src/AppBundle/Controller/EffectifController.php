@@ -15,6 +15,21 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class EffectifController extends Controller
 {
+    private $categories = [
+        'Libre / U6 (- 6 ans)',
+        'Libre / U6 F (- 6 ans F)',
+        'Libre / U7 (- 7 ans)',
+        'Libre / U7 F (- 7 ans F)',
+        'Libre / U8 (- 8 ans)',
+        'Libre / U8 F (- 8 ans F)',
+        'Libre / U9 (- 9 ans)',
+        'Libre / U9 F (- 9 ans F)',
+        'Libre / U10 (- 10 ans)',
+        'Libre / U10 F (- 10 ans F)',
+        'Libre / U11 (- 11 ans)',
+        'Libre / U11 F (- 11 ans F)',
+    ];
+
     /**
      * @Route("/effectif/{category}", name="effectif")
      * @Template()
@@ -23,21 +38,17 @@ class EffectifController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         if ($category == 'Football-animation'){
-            $u7 = $em->getRepository(Licencie::class)->findByCategory('U7');
-            $u9 = $em->getRepository(Licencie::class)->findByCategory('U9');
-            $u11 = $em->getRepository(Licencie::class)->findByCategory('U11');
 
-            $joueurs = [
-                'u7' => $u7,
-                'u9' => $u9,
-                'u11' => $u11
-            ];
+            $joueurs = [];
+
+            foreach ($this->categories as $categorie){
+                foreach ($this->getDoctrine()->getManager()->getRepository(Licencie::class)->findByCategorie($categorie) as $licencie){
+                    $joueurs[] = $licencie;
+                }
+            }
             return $this->render('default/effectifFootballAnimation.html.twig', [
-                'joueursParCategorie' => $joueurs,
+                'joueurs' => $joueurs,
                 'category' => $category,
-                'nb_u7' => count($joueurs['u7']),
-                'nb_u9' => count($joueurs['u9']),
-                'nb_u11' => count($joueurs['u11']),
             ]);
         } else{
             $joueurs = $em->getRepository(Licencie::class)->findByCategoryOrderByPoste($category);
