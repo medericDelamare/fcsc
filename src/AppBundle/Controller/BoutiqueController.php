@@ -71,7 +71,7 @@ class BoutiqueController extends  Controller
         $message = new \Swift_Message();
         $message->attach(\Swift_Attachment::fromPath($this->get('kernel')->getRootDir() . '/Resources/Documents/commande-'.$nomFichier));
         $message
-            ->setSubject('Boutique USCL')
+            ->setSubject('Boutique FCSC')
             ->setFrom('contact@uscl-foot.fr')
             ->setTo([$request->request->get('mail'),'maxime.eyrignoux@north-134.fr'])
             ->setBody($this->render(':default:mail_boutique.html.twig'),'text/html')
