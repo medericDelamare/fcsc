@@ -32,7 +32,7 @@ class BoutiqueController extends  Controller
      * @Template()
      */
     public function sendAction(Request $request){
-        $existingXlsx   = $this->get('phpoffice.spreadsheet')->createSpreadsheet($this->get('kernel')->getRootDir() . '/Resources/documents/bonDeCommande.xlsx');
+        $existingXlsx   = $this->get('phpoffice.spreadsheet')->createSpreadsheet($this->get('kernel')->getRootDir() . '/Resources/documents/BonDeCommande.xlsx');
 
         $now = new \DateTime();
         $nomFichier = $request->request->get('licencie') . $now->format('d-m-Y') .'.xlsx';
