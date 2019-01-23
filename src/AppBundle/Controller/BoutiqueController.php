@@ -32,15 +32,16 @@ class BoutiqueController extends  Controller
      * @Template()
      */
     public function sendAction(Request $request){
-        $existingXlsx   = $this->get('phpoffice.spreadsheet')->createSpreadsheet($this->get('kernel')->getRootDir() . '/Resources/documents/bonDeCommande.xlsx');
+        $existingXlsx   = $this->get('phpoffice.spreadsheet')->createSpreadsheet($this->get('kernel')->getRootDir() . '/Resources/Documents/BonDeCommande.xlsx');
 
         $now = new \DateTime();
         $nomFichier = $request->request->get('licencie') . $now->format('d-m-Y') .'.xlsx';
         $existingXlsx->getActiveSheet()->setCellValue('B1', $now->format('d/m/Y'));
+        $existingXlsx->getActiveSheet()->setCellValue('B2', $request->request->get('licencie'));
+
 
         foreach ($request->request->get('abc') as $item => $value){
-            $ligne = 8+$item;
-            $existingXlsx->getActiveSheet()->setCellValue('A'.$ligne, $value['reference']);
+            $ligne = 6+$item;
             $existingXlsx->getActiveSheet()->setCellValue('B'.$ligne, $value['nomProduit']);
             switch ($value['taille']){
                 case 'S':
@@ -59,32 +60,20 @@ class BoutiqueController extends  Controller
                     $existingXlsx->getActiveSheet()->setCellValue('G'.$ligne, 'X');
                     break;
             }
-
-            if ($value['logo'] == true && !empty($value['initiales'])){
-                $existingXlsx->getActiveSheet()->setCellValue('H'.$ligne, 'Logo Club + Initiales');
-                $existingXlsx->getActiveSheet()->setCellValue('I'.$ligne, $value['initiales']);
-            }
-            elseif ($value['logo'] == true){
-                $existingXlsx->getActiveSheet()->setCellValue('H'.$ligne, 'Logo Club');
-            } elseif (!empty($value['initiales'])){
-                $existingXlsx->getActiveSheet()->setCellValue('H'.$ligne, 'Initiales');
-                $existingXlsx->getActiveSheet()->setCellValue('I'.$ligne, $value['initiales']);
-            }
-            $existingXlsx->getActiveSheet()->setCellValue('J'.$ligne, $request->request->get('licencie'));
         }
-
         $writerXlsx = $this->get('phpoffice.spreadsheet')->createWriter($existingXlsx, 'Xlsx');
-        $writerXlsx->save($this->get('kernel')->getRootDir() . '/Resources/documents/commande-'.$nomFichier);
+
+        $writerXlsx->save($this->get('kernel')->getRootDir() . '/Resources/Documents/commande-'.$nomFichier);
         $produits = $this->getDoctrine()->getRepository(Produit::class)->findAll();
         $licencies = $this->getDoctrine()->getRepository(Licencie::class)->findAll();
 
 
         $message = new \Swift_Message();
-        $message->attach(\Swift_Attachment::fromPath($this->get('kernel')->getRootDir() . '/Resources/documents/commande-'.$nomFichier));
+        $message->attach(\Swift_Attachment::fromPath($this->get('kernel')->getRootDir() . '/Resources/Documents/commande-'.$nomFichier));
         $message
-            ->setSubject('Boutique USCL')
+            ->setSubject('Boutique FCSC')
             ->setFrom('contact@uscl-foot.fr')
-            ->setTo([$request->request->get('mail'),'delamare.mederic@gmail.com'])
+            ->setTo([$request->request->get('mail'),'maxime.eyrignoux@north-134.fr'])
             ->setBody($this->render(':default:mail_boutique.html.twig'),'text/html')
         ;
 
