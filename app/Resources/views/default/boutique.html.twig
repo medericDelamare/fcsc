@@ -28,7 +28,7 @@
                                 <img src="{{ asset("pictures/boutique/") ~ produit.photo }}" alt="">
                                 <div class="caption">
                                     <div class="row">
-                                        <div class="nom col-md-12" data-reference="{{ produit.reference }}" data-nike="{{ produit.nomNike }}"><h4>{{ produit.nom }}</h4></div>
+                                        <div class="nom col-md-12" ><h4>{{ produit.nom }}</h4></div>
                                     </div>
                                     <div class="row">
                                         <div class="prix col-md-12"><h4 class="zizi pull-right">{{ produit.prix }} €</h4></div>
@@ -59,30 +59,6 @@
                                                     <input type="radio" id="inlineRadio{{ loop.index }}5" value="XXL" name="radioInline">
                                                     <label for="inlineRadio{{ loop.index }}5">XXL</label>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        {% if (produit.initiales) %}
-                                            <div class="form-group">
-                                                <div class="col-sm-10">
-                                                    <input id='initiales' class="form-control" maxlength="2" id="text" name="text" placeholder="Initiales (2,50 €)"></input>
-                                                </div>
-                                            </div>
-                                        {% else %}
-                                            <div class="form-group">
-                                                <div class="col-sm-10">
-                                                    <input id='initiales' class="form-control" maxlength="2" id="text" name="text" placeholder="Initiales (2,50 €)" disabled></input>
-                                                </div>
-                                            </div>
-                                        {% endif %}
-                                        <div class="form-group">
-                                            <div class="col-sm-10">
-                                                {% if(produit.logoObligatoire) %}
-                                                    <input id="logo" type="checkbox" disabled checked data-toggle="toggle" data-on="Logo (3€)" data-off="Sans Logo" data-onstyle="primary" data-offstyle="danger">
-                                                {% elseif(produit.logo == false) %}
-                                                    <input id="logo" type="checkbox" disabled data-toggle="toggle" data-on="Logo (3€)" data-off="Sans Logo" data-onstyle="primary" data-offstyle="danger">
-                                                {% else %}
-                                                    <input id="logo" type="checkbox" checked data-toggle="toggle" data-on="Logo (3€)" data-off="Sans Logo" data-onstyle="primary" data-offstyle="danger">
-                                                {% endif %}
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -130,11 +106,8 @@
                                 <table id="recapitulatif_commande" class="table">
                                     <thead>
                                     <tr>
-                                        <td>Référence</td>
                                         <td>Nom du produit</td>
                                         <td>Taille</td>
-                                        <td>Logo Club</td>
-                                        <td>Initiales</td>
                                         <td>Prix</td>
                                         <td>Action</td>
                                     </tr>
@@ -185,36 +158,14 @@
                 var prix = ($(this).parents('.caption').find('.prix').text().replace('€',''));
                 var total = parseFloat($('#valeur').text()) + parseFloat(prix);
                 var nom = $(this).parents('.caption').find('.nom').text();
-                var reference = $(this).parents('.caption').find('.nom').data('reference');
-                var nomNike = $(this).parents('.caption').find('.nom').data('nike');
-                var logoBoolean = $(this).parents('.caption').find('#logo').prop('checked');
                 var taille = $(this).parents('.caption').find('input[name=radioInline]:checked').val();
-                var deuxLettres = null;
-                if(logoBoolean){
-                    logo = '<i class="fa fa-check" aria-hidden="true"></i>';
-                    total = total + 3;
-                    prix = parseFloat(prix) + 3;
-                } else {
-                    logo = '<i class="fa fa-times" aria-hidden="true"></i>';
-                }
-                if( $(this).parents('.caption').find('#initiales').val().length > 0 ) {
-                    deuxLettres =$(this).parents('.caption').find('#initiales').val();
-                    initiales = '<i class="fa fa-check" aria-hidden="true"></i>' + '( ' + $(this).parents('.caption').find('#initiales').val() + ' )';
-                    total = total + 2.5;
-                    prix = parseFloat(prix) + 2.5;
-                } else {
-                    initiales = '<i class="fa fa-times" aria-hidden="true"></i>';
-                }
                 $('#valeur').replaceWith('<span id="valeur">'+total+'</span>');
                 $('#valeur-modal').replaceWith('<span id="valeur-modal">'+total+'</span>');
-                $('#recapitulatif_commande tr:last').after('<tr><td>reference</td><td>'+ nom + '</td><td>' + taille + '</td><td>'+ logo + '</td><td>' + initiales + '</td><td class="prix-table">'+ prix +'€</td><td><input class="btn btn-danger" type="button" id="test" value="supprimer"></td></tr>');
+                $('#recapitulatif_commande tr:last').after('<tr><td>'+ nom + '</td><td>' + taille + '</td><td class="prix-table">'+ prix +'€</td><td><input class="btn btn-danger" type="button" id="test" value="supprimer"></td></tr>');
 
                 array.push({
-                    'reference': reference,
                     'taille': taille,
-                    'nomProduit': nomNike,
-                    'logo': logoBoolean,
-                    'initiales': deuxLettres
+                    'nomProduit': nom,
                 })
 
                 $.notifyDefaults({
@@ -279,13 +230,13 @@
                 url: '{{ path('boutique-send') }}',
                 data: { abc: array, licencie:licencie, mail:email },
                 success: function(msg){
-                    location.href = 'http://uscl-foot.fr/boutique/liste';
+                    location.href = 'http://localhost/fcsc/web/app_dev.php/boutique/liste';
                 },
                 error: function(XmlHttpRequest,textStatus, errorThrown){
                     alert("Echec! ");
                 },
                 complete: function(msg){
-                    location.href = 'http://uscl-foot.fr/boutique/liste';
+                    location.href = 'http://localhost/fcsc/web/app_dev.php/boutique/liste';
                 }
             });
         })
