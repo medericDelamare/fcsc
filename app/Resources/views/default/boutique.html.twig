@@ -230,13 +230,13 @@
                 url: '{{ path('boutique-send') }}',
                 data: { abc: array, licencie:licencie, mail:email },
                 success: function(msg){
-                    location.href = 'http://localhost/fcsc/web/app_dev.php/boutique/liste';
+                    location.href = 'http://www.saintcloudfc.fr/boutique/liste';
                 },
                 error: function(XmlHttpRequest,textStatus, errorThrown){
                     alert("Echec! ");
                 },
                 complete: function(msg){
-                    location.href = 'http://localhost/fcsc/web/app_dev.php/boutique/liste';
+                    location.href = 'http://www.saintcloudfc.fr/boutique/liste';
                 }
             });
         })
