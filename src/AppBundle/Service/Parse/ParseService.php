@@ -72,7 +72,7 @@ class ParseService
                     $date = $this->convertDate($crawRencontre->filter('.date')->first()->text());
                     $date = \DateTime::createFromFormat('d/m/Y H:i', $date);
 
-                    $rencontreBdd = $this->em->getRepository(Rencontre::class)->getRencontreByEquipeAndCategorie($equipe1, $equipe2, $category);
+                    $rencontreBdd = $this->em->getRepository(Rencontre::class)->getRencontreByEquipeByJourneeAndCategorie($equipe1, $equipe2, $journee ,$category);
 
                     if (count($rencontreBdd) == 1){
                         $rencontreBdd = $rencontreBdd[0];
