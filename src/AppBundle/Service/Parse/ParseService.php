@@ -15,6 +15,8 @@ class ParseService
 
     private $em;
 
+    private $equipesForfaitG = [];
+
     public function __construct(EntityManager $entityManager)
     {
         $this->em = $entityManager;
@@ -44,7 +46,9 @@ class ParseService
 
         $crawler = new Crawler($html);
 
+
         $crawler->filter('.confrontation');
+
 
         $stats = $this->em->getRepository(StatsParJournee::class)->findByCategorie($category);
         foreach ($stats as $stat){
@@ -86,14 +90,24 @@ class ParseService
                     $isForfaitDom = null;
                     if ($crawRencontre->filter('.equipe1 > .forfeit')->count() > 0){
                         $isForfaitDom = empty(trim($crawRencontre->filter('.equipe1 > .forfeit')->text())) ? $forfaitDom = false : $forfaitDom=true;
+                        $forfeit = trim($crawRencontre->filter('.equipe1 > .forfeit')->text());
+
+                        if (strpos($forfeit, 'Forfait g') !== false){
+                            $this->equipesForfaitG[] = $equipe1;
+                        }
                     }
 
                     $isForfaitExt = null;
                     if ($crawRencontre->filter('.equipe2 > .forfeit')->count() > 0){
                         $isForfaitExt = empty(trim($crawRencontre->filter('.equipe2 > .forfeit')->text())) ? $forfaitDom = false : $forfaitDom=true;
+                        $forfeit = trim($crawRencontre->filter('.equipe2 > .forfeit')->text());
+
+                        if (strpos($forfeit, 'Forfait g') !== false){
+                            $this->equipesForfaitG[] = $equipe2;
+                        }
                     }
 
-                    if ($equipe1 == 'Exempt' || $equipe2 == 'Exempt'){
+                    if ($equipe1 == 'Exempt' || $equipe2 == 'Exempt' || in_array($equipe1, $this->equipesForfaitG ) || in_array($equipe2, $this->equipesForfaitG)){
                         continue;
                     }
 
@@ -149,12 +163,14 @@ class ParseService
                     //Si forfait
                     elseif(($crawRencontre->filter('.number')->count() == 0) && ($isForfaitExt || $isForfaitDom)){
                         if ($isForfaitDom){
+                            dump('pl');
                             $statsDom = $equipeDom->getStats();
                             $statsDom->computeForfaitContre();
 
                             $statsExt = $equipeExt->getStats();
                             $statsExt->computeForfaitPour();
                         }elseif ($isForfaitExt){
+                            dump($equipeExt->getNomParse());
                             $statsDom = $equipeDom->getStats();
                             $statsDom->computeForfaitPour();
 
@@ -184,6 +200,18 @@ class ParseService
                     }
                 }
             }
+        }
+
+        $tabForfaitG = array_unique($this->equipesForfaitG);
+        foreach ($tabForfaitG as $equipe){
+            $equipeBdd = $this->em->getRepository(Equipe::class)->findOneBy([
+                'nomParse' => $equipe,
+                'categorie' => $category
+            ]);
+
+            $equipeBdd->getStats()->computeForfaitGeneral();
+            $this->em->persist($equipeBdd);
+            $this->em->flush();
         }
 
     }

@@ -355,4 +355,18 @@ class StatsEquipe
             ->addButsPour($butsPour)
             ->addButsContre($butsContre);
     }
+
+    public function computeForfaitGeneral(){
+        $this
+            ->setButsContre(0)
+            ->setButsPour(0)
+            ->setDefaites(0)
+            ->setDifference(0)
+            ->setForfaits(0)
+            ->setJournees(0)
+            ->setNuls(0)
+            ->setPenalites(0)
+            ->setVictoires(0)
+            ->setPoints(0);
+    }
 }
