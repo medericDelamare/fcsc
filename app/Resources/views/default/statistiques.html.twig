@@ -20,8 +20,8 @@
                 <tr>
                     <td>Pl</td>
                     <td>Equipe</td>
-                    <td>J</td>
                     <td>Pts</td>
+                    <td>Jo</td>
                     <td>G</td>
                     <td>N</td>
                     <td>D</td>
@@ -41,8 +41,8 @@
                         {% else %}
                             <td>{{ equipe.nomParse }}</td>
                         {% endif %}
+                        <td><strong>{{ equipe.stats.points }}</strong></td>
                         <td>{{ equipe.stats.journees }}</td>
-                        <td>{{ equipe.stats.points }}</td>
                         <td>{{ equipe.stats.victoires }}</td>
                         <td>{{ equipe.stats.nuls }}</td>
                         <td>{{ equipe.stats.defaites }}</td>
