@@ -69,6 +69,9 @@ class BureauAdmin extends AbstractAdmin
             ->add('responsableGardiens', EntityType::class,[
                 'class' => Licencie::class,
             ])
+            ->add('responsableEcoleDeFoot', EntityType::class,[
+                'class' => Licencie::class,
+            ])
             ->add('membre1', EntityType::class,[
                 'class' => Licencie::class,
             ])
@@ -76,6 +79,9 @@ class BureauAdmin extends AbstractAdmin
                 'class' => Licencie::class,
             ])
             ->add('membre3', EntityType::class,[
+                'class' => Licencie::class,
+            ])
+            ->add('membre4', EntityType::class,[
                 'class' => Licencie::class,
             ])
         ;
