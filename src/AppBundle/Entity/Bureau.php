@@ -132,6 +132,12 @@ class Bureau
      * @var Licencie
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
+    private $responsableEcoleDeFoot;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
     private $membre1;
 
     /**
@@ -145,6 +151,12 @@ class Bureau
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
      */
     private $membre3;
+
+    /**
+     * @var Licencie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Licencie")
+     */
+    private $membre4;
 
 
 
@@ -534,6 +546,42 @@ class Bureau
     public function setMembre3($membre3)
     {
         $this->membre3 = $membre3;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getMembre4()
+    {
+        return $this->membre4;
+    }
+
+    /**
+     * @param Licencie $membre4
+     * @return Bureau
+     */
+    public function setMembre4($membre4)
+    {
+        $this->membre4 = $membre4;
+        return $this;
+    }
+
+    /**
+     * @return Licencie
+     */
+    public function getResponsableEcoleDeFoot()
+    {
+        return $this->responsableEcoleDeFoot;
+    }
+
+    /**
+     * @param Licencie $responsableEcoleDeFoot
+     * @return Bureau
+     */
+    public function setResponsableEcoleDeFoot($responsableEcoleDeFoot)
+    {
+        $this->responsableEcoleDeFoot = $responsableEcoleDeFoot;
         return $this;
     }
 }

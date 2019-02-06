@@ -50,6 +50,10 @@ class ResponsablesController extends Controller
                 'titre' => 'U15'
             ],
             [
+                'licencie' => $bureau->getResponsableEcoleDeFoot(),
+                'titre' => 'Ecole de Foot'
+            ],
+            [
                 'licencie' => $bureau->getResponsableU12U13(),
                 'titre' => 'U12 - U13'
             ],
