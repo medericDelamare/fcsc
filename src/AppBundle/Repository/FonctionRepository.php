@@ -11,6 +11,7 @@ class FonctionRepository extends EntityRepository
     public function getMembresBureau(){
         return $this->createQueryBuilder('m')
             ->where('m.type like \'bureau\'')
+            ->orderBy('m.ordre')
             ->getQuery()
             ->getResult();
     }
