@@ -24,9 +24,11 @@ class FonctionAdmin extends AbstractAdmin
                     'Responsable d\'équipe' => 'responsable-equipe',
                 ]
             ])
+            ->add('ordre', null,[
+                'help' => 'Ordre d\'affichage sur la page'
+            ])
             ->add('licencies', ModelType::class, [
                 'multiple' => true,
-                // your other options
             ]);
     }
 

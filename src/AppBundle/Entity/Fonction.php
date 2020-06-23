@@ -48,6 +48,12 @@ class Fonction
     private $licencies;
 
     /**
+     * @var integer
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private $ordre;
+
+    /**
      * Fonction constructor.
      */
     public function __construct()
@@ -152,6 +158,21 @@ class Fonction
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getOrdre()
+    {
+        return $this->ordre;
+    }
 
-
+    /**
+     * @param int $ordre
+     * @return Fonction
+     */
+    public function setOrdre($ordre)
+    {
+        $this->ordre = $ordre;
+        return $this;
+    }
 }
