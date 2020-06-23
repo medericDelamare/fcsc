@@ -11,9 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class MotPresident
+class AccueilCustomFields
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER =  '/../../../web/pictures/President';
+    const SERVER_PATH_TO_IMAGE_FOLDER =  '/../../../web/pictures/Accueil';
 
     /**
      * @var int
@@ -34,12 +34,23 @@ class MotPresident
      */
     private $file;
 
+    /**
+     * Unmapped property to handle file uploads
+     */
+    private $filePartenaire;
+
 
     /**
      * @var string
      * @ORM\Column(type="string", nullable=false)
      */
     private $nomImage;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=false)
+     */
+    private $nomImagePartenaire;
 
     /**
      * @var \DateTime
@@ -65,7 +76,7 @@ class MotPresident
 
     /**
      * @param string $motDuPresident
-     * @return MotPresident
+     * @return AccueilCustomFields
      */
     public function setMotDuPresident($motDuPresident)
     {
@@ -83,7 +94,7 @@ class MotPresident
 
     /**
      * @param mixed $file
-     * @return MotPresident
+     * @return AccueilCustomFields
      */
     public function setFile($file)
     {
@@ -101,7 +112,7 @@ class MotPresident
 
     /**
      * @param string $nomImage
-     * @return MotPresident
+     * @return AccueilCustomFields
      */
     public function setNomImage($nomImage)
     {
@@ -119,11 +130,47 @@ class MotPresident
 
     /**
      * @param \DateTime $updated
-     * @return MotPresident
+     * @return AccueilCustomFields
      */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFilePartenaire()
+    {
+        return $this->filePartenaire;
+    }
+
+    /**
+     * @param mixed $filePartenaire
+     * @return AccueilCustomFields
+     */
+    public function setFilePartenaire($filePartenaire)
+    {
+        $this->filePartenaire = $filePartenaire;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomImagePartenaire()
+    {
+        return $this->nomImagePartenaire;
+    }
+
+    /**
+     * @param string $nomImagePartenaire
+     * @return AccueilCustomFields
+     */
+    public function setNomImagePartenaire($nomImagePartenaire)
+    {
+        $this->nomImagePartenaire = $nomImagePartenaire;
         return $this;
     }
 
@@ -147,6 +194,24 @@ class MotPresident
     }
 
     /**
+     * Manages the copying of the file to the relevant place on the server
+     */
+    public function uploadPartenaires()
+    {
+        if (null === $this->getFilePartenaire()) {
+            return;
+        }
+
+        $this->getFilePartenaire()->move(
+            __DIR__ . self::SERVER_PATH_TO_IMAGE_FOLDER,
+            $this->getFilePartenaire()->getClientOriginalName()
+        );
+
+        $this->nomImagePartenaire = $this->getFilePartenaire()->getClientOriginalName();
+        $this->setFilePartenaire(null);
+    }
+
+    /**
      * Lifecycle callback to upload the file to the server
      * @ORM\PrePersist()
      * @ORM\PreUpdate()
@@ -154,6 +219,7 @@ class MotPresident
     public function lifecycleFileUpload()
     {
         $this->upload();
+        $this->uploadPartenaires();
     }
 
     /**
@@ -170,6 +236,10 @@ class MotPresident
     public function deletePicture(){
         if (file_exists(__DIR__ . self::SERVER_PATH_TO_IMAGE_FOLDER .'/' . $this->getNomImage())){
             unlink(__DIR__ . self::SERVER_PATH_TO_IMAGE_FOLDER .'/' . $this->getNomImage());
+        }
+
+        if (file_exists(__DIR__ . self::SERVER_PATH_TO_IMAGE_FOLDER .'/' . $this->getNomImagePartenaire())){
+            unlink(__DIR__ . self::SERVER_PATH_TO_IMAGE_FOLDER .'/' . $this->getNomImagePartenaire());
         }
     }
 }
