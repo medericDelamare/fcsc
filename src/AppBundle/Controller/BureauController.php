@@ -20,9 +20,6 @@ class BureauController extends Controller
     {
         $fonctions = $this->getDoctrine()->getManager()->getRepository(Fonction::class)->getMembresBureau();
 
-
-
-        // replace this example code with whatever you need
         return $this->render('default/bureau.html.twig', [
             'membres' => $fonctions
         ]);
