@@ -97,3 +97,9 @@ services:
       arguments: [~, AppBundle\Entity\StagePdf, ~]
       tags:
       - { name: sonata.admin, manager_type: orm, label: Stages, group: "actus"}
+
+    admin.fonction:
+      class: AppBundle\Admin\FonctionAdmin
+      arguments: [~, AppBundle\Entity\Fonction, ~]
+      tags:
+        - { name: sonata.admin, manager_type: orm, label: Fonctions, group: "club"}
