@@ -11,9 +11,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class CustomFields
+class MotPresident
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER =  '/../../../web/pictures/Accueil';
+    const SERVER_PATH_TO_IMAGE_FOLDER =  '/../../../web/pictures/President';
 
     /**
      * @var int
@@ -65,7 +65,7 @@ class CustomFields
 
     /**
      * @param string $motDuPresident
-     * @return CustomFields
+     * @return MotPresident
      */
     public function setMotDuPresident($motDuPresident)
     {
@@ -83,7 +83,7 @@ class CustomFields
 
     /**
      * @param mixed $file
-     * @return CustomFields
+     * @return MotPresident
      */
     public function setFile($file)
     {
@@ -101,7 +101,7 @@ class CustomFields
 
     /**
      * @param string $nomImage
-     * @return CustomFields
+     * @return MotPresident
      */
     public function setNomImage($nomImage)
     {
@@ -119,7 +119,7 @@ class CustomFields
 
     /**
      * @param \DateTime $updated
-     * @return CustomFields
+     * @return MotPresident
      */
     public function setUpdated($updated)
     {

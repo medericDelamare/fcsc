@@ -83,10 +83,10 @@ services:
             - { name: sonata.admin, manager_type: orm, label: Actualites, group: "actus"}
 
     admin.option:
-            class: AppBundle\Admin\CustomFieldsAdmin
-            arguments: [~, AppBundle\Entity\CustomFields, ~]
+            class: AppBundle\Admin\MotPresidentAdmin
+            arguments: [~, AppBundle\Entity\MotPresident, ~]
             tags:
-                - { name: sonata.admin, manager_type: orm, label: Options, group: "actus"}
+                - { name: sonata.admin, manager_type: orm, label: Mot du président, group: "actus"}
     admin.photoAccueil:
             class: AppBundle\Admin\PhotoAccueilAdmin
             arguments: [~, AppBundle\Entity\PhotoAccueil, ~]

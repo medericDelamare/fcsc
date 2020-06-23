@@ -4,7 +4,7 @@
 namespace AppBundle\Admin;
 
 
-use AppBundle\Entity\CustomFields;
+use AppBundle\Entity\MotPresident;
 use AppBundle\Entity\PhotoAccueil;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
@@ -13,7 +13,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
-class CustomFieldsAdmin  extends AbstractAdmin
+class MotPresidentAdmin  extends AbstractAdmin
 {
     protected function configureRoutes(RouteCollection $collection)
     {
@@ -51,7 +51,7 @@ class CustomFieldsAdmin  extends AbstractAdmin
     }
 
     /**
-     * @param CustomFields $photo
+     * @param MotPresident $photo
      */
     public function prePersist($photo)
     {
@@ -62,7 +62,7 @@ class CustomFieldsAdmin  extends AbstractAdmin
     }
 
     /**
-     * @param CustomFields $photo
+     * @param MotPresident $photo
      */
     public function preUpdate($photo)
     {
