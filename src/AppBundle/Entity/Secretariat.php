@@ -6,7 +6,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Option
+ * Class Secretariat
  * @package AppBundle\Entity
  *
  * @ORM\Entity()
@@ -42,7 +42,7 @@ class Secretariat
 
     /**
      * @var string
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", nullable=true)
      */
     private $image;
 
