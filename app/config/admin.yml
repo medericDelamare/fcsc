@@ -103,3 +103,9 @@ services:
       arguments: [~, AppBundle\Entity\Fonction, ~]
       tags:
         - { name: sonata.admin, manager_type: orm, label: Fonctions, group: "club"}
+
+    admin.secretariat:
+      class: AppBundle\Admin\SecretariatAdmin
+      arguments: [~, AppBundle\Entity\Secretariat, ~]
+      tags:
+        - { name: sonata.admin, manager_type: orm, label: Secretariat, group: "club"}
