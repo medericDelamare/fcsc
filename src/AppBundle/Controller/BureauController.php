@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Bureau;
+use AppBundle\Entity\Fonction;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,13 +18,10 @@ class BureauController extends Controller
      */
     public function showAction(Request $request)
     {
-        $bureau = $this->getDoctrine()->getManager()->getRepository(Bureau::class)->find(1);
+        $fonctions = $this->getDoctrine()->getManager()->getRepository(Fonction::class)->getMembresBureau();
 
-
-
-        // replace this example code with whatever you need
-        return $this->render(':default:bureau.html.twig', [
-            'bureau' => $bureau
+        return $this->render('default/bureau.html.twig', [
+            'membres' => $fonctions
         ]);
     }
 }
