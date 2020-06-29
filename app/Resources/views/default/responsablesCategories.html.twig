@@ -3,37 +3,44 @@
 
 <ol class="breadcrumb">
     <li><a href="index.php">Accueil</a></li>
-    <li class="active">Résponsables par équipe</li>
+    <li class="active">Résponsables par catégories</li>
 </ol>
 
 <div class="container">
     <h1 class = "page-header">Résponsables par catégories</h1>
         <div class="row margin-bottom">
             {% for responsable in responsables %}
-            <div class="col-sm-6 col-md-6">
-                <div class="panel panel-uscl">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">{{ responsable.titre }}</h3>
-                    </div>
-                    <div class="panel-body row">
-                        <div class="row">
-                            <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
-                                <img src="{{ responsable.licencie.photo }}" class="img-rounded" alt="Responsive image">
+                {% for licencie in responsable.licencies %}
+                    <div class="col-sm-4">
+                        <div class="panel panel-uscl">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">{{ responsable.nom }}</h3>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-center">
-                                <h4>{{ responsable.licencie.nomComplet }}</h4>
-                            </div>
-                        </div>
-                            <div class="row">
-                                <div class="text-center">
-                                     <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <a href="tel:{{ responsable.licencie.telephonePortable}}">{{ responsable.licencie.telephonePortable}}</a></h4>
+                            <div class="panel-body row">
+                                <div class="row">
+                                    <div class="col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4 text-center">
+                                        {% if licencie.photo is defined %}
+                                            <img src="{{ licencie.photo }}" class="img-rounded photo-bureau" alt="{{ licencie.nomComplet }}">
+                                        {% else %}
+                                            <img src="{{ asset('pictures/default.png') }}" class="img-rounded photo-bureau" alt="{{ licencie.nomComplet }}">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <h4>{{ licencie.nomComplet }}</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center">
+                                        <h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <a href="mailto:{{ licencie.email }}">{{ licencie.email }}</a></h4>
+                                        <h4><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <a href="tel:{{ licencie.telephonePortable }}">{{ licencie.telephonePortable }}</a></h4>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                {% endfor %}
             {% endfor %}
         </div>
 </div>
