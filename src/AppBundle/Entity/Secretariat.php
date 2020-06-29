@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class Secretariat
  * @package AppBundle\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SecretariatRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Secretariat
