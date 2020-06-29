@@ -15,4 +15,12 @@ class FonctionRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getResponsables(){
+        return $this->createQueryBuilder('m')
+            ->where('m.type like \'responsable-equipe\'')
+            ->orderBy('m.ordre')
+            ->getQuery()
+            ->getResult();
+    }
 }
