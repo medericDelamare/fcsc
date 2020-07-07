@@ -22,4 +22,4 @@ plans:
     path: /plans
     defaults:
         _controller: FrameworkBundle:Template:template
-        template: default/plans.html.twig
+        template: default/stades.html.twig

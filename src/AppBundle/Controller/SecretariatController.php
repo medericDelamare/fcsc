@@ -4,7 +4,6 @@
 namespace AppBundle\Controller;
 
 
-use AppBundle\Entity\Actualite;
 use AppBundle\Entity\Secretariat;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -19,7 +18,7 @@ class SecretariatController extends Controller
     public function showAction()
     {
         $secretariat = $this->getDoctrine()->getRepository(Secretariat::class)->getFirst();
-        return $this->render('default/secretariat.html.twig',[
+        return $this->render('default/secretariat.html.twig', [
             'secretariat' => $secretariat
         ]);
     }

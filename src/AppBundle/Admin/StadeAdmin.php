@@ -31,7 +31,6 @@ class StadeAdmin extends AbstractAdmin
             ->add('codePostal')
             ->add('ville')
             ->end()
-
         ;
     }
 
@@ -40,7 +39,9 @@ class StadeAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('nom')
             ->add('codePostal')
-            ->add('ville');
+            ->add('ville')
+            ->add('publie')
+        ;
     }
 
     /**
