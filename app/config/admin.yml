@@ -1,108 +1,108 @@
 services:
-    admin.joueur:
-            class: AppBundle\Admin\LicencieAdmin
-            arguments: [~, AppBundle\Entity\Licencie, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: Joueurs, group: "joueurs"}
-            calls:
-                - [ setKernel, ["@kernel"]]
-                - [ setTemplate, [list, SonataAdminBundle:Joueurs:customEdit.html.twig]]
+  admin.joueur:
+    class: AppBundle\Admin\LicencieAdmin
+    arguments: [~, AppBundle\Entity\Licencie, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Joueurs, group: "joueurs"}
+    calls:
+      - [ setKernel, ["@kernel"]]
+      - [ setTemplate, [list, SonataAdminBundle:Joueurs:customEdit.html.twig]]
 
-    admin.utilisateurs:
-            class: AppBundle\Admin\UserAdmin
-            arguments: [~, AppBundle\Entity\User, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: Utilisateurs, group: "utilisateurs"}
-    admin.equipe:
-                class: AppBundle\Admin\EquipeAdmin
-                arguments: [~, AppBundle\Entity\Equipe, ~]
-                tags:
-                    - { name: sonata.admin, manager_type: orm, label: equipe.plural, group: "club"}
-    admin.club:
-            class: AppBundle\Admin\ClubAdmin
-            arguments: [~, AppBundle\Entity\Club, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: club.plural, group: "club"}
-            calls:
-                - [ setTemplate, [edit, SonataAdminBundle:Club:customEdit.html.twig]]
+  admin.utilisateurs:
+    class: AppBundle\Admin\UserAdmin
+    arguments: [~, AppBundle\Entity\User, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Utilisateurs, group: "utilisateurs"}
+  admin.equipe:
+    class: AppBundle\Admin\EquipeAdmin
+    arguments: [~, AppBundle\Entity\Equipe, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: equipe.plural, group: "club"}
+  admin.club:
+    class: AppBundle\Admin\ClubAdmin
+    arguments: [~, AppBundle\Entity\Club, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: club.plural, group: "club"}
+    calls:
+      - [ setTemplate, [edit, SonataAdminBundle:Club:customEdit.html.twig]]
 
-    admin.nomParse:
-            class: AppBundle\Admin\NomParseAdmin
-            arguments: [~, AppBundle\Entity\NomParse, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: nomParse.plural, group: "club"}
+  admin.nomParse:
+    class: AppBundle\Admin\NomParseAdmin
+    arguments: [~, AppBundle\Entity\NomParse, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: nomParse.plural, group: "club"}
 
-    admin.statsRencontre:
-        class: AppBundle\Admin\StatsRencontreAdmin
-        arguments: [~, AppBundle\Entity\StatsRencontre, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: statsRencontre.plural, group: "club"}
+  admin.statsRencontre:
+    class: AppBundle\Admin\StatsRencontreAdmin
+    arguments: [~, AppBundle\Entity\StatsRencontre, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: statsRencontre.plural, group: "club"}
 
-    admin.rencontre:
-        class: AppBundle\Admin\RencontreAdmin
-        arguments: [~, AppBundle\Entity\Rencontre, ~]
-        tags:
-          - { name: sonata.admin, manager_type: orm, label: Rencontres, group: "club"}
+  admin.rencontre:
+    class: AppBundle\Admin\RencontreAdmin
+    arguments: [~, AppBundle\Entity\Rencontre, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Rencontres, group: "club"}
 
-    admin.buteur:
-        class: AppBundle\Admin\ButAdmin
-        arguments: [~, AppBundle\Entity\But, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: buteur.plural, group: "club"}
-    admin.categorie:
-        class: AppBundle\Admin\CategorieAdmin
-        arguments: [~, AppBundle\Entity\Categorie, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Categorie, group: "club"}
-    admin.sous-categorie:
-        class: AppBundle\Admin\SousCategorieAdmin
-        arguments: [~, AppBundle\Entity\SousCategorie, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Sous-Categorie, group: "club"}
-    admin.actualite:
-        class: AppBundle\Admin\ActualiteAdmin
-        arguments: [~, AppBundle\Entity\Actualite, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Actualites, group: "actus"}
+  admin.buteur:
+    class: AppBundle\Admin\ButAdmin
+    arguments: [~, AppBundle\Entity\But, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: buteur.plural, group: "club"}
+  admin.categorie:
+    class: AppBundle\Admin\CategorieAdmin
+    arguments: [~, AppBundle\Entity\Categorie, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Categorie, group: "club"}
+  admin.sous-categorie:
+    class: AppBundle\Admin\SousCategorieAdmin
+    arguments: [~, AppBundle\Entity\SousCategorie, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Sous-Categorie, group: "club"}
+  admin.actualite:
+    class: AppBundle\Admin\ActualiteAdmin
+    arguments: [~, AppBundle\Entity\Actualite, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Actualites, group: "actus"}
 
-    admin.option:
-            class: AppBundle\Admin\AccueilCustomFieldsAdmin
-            arguments: [~, AppBundle\Entity\AccueilCustomFields, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: Accueil, group: "actus"}
-    admin.photoAccueil:
-            class: AppBundle\Admin\PhotoAccueilAdmin
-            arguments: [~, AppBundle\Entity\PhotoAccueil, ~]
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: Photos Home, group: "actus"}
-    admin.stage:
-      class: AppBundle\Admin\StagePdfAdmin
-      arguments: [~, AppBundle\Entity\StagePdf, ~]
-      tags:
+  admin.option:
+    class: AppBundle\Admin\AccueilCustomFieldsAdmin
+    arguments: [~, AppBundle\Entity\AccueilCustomFields, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Accueil, group: "actus"}
+  admin.photoAccueil:
+    class: AppBundle\Admin\PhotoAccueilAdmin
+    arguments: [~, AppBundle\Entity\PhotoAccueil, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Photos Home, group: "actus"}
+  admin.stage:
+    class: AppBundle\Admin\StagePdfAdmin
+    arguments: [~, AppBundle\Entity\StagePdf, ~]
+    tags:
       - { name: sonata.admin, manager_type: orm, label: Stages, group: "actus"}
 
-    admin.fonction:
-      class: AppBundle\Admin\FonctionAdmin
-      arguments: [~, AppBundle\Entity\Fonction, ~]
-      tags:
-        - { name: sonata.admin, manager_type: orm, label: Fonctions, group: "club"}
+  admin.fonction:
+    class: AppBundle\Admin\FonctionAdmin
+    arguments: [~, AppBundle\Entity\Fonction, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Fonctions, group: "club"}
 
-    admin.secretariat:
-      class: AppBundle\Admin\SecretariatAdmin
-      arguments: [~, AppBundle\Entity\Secretariat, ~]
-      tags:
-        - { name: sonata.admin, manager_type: orm, label: Secretariat, group: "club"}
+  admin.secretariat:
+    class: AppBundle\Admin\SecretariatAdmin
+    arguments: [~, AppBundle\Entity\Secretariat, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Secretariat, group: "club"}
 
-    admin.stade:
-      class: AppBundle\Admin\StadeAdmin
-      arguments: [~, AppBundle\Entity\Stade, ~]
-      tags:
-        - { name: sonata.admin, manager_type: orm, label: Stades, group: "club"}
+  admin.stade:
+    class: AppBundle\Admin\StadeAdmin
+    arguments: [~, AppBundle\Entity\Stade, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Stades, group: "club"}
 
-    admin.entrainement:
-      class: AppBundle\Admin\EntrainementAdmin
-      arguments: [~, AppBundle\Entity\EntrainementCalendrier, ~]
-      tags:
-        - { name: sonata.admin, manager_type: orm, label: Entrainements, group: "club"}
-      calls:
-        - [ setTemplate, [edit, SonataAdminBundle:Calendrier:customEdit.html.twig]]
+  admin.entrainement:
+    class: AppBundle\Admin\EntrainementAdmin
+    arguments: [~, AppBundle\Entity\EntrainementCalendrier, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Entrainements, group: "club"}
+    calls:
+      - [ setTemplate, [edit, SonataAdminBundle:Calendrier:customEdit.html.twig]]
