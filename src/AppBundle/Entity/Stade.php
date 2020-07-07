@@ -70,6 +70,12 @@ class Stade
     private $publie;
 
     /**
+     * @var string
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $textInformatif;
+
+    /**
      * @param int $id
      * @return Stade
      */
@@ -222,4 +228,24 @@ class Stade
         $this->publie = $publie;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getTextInformatif()
+    {
+        return $this->textInformatif;
+    }
+
+    /**
+     * @param string $textInformatif
+     * @return Stade
+     */
+    public function setTextInformatif($textInformatif)
+    {
+        $this->textInformatif = $textInformatif;
+        return $this;
+    }
+
+
 }

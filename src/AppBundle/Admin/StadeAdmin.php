@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 
 
 use AppBundle\Entity\Stade;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -22,6 +23,11 @@ class StadeAdmin extends AbstractAdmin
             ->add('natureSol', null, [
                 "label" => "Nature du sol",
                 'help' => "Gazon naturel, Synthéthique, Hybride, etc..."
+            ])
+            ->add('textInformatif', CKEditorType::class, [
+                'required' => false,
+                'label' => "Information(s) complémentaire(s)",
+                'help' => "Le texte s'affichera en bas du bloc de stade"
             ])
             ->add('scriptGoogle')
             ->add('publie')

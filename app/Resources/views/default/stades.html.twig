@@ -23,6 +23,13 @@
                     </div>
                 {% endif %}
             </div>
+            {% if stade.textInformatif %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div>{{ stade.textInformatif|raw }}</div>
+                    </div>
+                </div>
+            {% endif %}
             <hr>
         {% endfor %}
     </div>
