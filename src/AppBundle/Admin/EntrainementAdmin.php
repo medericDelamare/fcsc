@@ -31,11 +31,17 @@ class EntrainementAdmin extends AbstractAdmin
                 'input' => 'string',
             ])
             ->add('heureFin', TimeType::class, [
-                'label' => 'Heure de départ (HH:MM)',
+                'label' => 'Heure de fin (HH:MM)',
                 'input' => 'string',
             ])
             ->add('couleur', ColorPickerType::class, [
                 'required' => true
+            ])
+            ->add('categorie', ChoiceType::class, [
+                'choices' => [
+                    'Ecole de foot' => 'edf',
+                    'U13 -> Vétérans' => 'u13-veterans',
+                ]
             ])
             ->add('stade')
         ;

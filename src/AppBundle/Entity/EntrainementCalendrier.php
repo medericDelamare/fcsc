@@ -59,6 +59,12 @@ class EntrainementCalendrier
     private $stade;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=false)
+     */
+    private $categorie;
+
+    /**
      * @return int
      */
     public function getId()
@@ -171,6 +177,24 @@ class EntrainementCalendrier
     public function setStade($stade)
     {
         $this->stade = $stade;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param string $categorie
+     * @return EntrainementCalendrier
+     */
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
         return $this;
     }
 }
