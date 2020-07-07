@@ -115,3 +115,11 @@ services:
       arguments: [~, AppBundle\Entity\Stade, ~]
       tags:
         - { name: sonata.admin, manager_type: orm, label: Stades, group: "club"}
+
+    admin.entrainement:
+      class: AppBundle\Admin\EntrainementAdmin
+      arguments: [~, AppBundle\Entity\EntrainementCalendrier, ~]
+      tags:
+        - { name: sonata.admin, manager_type: orm, label: Entrainements, group: "club"}
+      calls:
+        - [ setTemplate, [edit, SonataAdminBundle:Calendrier:customEdit.html.twig]]
