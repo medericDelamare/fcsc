@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ol class="breadcrumb">
+        <li><a href="{{path('homepage')}}">Accueil</a></li>
+        <li class="active">Horaires des entrainements</li>
+    </ol>
+
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="page-header">Horaires des entrainements</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="page-header">Ecole de foot</h1>
+                <div id='calendar'></div>
+            </div>
+            <div class="col-lg-6">
+                <h1 class="page-header">U13 aux vétérans</h1>
+                <div id='calendar2'></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src='{{ asset('vendor/moment/min/moment.min.js') }}'></script>
+    <script src='{{ asset('vendor/fullcalendar/dist/fullcalendar.js') }}'></script>
+    <script src='{{ asset('vendor/fullcalendar/dist/locale/fr.js') }}'></script>
+    <script>
+        $(document).ready(function() {
+            var edf = {{ edf|json_encode|raw }};
+            $('#calendar').fullCalendar({
+                header: false,
+                columnFormat: 'dd',
+                allDaySlot: false,
+                defaultView: 'agendaWeek',
+                minTime: '9:00:00',
+                maxTime: '19:00:00',
+                weekends:false,
+                height: 'auto',
+                slotEventOverlap: false,
+                events: edf
+            });
+
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var others = {{ others|json_encode|raw }}
+                $('#calendar2').fullCalendar({
+                    header: false,
+                    columnFormat: 'dd',
+                    allDaySlot: false,
+                    defaultView: 'agendaWeek',
+                    minTime: '13:00:00',
+                    maxTime: '23:00:00',
+                    weekends:false,
+                    height: 'auto',
+                    slotEventOverlap: false,
+                    events:others
+                });
+
+        });
+    </script>
+{% endblock %}
