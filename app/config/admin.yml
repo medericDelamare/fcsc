@@ -26,13 +26,13 @@ services:
     calls:
       - [ setTemplate, [edit, SonataAdminBundle:Club:customEdit.html.twig]]
 
-  admin.nomParse:
+  admin.nom_parse:
     class: AppBundle\Admin\NomParseAdmin
     arguments: [~, AppBundle\Entity\NomParse, ~]
     tags:
       - { name: sonata.admin, manager_type: orm, label: nomParse.plural, group: "club"}
 
-  admin.statsRencontre:
+  admin.stats_rencontre:
     class: AppBundle\Admin\StatsRencontreAdmin
     arguments: [~, AppBundle\Entity\StatsRencontre, ~]
     tags:
@@ -70,7 +70,7 @@ services:
     arguments: [~, AppBundle\Entity\AccueilCustomFields, ~]
     tags:
       - { name: sonata.admin, manager_type: orm, label: Accueil, group: "actus"}
-  admin.photoAccueil:
+  admin.photo_accueil:
     class: AppBundle\Admin\PhotoAccueilAdmin
     arguments: [~, AppBundle\Entity\PhotoAccueil, ~]
     tags:

@@ -14,8 +14,29 @@ security:
         ROLE_U19:         ROLE_ADMIN
         ROLE_SENIOR:      ROLE_ADMIN
         ROLE_VETERAN:     ROLE_ADMIN
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
+        ROLE_SUPER_ADMIN:
+            - ROLE_ADMIN
+            - ROLE_ALLOWED_TO_SWITCH
+        ROLE_ADMIN:
+            - ROLE_USER
+            - ROLE_ADMIN_JOUEUR_ALL
+            - ROLE_ADMIN_UTILISATEURS_ALL
+            - ROLE_ADMIN_EQUIPE_ALL
+            - ROLE_ADMIN_CLUB_ALL
+            - ROLE_ADMIN_NOM_PARSE_ALL
+            - ROLE_ADMIN_STATS_RENCONTRE_ALL
+            - ROLE_ADMIN_RENCONTRE_ALL
+            - ROLE_ADMIN_BUTEUR_ALL
+            - ROLE_ADMIN_CATEGORIE_ALL
+            - ROLE_ADMIN_SOUS-CATEGORIE_ALL
+            - ROLE_ADMIN_ACTUALITE_ALL
+            - ROLE_ADMIN_OPTION_ALL
+            - ROLE_ADMIN_PHOTO_ACCUEIL_ALL
+            - ROLE_ADMIN_STAGE_ALL
+            - ROLE_ADMIN_FONCTION_ALL
+            - ROLE_ADMIN_SECRETARIAT_ALL
+            - ROLE_ADMIN_STADE_ALL
+            - ROLE_ADMIN_ENTRAINEMENT_ALL
 
     providers:
         fos_userbundle:
