@@ -45,6 +45,8 @@ twig:
         - 'SonataCoreBundle:Form:datepicker.html.twig'
         - 'XmonColorPickerTypeBundle:Form:fields.html.twig'
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+    globals:
+        saison: '%saison%'
 
 # Doctrine Configuration
 doctrine:

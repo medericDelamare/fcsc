@@ -114,6 +114,12 @@ class Licencie
     private $photo;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $extra_photo;
+
+    /**
      * @var CarriereJoueur[]
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\CarriereJoueur", mappedBy="licencie", cascade={"all"})
      * @ORM\OrderBy({"saison" = "DESC"})
@@ -162,6 +168,11 @@ class Licencie
      */
     private $historiqueStats;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Fonction", mappedBy="licencies")
+     */
+    private $fonctions;
+
 
     public function __construct()
     {
@@ -172,6 +183,7 @@ class Licencie
         $this->buts = new ArrayCollection();
         $this->passes = new ArrayCollection();
         $this->historiqueStats = new ArrayCollection();
+        $this->fonctions = new ArrayCollection();
     }
 
     /**
@@ -624,8 +636,42 @@ class Licencie
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFonctions()
+    {
+        return $this->fonctions;
+    }
+
+    /**
+     * @param mixed $fonctions
+     * @return Licencie
+     */
+    public function setFonctions($fonctions)
+    {
+        $this->fonctions = $fonctions;
+        return $this;
+    }
+
     public function __toString()
     {
         return $this->getNomComplet();
+    }
+
+    /**
+     * @return string
+     */
+    public function getExtraPhoto()
+    {
+        return $this->extra_photo;
+    }
+
+    /**
+     * @param string $extra_photo
+     */
+    public function setExtraPhoto($extra_photo)
+    {
+        $this->extra_photo = $extra_photo;
     }
 }

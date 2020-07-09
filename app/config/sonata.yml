@@ -17,6 +17,8 @@ sonata_admin:
     persist_filters: true
     title:      FCSC Admin
     title_logo: /pictures/Logo.png
+    security:
+        handler: sonata.admin.security.handler.role
     templates:
             layout : SonataAdminBundle:Layout:layout.html.twig
     dashboard:
@@ -34,6 +36,6 @@ sonata_admin:
                     label_catalogue: messages
                     icon:            '<i class="fa fa-lock" aria-hidden="true"></i>'
                 actus:
-                    label:           Contribution
+                    label:           Administration des pages
                     label_catalogue: messages
                     icon:            '<i class="fa fa-newspaper-o" aria-hidden="true"></i> '

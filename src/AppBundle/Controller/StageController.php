@@ -18,9 +18,6 @@ class StageController extends Controller
     {
         $stages = $this->getDoctrine()->getManager()->getRepository(StagePdf::class)->findAll();
 
-
-
-        // replace this example code with whatever you need
         return $this->render(':default:stages.html.twig', [
             'stages' => $stages
         ]);

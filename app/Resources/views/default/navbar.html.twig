@@ -19,8 +19,10 @@
                         <li><a href="{{ path('bureau' ) }}">Composition du bureau</a></li>
                         <li><a href="{{ path('responsables' ) }}">Responsables par équipes</a></li>
                         <li><a href="{{ path('secretariat' ) }}">Secrétariat</a></li>
+                        <li><a href="{{ path('stades' ) }}">Plans des stades</a></li>
                     </ul>
                 </li>
+                <li><a href="{{ path('entrainements') }}"><i class="fa fa-calendar" aria-hidden="true"></i> Entraînements</a></li>
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-users" aria-hidden="true"></i> Effectifs <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -47,8 +49,7 @@
                         <li><a href="{{ path('statistiques', {'category': 'U15B'} ) }}">U15 B</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ path('buteurs') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Buteurs</a></li>
-                <li><a href="{{ path('boutique-liste') }}"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Boutique</a></li>
+                {#<li><a href="{{ path('buteurs') }}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Buteurs</a></li>#}
                 <li>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-plus" aria-hidden="true"></i> Inscriptions <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -62,7 +63,6 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user" aria-hidden="true"></i> Profil</a></li>
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li><a href="{{ path('sonata_admin_dashboard') }}"><i class="fa fa-lock" aria-hidden="true"></i> Admin</a></li>
                             {% endif %}
