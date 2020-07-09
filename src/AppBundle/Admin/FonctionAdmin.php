@@ -37,6 +37,8 @@ class FonctionAdmin extends AbstractAdmin
         $listMapper
             ->addIdentifier('id')
             ->add('nom')
-            ->add('type');
+            ->add('type')
+            ->add('ordre')
+        ;
     }
 }

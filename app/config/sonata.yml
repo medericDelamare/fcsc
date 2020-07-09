@@ -17,6 +17,8 @@ sonata_admin:
     persist_filters: true
     title:      FCSC Admin
     title_logo: /pictures/Logo.png
+    security:
+        handler: sonata.admin.security.handler.role
     templates:
             layout : SonataAdminBundle:Layout:layout.html.twig
     dashboard:
