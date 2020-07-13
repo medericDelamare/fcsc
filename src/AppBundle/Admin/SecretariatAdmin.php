@@ -15,14 +15,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class SecretariatAdmin extends AbstractAdmin
 {
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->remove('create')
-            ->remove('delete');
-
-    }
-
     protected function configureFormFields(FormMapper $formMapper)
     {
         /** @var Secretariat $subject */

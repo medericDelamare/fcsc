@@ -249,6 +249,6 @@ class Stade
 
     public function __toString()
     {
-        return $this->getNom();
+        return $this->getNom() ? $this->getNom() : 'Stade';
     }
 }

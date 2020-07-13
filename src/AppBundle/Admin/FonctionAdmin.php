@@ -16,7 +16,6 @@ class FonctionAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('nom')
-            ->add('code')
             ->add('type', ChoiceType::class, [
                 'label' => 'Type de fonction',
                 'choices' => [
