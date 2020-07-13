@@ -246,4 +246,9 @@ class Stade
         $this->textInformatif = $textInformatif;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getNom() ? $this->getNom() : 'Stade';
+    }
 }
