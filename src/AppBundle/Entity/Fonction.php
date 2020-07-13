@@ -33,12 +33,6 @@ class Fonction
      * @var string
      * @ORM\Column(type="string", nullable=false)
      */
-    private $code;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", nullable=false)
-     */
     private $type;
 
     /**
@@ -95,24 +89,6 @@ class Fonction
     public function setNom($nom)
     {
         $this->nom = $nom;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     * @return Fonction
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
         return $this;
     }
 
