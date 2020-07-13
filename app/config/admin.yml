@@ -91,7 +91,7 @@ services:
     class: AppBundle\Admin\SecretariatAdmin
     arguments: [~, AppBundle\Entity\Secretariat, ~]
     tags:
-      - { name: sonata.admin, manager_type: orm, label: Secretariat, group: "club"}
+      - { name: sonata.admin, manager_type: orm, label: Secretariat, group: "actus"}
 
   admin.stade:
     class: AppBundle\Admin\StadeAdmin
