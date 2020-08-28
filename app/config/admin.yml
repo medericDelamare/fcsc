@@ -112,3 +112,9 @@ services:
     arguments: [~, AppBundle\Entity\NombreEquipe, ~]
     tags:
       - { name: sonata.admin, manager_type: orm, label: Nombre d'équipes, group: "actus"}
+
+  admin.nombre-licencies-annee:
+    class: AppBundle\Admin\NombreLicenciesParAnneeAdmin
+    arguments: [~, AppBundle\Entity\NombreLicenciesParAnnee, ~]
+    tags:
+      - { name: sonata.admin, manager_type: orm, label: Nombre de licenciés par année, group: "actus"}
