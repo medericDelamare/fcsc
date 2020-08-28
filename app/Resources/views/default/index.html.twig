@@ -60,58 +60,12 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                Veterans
-                                <span class="badge badge-veterans badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                Matinaux
-                                <span class="badge badge-cdm badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                Seniors
-                                <span class="badge badge-senior badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U17 - U18
-                                <span class="badge badge-U17 badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U15 - U16
-                                <span class="badge badge-U15 badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U13 - U14
-                                <span class="badge badge-U13-U14 badge-pill">3</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U12
-                                <span class="badge badge-U12 badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U11
-                                <span class="badge badge-U11 badge-pill">4</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U10
-                                <span class="badge badge-U10 badge-pill">4</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U9
-                                <span class="badge badge-U9 badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U8
-                                <span class="badge badge-U8 badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U7
-                                <span class="badge badge-U7 badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U6
-                                <span class="badge badge-U6 badge-pill">1</span>
-                            </li>
+                            {% for nb_equipe in nb_equipes %}
+                                <li class="list-group-item justify-content-between">
+                                    {{nb_equipe.nom}}
+                                    <span class="badge badge-nb-equipes badge-pill">{{nb_equipe.nombre}}</span>
+                                </li>
+                            {% endfor %}
                         </ul>
                         </p>
                     </div>
