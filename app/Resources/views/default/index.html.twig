@@ -108,13 +108,14 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map'></script>
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
-
+        var annees = {{ annees|json_encode|raw }}
+        var nbLicencies = {{ nbLicencies|json_encode|raw }}
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['10/11','11/12','12/13','13/14','14/15','15/16','16/17', '17/18'],
+                labels: annees,
                 datasets: [{
-                    data: [501,517,556,594,703,657,655,634,],
+                    data: nbLicencies,
                     borderWidth: 2,
                     backgroundColor: [],
                     lineTension: 0.1,
