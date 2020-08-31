@@ -22,3 +22,26 @@ parameters:
     app_secret: 79b0ba738b65a330af7213ab69a42c4
     page_id: 134432930097257
     token: EAAOLhvNJoF0BABYSwAKfRZBzqruP7utpY1erPZAHIUo68QliWF6iLBOGPcMmuNipvYAUDagRkxg3DcVGrK6rqy9JNj4kLc78eGJNR04cPQHMbzm6TzW7cZBxg8r81mZCvZAEBiyhZCsRpU6gk8HYoPqgZAZBjDhKUdlwWFm4lqfUtAZDZD
+    debut_annee: 2019
+    fin_annee: 2020
+    saison: 2019-2020
+    competition:
+        seniorA: 5f1d6f4dcf4e61e60a098e9c
+        seniorB: 5d54b305cf4e61e60af60f2b
+        seniorF: null
+        veteranA: 5d54b33fcf4e61e60af60f34
+        U18: 5e33302bcf4e61e60a05a624
+        U15: 5e2a5bd7cf4e61e60a0535a3
+        U13A: 5e2a5c92cf4e61e60a0535a6
+        U13B: 5e2a5ca2cf4e61e60a0535a7
+    equipe:
+        seniorA: 59a59ca11b42fc0b26f72c96
+        seniorB: 540f0b1db1752543a7460c34
+        seniorF: null
+        veteranA: 59a59ca11b42fc0b26f72c9c
+        U18: 5e33302bcf4e61e60a05a624
+        U15: 5d831653cf4e61e60afb4150
+        U13A: 54287d9728688c1aa2c0b423
+        U13B: 59c2db2b680f775b6fd9b225
+    club:
+        uscl: 540f0b1db1752543a7460c37

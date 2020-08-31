@@ -1,0 +1,12 @@
+{% for calendrierDetail in equipes %}
+    <tr class="align-middle">
+        <td class="col-xs-3 col-lg-1">{{ calendrierDetail.date|date("m/d/Y H:i") }}</td>
+        <td class="col-xs-3 col-lg-5 equipeGauche"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ calendrierDetail.teams[0].clubId ~ '.png') }}"><span class="hidden-xs"> -{{ calendrierDetail.teams[0].name|upper }}</span></td>
+        {% if calendrierDetail.teams[0].score is not null %}
+            <td class="col-xs-3 col-lg-1 text-center score">{{ calendrierDetail.teams[0].score ~ '-' ~ calendrierDetail.teams[1].score }}</td>
+        {% else %}
+            <td class="col-xs-3 col-lg-1 text-center score">VS</td>
+        {% endif %}
+        <td class="col-xs-3 col-lg-5 equipeDroite"><span class="hidden-xs">{{ calendrierDetail.teams[0].name|upper }} - </span><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ calendrierDetail.teams[1].clubId ~ '.png') }}"></td>
+    </tr>
+{% endfor %}
