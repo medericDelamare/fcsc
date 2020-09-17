@@ -60,58 +60,12 @@
                     </div>
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item justify-content-between">
-                                Veterans
-                                <span class="badge badge-veterans badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                Matinaux
-                                <span class="badge badge-cdm badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                Seniors
-                                <span class="badge badge-senior badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U17 - U18
-                                <span class="badge badge-U17 badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U15 - U16
-                                <span class="badge badge-U15 badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U13 - U14
-                                <span class="badge badge-U13-U14 badge-pill">3</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U12
-                                <span class="badge badge-U12 badge-pill">2</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U11
-                                <span class="badge badge-U11 badge-pill">4</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U10
-                                <span class="badge badge-U10 badge-pill">4</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U9
-                                <span class="badge badge-U9 badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U8
-                                <span class="badge badge-U8 badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U7
-                                <span class="badge badge-U7 badge-pill">1</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                U6
-                                <span class="badge badge-U6 badge-pill">1</span>
-                            </li>
+                            {% for nb_equipe in nb_equipes %}
+                                <li class="list-group-item justify-content-between">
+                                    {{nb_equipe.nom}}
+                                    <span class="badge badge-nb-equipes badge-pill">{{nb_equipe.nombre}}</span>
+                                </li>
+                            {% endfor %}
                         </ul>
                         </p>
                     </div>
@@ -154,13 +108,14 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js.map'></script>
     <script>
         var ctx = document.getElementById("myChart").getContext('2d');
-
+        var annees = {{ annees|json_encode|raw }}
+        var nbLicencies = {{ nbLicencies|json_encode|raw }}
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['10/11','11/12','12/13','13/14','14/15','15/16','16/17', '17/18'],
+                labels: annees,
                 datasets: [{
-                    data: [501,517,556,594,703,657,655,634,],
+                    data: nbLicencies,
                     borderWidth: 2,
                     backgroundColor: [],
                     lineTension: 0.1,
