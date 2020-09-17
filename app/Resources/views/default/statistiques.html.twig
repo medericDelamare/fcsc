@@ -125,8 +125,7 @@
     var equipeId = $( "#selectEquipe" ).val();
     var categorie = $("#selectEquipe").data('competition-id');
     var getUrl = window.location;
-    var baseUrl = "http://localhost/fcsc/web/app_dev.php" + "/";
-    console.log(baseUrl);
+    var baseUrl = getUrl.protocol + "//" + getUrl.host + "/";
     var route = baseUrl + 'get-calendrier-par-equipe/';
     $(document).ready( function () {
         $('#loaderCalendrier').show();
