@@ -28,7 +28,6 @@
                     <td>F</td>
                     <td>BP</td>
                     <td>BC</td>
-                    <td>P</td>
                     <td>Diff</td>
                 </tr>
                 </thead>
@@ -49,15 +48,6 @@
                         <td>{{ equipe.rankingData.butsP }}</td>
                         <td>{{ equipe.rankingData.butsC }}</td>
                         <td>{{ equipe.rankingData.diff }}</td>
-                        <td class="td-derniers-matchs">
-                            <ul class="p-0 mt-3">
-                                <li class="result-li">
-                                    {% for result in equipe.lastResults %}
-                                        <i class="fa fa-circle fa-circle-{{ result }}" aria-hidden="true"></i>
-                                    {% endfor %}
-                                </li>
-                            </ul>
-                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
