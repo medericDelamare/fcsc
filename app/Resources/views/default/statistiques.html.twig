@@ -56,13 +56,13 @@
         <div class="col-sm-12 col-lg-5">
             <h2 class="page-header">Résultats de la dernière journée</h2>
             {% if rencontres is not null and rencontres.events|length > 0 %}
-                <table class="resultats table table-condensed classement">
+                <table class="resultats table table-condensed classement table-sm">
                 {% for resultat in rencontres.events %}
                     <tr>
-                        <td>{{ resultat.date|date("m/d/Y H:i") }}</td>
+                        <td>{{ resultat.date|date("d/m/Y") }}</td>
                         <td class="col-xs-3  col-lg-5"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ resultat.teams[0].clubId ~ '.png') }}"><span class="hidden-xs"> - {{ resultat.teams[0].name|upper }}</span></td>
                         {% if resultat.teams[0].score is not null %}
-                            <td>{{ rencontre.score }}</td>
+                            <td><span class="d-inline" style="white-space: nowrap;">{{ resultat.teams[0].score }} - {{ resultat.teams[1].score }}</span></td>
                         {% else %}
                             <td>VS</td>
                         {% endif %}
@@ -79,7 +79,7 @@
             <table class="resultats table table-condensed classement">
                 {% for agenda in agendas.events %}
                     <tr>
-                        <td class="col-xs-3 col-lg-1">{{ agenda.date|date("m/d/Y H:i") }}</td>
+                        <td class="col-xs-3 col-lg-1">{{ agenda.date|date("d/m/Y") }}</td>
                         <td class="col-xs-3  col-lg-5"><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ agenda.teams[0].clubId ~ '.png') }}"><span class="hidden-xs"> - {{ agenda.teams[0].name|upper }}</span></td>
                         <td class="col-xs-3  col-lg-1 text-center score">VS</td>
                         <td class="col-xs-3  col-lg-5 text-right"><span class="hidden-xs">{{ agenda.teams[1].name|upper }} - </span><img class="img-carriere" src="{{ asset('pictures/Logos/' ~ agenda.teams[1].clubId ~ '.png') }}"></td>
