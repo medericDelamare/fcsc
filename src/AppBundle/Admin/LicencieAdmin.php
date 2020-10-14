@@ -8,7 +8,6 @@ use AppBundle\Entity\Categorie;
 use AppBundle\Entity\Licencie;
 use AppBundle\Entity\Poste;
 use AppBundle\Entity\SousCategorie;
-use Doctrine\ORM\Query;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -21,7 +20,8 @@ class LicencieAdmin extends AbstractAdmin
 
     public $nbLicencieSansPoste = 0;
 
-    public function setCategorie($cat){
+    public function setCategorie($cat)
+    {
         $this->cat = $cat;
     }
 
@@ -48,94 +48,47 @@ class LicencieAdmin extends AbstractAdmin
     {
         $formMapper
             ->tab('Saison Actuelle')
-                ->with('Informations Personelles', ['class' => 'col-md-6'])
-                    ->add('nom', null, [
-                        'label' => 'Nom',
-                        'disabled'  => true,
-                        ])
-                    ->add('prenom', null, [
-                        'label' => 'Prenom',
-                        'disabled'  => true,
-                    ])
-                    ->add('email', null, [
-                        'label' => 'Email',
-                        'disabled'  => true,
-                    ])
-                    ->add('telephoneDomicile', null, [
-                        'label' => 'Téléphone domicile',
-                        'disabled'  => true,
-                    ])
-                    ->add('telephonePortable', null, [
-                        'label' => 'Numéro de portable',
-                        'disabled'  => true,
-                    ])
-                    ->add('dateDeNaissance', 'sonata_type_date_picker', [
-                        'label' => 'Date de naissance',
-                        'disabled'  => true,
-                    ])
-                    ->add('lieuDeNaissance', null, [
-                        'label' => 'Lieu de Naissance',
-                        'disabled'  => true,
-                    ])
-                    ->add('numeroLicence', null, [
-                        'label' => 'Numéro de Licence',
-                        'disabled'  => true,
-                    ])
-                ->end()
-                ->with('Statistiques', ['class' => 'col-md-6'])
-                    ->add('categorie', null, [
-                        'label' => 'Catégorie',
-                        'disabled'  => true,
-                    ])
-                    ->add('stats.poste', 'entity', [
-                        'label' => 'Poste',
-                        'class' => Poste::class
-                    ])
-                    ->add('stats.nbMatchs', null, [
-                        'label' => 'Nombre de matchs joués'
-                    ])
-                    ->add('stats.butsA', null, [
-                        'label' => 'Buts en équipes première'
-                    ])
-                    ->add('stats.butsB', null, [
-                        'label' => 'Buts en équipe reserve'
-                    ])
-                    ->add('stats.butsCoupe', null, [
-                        'label' => 'Buts en coupe'
-                    ])
-                    ->add('stats.cartonsJaunes', null, [
-                        'label' => 'Cartons jaunes'
-                    ])
-                    ->add('stats.cartonsRouges', null, [
-                        'label' => 'Cartons rouges'
-                    ])
-                    ->add('stats.buts', null, [
-                        'label' => 'Total de buts'
-                    ])
-                    ->add('stats.passes', null, [
-                        'label' => 'Passes',
-                        'disabled'  => true,
-                    ])
-                ->end()
+            ->with('Informations Personelles', ['class' => 'col-md-6'])
+            ->add('nom', null, [
+                'label' => 'Nom',
+            ])
+            ->add('prenom', null, [
+                'label' => 'Prenom',
+            ])
+            ->add('email', null, [
+                'label' => 'Email',
+            ])
+            ->add('telephoneDomicile', null, [
+                'label' => 'Téléphone domicile',
+            ])
+            ->add('telephonePortable', null, [
+                'label' => 'Numéro de portable',
+            ])
+            ->add('dateDeNaissance', 'sonata_type_date_picker', [
+                'label' => 'Date de naissance',
+            ])
+            ->add('lieuDeNaissance', null, [
+                'label' => 'Lieu de Naissance',
+            ])
+            ->add('numeroLicence', null, [
+                'label' => 'Numéro de Licence',
+            ])
             ->end()
-            ->tab('historique')
-                ->add('historiqueStats', 'sonata_type_collection', [
-                    'by_reference' => false,
-                    'label' => false,
-                    'btn_add' => 'Ajouter une année'
-                ],[
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                ])
+            ->with('Statistiques', ['class' => 'col-md-6'])
+            ->add('categorie', null, [
+                'label' => 'Catégorie',
+            ])
+            ->add('joueur')
+            ->add('dirigeant')
+            ->add('educateur')
             ->end()
-
-        ;
+            ->end();
 
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $em = $this->getConfigurationPool()->getContainer()->get('Doctrine')->getManager();
+        $em = $this->getConfigurationPool()->getContainer()->get('doctrine')->getManager();
         $sousCategories = $em->getRepository(SousCategorie::class)->findAll();
 
         $categories = [];
@@ -147,7 +100,6 @@ class LicencieAdmin extends AbstractAdmin
         $datagridMapper
             ->add('nom')
             ->add('prenom')
-            ->add('stats.poste')
             ->add('categorie', 'doctrine_orm_choice', array('label' => 'Categorie',
                 'field_options' => array(
                     'required' => false,
@@ -164,10 +116,17 @@ class LicencieAdmin extends AbstractAdmin
             ->addIdentifier('nom')
             ->add('prenom')
             ->add('categorie')
-            ->add('stats.poste', null, [
-                'label' => 'Poste'
-            ])
             ->add('numeroLicence');
+    }
+
+    /**
+     * @param Licencie $user
+     */
+    public function preValidate($user)
+    {
+        parent::preValidate($user);
+        $user->setNationalite("Française");
+
     }
 
     public function createQuery($context = 'list')
@@ -179,11 +138,11 @@ class LicencieAdmin extends AbstractAdmin
 
         $categories = $em->getRepository(Categorie::class)->findAll();
         $sousCategories = [];
-        foreach ($currentUser->getRoles() as $role){
+        foreach ($currentUser->getRoles() as $role) {
             /** @var Categorie $categorie */
-            foreach ($categories as $categorie){
-                if ($role == $categorie->getRole()){
-                    foreach ($categorie->getSousCategories() as $sousCategorie){
+            foreach ($categories as $categorie) {
+                if ($role == $categorie->getRole()) {
+                    foreach ($categorie->getSousCategories() as $sousCategorie) {
                         $sousCategories[] = $sousCategorie->getNom();
                     }
                 }
@@ -196,9 +155,9 @@ class LicencieAdmin extends AbstractAdmin
         $query->setParameter('my_param', $sousCategories);
 
         /** @var Licencie $licencie */
-        foreach ($query->execute() as $licencie){
-            if (is_null($licencie->getStats()) || ($licencie->getStats() && is_null($licencie->getStats()->getPoste()))){
-                $nbLicencieSansPoste ++;
+        foreach ($query->execute() as $licencie) {
+            if (is_null($licencie->getStats()) || ($licencie->getStats() && is_null($licencie->getStats()->getPoste()))) {
+                $nbLicencieSansPoste++;
             }
         }
 

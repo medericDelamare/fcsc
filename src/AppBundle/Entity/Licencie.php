@@ -184,6 +184,7 @@ class Licencie
         $this->passes = new ArrayCollection();
         $this->historiqueStats = new ArrayCollection();
         $this->fonctions = new ArrayCollection();
+        $this->joueur = true;
     }
 
     /**
