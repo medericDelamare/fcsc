@@ -22,7 +22,7 @@ class enregistrerJoueursCommand extends ContainerAwareCommand
     private $logs = [];
 
     const NUMERO_CLUB = '500622';
-    const START_SEASON = '2018';
+    const START_SEASON = '2020';
 
 
     protected function configure()
@@ -36,17 +36,9 @@ class enregistrerJoueursCommand extends ContainerAwareCommand
     {
         $now = new \DateTime();
         $output->writeln('<comment>End : ' . $now->format('d-m-Y G:i:s') . ' ---</comment>');
-        $curl_request = curl_init("https://fff-api.les-glandeurs.ovh/api/v1/users/fcsc/2018");
+        $json_data = file_get_contents($this->getContainer()->get('kernel')->getRootDir() . '/Resources/Documents/fcsc.json');
 
-        curl_setopt($curl_request, CURLOPT_USERPWD, "MEYRIGNOUX:FootClubsMaxime92");
-        curl_setopt($curl_request, CURLOPT_HEADER, 0);
-        curl_setopt($curl_request, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl_request,CURLOPT_SSL_VERIFYPEER, false);
-
-        $result = curl_exec($curl_request);
-        curl_close($curl_request);
-
-        $data = json_decode($result, true);
+        $data = json_decode($json_data, true);
 
         $nbCreation = 0;
         $nbMaj = 0;
@@ -78,6 +70,7 @@ class enregistrerJoueursCommand extends ContainerAwareCommand
                     $em->persist($sousCategorie);
                     $em->flush();
                 }
+
 
                 $licencie
                     ->setNumeroLicence((integer)$joueur['id'])
